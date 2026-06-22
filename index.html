@@ -160,6 +160,49 @@
             font-weight: 600;
         }
 
+        /* ===== ESTILOS PARA LAS PREGUNTAS DE KUN EN SU SECCIÓN ===== */
+        .kun-preguntas-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin: 20px 0;
+        }
+        .kun-preguntas-table thead th {
+            background: #1a2a4f;
+            color: white;
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .kun-preguntas-table tbody td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+        .kun-preguntas-table tbody tr:hover {
+            background: #f1f5f9;
+        }
+        .kun-preguntas-table .cat-cell {
+            font-weight: 700;
+            color: #1a2a4f;
+            background: #f8fafc;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .kun-preguntas-table .subcat-cell {
+            font-weight: 600;
+            color: #334155;
+            font-size: 0.8rem;
+        }
+        .kun-preguntas-table .preg-cell {
+            color: #4b5563;
+            font-size: 0.8rem;
+        }
+
         @media (max-width: 768px) {
             .funnel-step {
                 flex-wrap: wrap;
@@ -174,6 +217,13 @@
             }
             .preguntas-table thead th,
             .preguntas-table tbody td {
+                padding: 6px 8px;
+            }
+            .kun-preguntas-table {
+                font-size: 0.75rem;
+            }
+            .kun-preguntas-table thead th,
+            .kun-preguntas-table tbody td {
                 padding: 6px 8px;
             }
         }
@@ -305,139 +355,118 @@
             </div>
 
             <!-- ============================================================ -->
-<!-- TABLA DE PREGUNTAS ORIENTADORAS -->
-<!-- ============================================================ -->
-<div style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #e2e8f0;">
-    <div class="preguntas-section-title">
-        📋 TABLA DE PREGUNTAS ORIENTADORAS - GRUPOS FOCALES ADMINISTRACIÓN DE EMPRESAS
-        <span class="badge-count">22 subcategorías</span>
-    </div>
-    <p style="color: #6b7280; font-size: 0.85rem; margin-bottom: 15px;">
-        Preguntas reales utilizadas en los grupos focales con estudiantes de Administración de Empresas.
-    </p>
+            <!-- TABLA DE PREGUNTAS ORIENTADORAS (SIN KUN) -->
+            <!-- ============================================================ -->
+            <div style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #e2e8f0;">
+                <div class="preguntas-section-title">
+                    📋 TABLA DE PREGUNTAS ORIENTADORAS - GRUPOS FOCALES ADMINISTRACIÓN DE EMPRESAS
+                    <span class="badge-count">18 subcategorías</span>
+                </div>
+                <p style="color: #6b7280; font-size: 0.85rem; margin-bottom: 15px;">
+                    Preguntas reales utilizadas en los grupos focales con estudiantes de Administración de Empresas.
+                </p>
 
-    <div class="table-responsive">
-        <table class="preguntas-table">
-            <thead>
-                <tr>
-                    <th style="width: 18%;">Categoría</th>
-                    <th style="width: 22%;">Subcategoría</th>
-                    <th style="width: 30%;">Pregunta Orientadora 1</th>
-                    <th style="width: 30%;">Pregunta Orientadora 2</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- ACADÉMICO -->
-                <tr>
-                    <td class="cat-cell" rowspan="5">ACADÉMICO</td>
-                    <td class="subcat-cell" rowspan="3">Calidad del Pensum y Contenidos</td>
-                    <td class="preg-cell">¿Qué opinas de la metodología que se usa?</td>
-                    <td class="preg-cell">¿Los contenidos son útiles y aplicables al medio laboral?</td>
-                </tr>
-                <tr>
-                    <td class="preg-cell">¿La organización por semanas en la plataforma es clara?</td>
-                    <td class="preg-cell">¿El material en plataforma es suficiente para aprender?</td>
-                </tr>
-                <tr>
-                    <td class="preg-cell">¿Los contenidos son interactivos?</td>
-                    <td class="preg-cell">¿Los contenidos están actualizados?</td>
-                </tr>
-                <tr>
-                    <td class="subcat-cell">Docencia y Metodología</td>
-                    <td class="preg-cell">¿Cómo calificarías la calidad de los docentes?</td>
-                    <td class="preg-cell">¿Los docentes explican bien y son accesibles?</td>
-                </tr>
-                <tr>
-                    <td class="subcat-cell">Prácticas Profesionales</td>
-                    <td class="preg-cell">¿Cómo están las prácticas profesionales?</td>
-                    <td class="preg-cell">¿La universidad te ha apoyado para conseguir prácticas?</td>
-                </tr>
+                <div class="table-responsive">
+                    <table class="preguntas-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 18%;">Categoría</th>
+                                <th style="width: 22%;">Subcategoría</th>
+                                <th style="width: 30%;">Pregunta Orientadora 1</th>
+                                <th style="width: 30%;">Pregunta Orientadora 2</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- ACADÉMICO -->
+                            <tr>
+                                <td class="cat-cell" rowspan="5">ACADÉMICO</td>
+                                <td class="subcat-cell" rowspan="3">Calidad del Pensum y Contenidos</td>
+                                <td class="preg-cell">¿Qué opinas de la metodología que se usa?</td>
+                                <td class="preg-cell">¿Los contenidos son útiles y aplicables al medio laboral?</td>
+                            </tr>
+                            <tr>
+                                <td class="preg-cell">¿La organización por semanas en la plataforma es clara?</td>
+                                <td class="preg-cell">¿El material en plataforma es suficiente para aprender?</td>
+                            </tr>
+                            <tr>
+                                <td class="preg-cell">¿Los contenidos son interactivos?</td>
+                                <td class="preg-cell">¿Los contenidos están actualizados?</td>
+                            </tr>
+                            <tr>
+                                <td class="subcat-cell">Docencia y Metodología</td>
+                                <td class="preg-cell">¿Cómo calificarías la calidad de los docentes?</td>
+                                <td class="preg-cell">¿Los docentes explican bien y son accesibles?</td>
+                            </tr>
+                            <tr>
+                                <td class="subcat-cell">Prácticas Profesionales</td>
+                                <td class="preg-cell">¿Cómo están las prácticas profesionales?</td>
+                                <td class="preg-cell">¿La universidad te ha apoyado para conseguir prácticas?</td>
+                            </tr>
 
-                <!-- TECNOLÓGICO -->
-                <tr>
-                    <td class="cat-cell" rowspan="4">TECNOLÓGICO</td>
-                    <td class="subcat-cell" rowspan="2">Plataforma CDigital</td>
-                    <td class="preg-cell">¿Qué opinas de la plataforma CDigital?</td>
-                    <td class="preg-cell">¿Es estable y fácil de usar?</td>
-                </tr>
-                <tr>
-                    <td class="preg-cell">¿La plataforma avisa cuando se va a cerrar un trabajo?</td>
-                    <td class="preg-cell">¿Los mantenimientos se anuncian con anticipación?</td>
-                </tr>
-                <tr>
-                    <td class="subcat-cell">Plataforma SINU</td>
-                    <td class="preg-cell">¿Qué opinas de la plataforma SINU?</td>
-                    <td class="preg-cell">¿La has utilizado para trámites?</td>
-                </tr>
-                <tr>
-                    <td class="subcat-cell">CUN Experience / CUN 360</td>
-                    <td class="preg-cell">¿Conoces CUN Experience o CUN 360?</td>
-                    <td class="preg-cell">¿Qué funcionalidad le ves?</td>
-                </tr>
+                            <!-- TECNOLÓGICO -->
+                            <tr>
+                                <td class="cat-cell" rowspan="4">TECNOLÓGICO</td>
+                                <td class="subcat-cell" rowspan="2">Plataforma CDigital</td>
+                                <td class="preg-cell">¿Qué opinas de la plataforma CDigital?</td>
+                                <td class="preg-cell">¿Es estable y fácil de usar?</td>
+                            </tr>
+                            <tr>
+                                <td class="preg-cell">¿La plataforma avisa cuando se va a cerrar un trabajo?</td>
+                                <td class="preg-cell">¿Los mantenimientos se anuncian con anticipación?</td>
+                            </tr>
+                            <tr>
+                                <td class="subcat-cell">Plataforma SINU</td>
+                                <td class="preg-cell">¿Qué opinas de la plataforma SINU?</td>
+                                <td class="preg-cell">¿La has utilizado para trámites?</td>
+                            </tr>
+                            <tr>
+                                <td class="subcat-cell">CUN Experience / CUN 360</td>
+                                <td class="preg-cell">¿Conoces CUN Experience o CUN 360?</td>
+                                <td class="preg-cell">¿Qué funcionalidad le ves?</td>
+                            </tr>
 
-                <!-- SERVICIO AL CLIENTE -->
-                <tr>
-                    <td class="cat-cell" rowspan="1">SERVICIO AL CLIENTE</td>
-                    <td class="subcat-cell">CamiTicket</td>
-                    <td class="preg-cell">¿Has utilizado CamiTicket para resolver algún problema?</td>
-                    <td class="preg-cell">¿Cómo fue tu experiencia con CamiTicket?</td>
-                </tr>
+                            <!-- SERVICIO AL CLIENTE -->
+                            <tr>
+                                <td class="cat-cell" rowspan="1">SERVICIO AL CLIENTE</td>
+                                <td class="subcat-cell">CamiTicket</td>
+                                <td class="preg-cell">¿Has utilizado CamiTicket para resolver algún problema?</td>
+                                <td class="preg-cell">¿Cómo fue tu experiencia con CamiTicket?</td>
+                            </tr>
 
-                <!-- BIENESTAR -->
-                <tr>
-                    <td class="cat-cell" rowspan="2">BIENESTAR</td>
-                    <td class="subcat-cell">Beneficios y Becas</td>
-                    <td class="preg-cell">¿Conoces los beneficios que ofrece Bienestar Universitario?</td>
-                    <td class="preg-cell">¿Has utilizado algún servicio de bienestar?</td>
-                </tr>
-                <tr>
-                    <td class="subcat-cell">Actividades de Bienestar</td>
-                    <td class="preg-cell">¿Has participado en actividades de bienestar?</td>
-                    <td class="preg-cell">¿Qué actividades conoces?</td>
-                </tr>
+                            <!-- BIENESTAR -->
+                            <tr>
+                                <td class="cat-cell" rowspan="2">BIENESTAR</td>
+                                <td class="subcat-cell">Beneficios y Becas</td>
+                                <td class="preg-cell">¿Conoces los beneficios que ofrece Bienestar Universitario?</td>
+                                <td class="preg-cell">¿Has utilizado algún servicio de bienestar?</td>
+                            </tr>
+                            <tr>
+                                <td class="subcat-cell">Actividades de Bienestar</td>
+                                <td class="preg-cell">¿Has participado en actividades de bienestar?</td>
+                                <td class="preg-cell">¿Qué actividades conoces?</td>
+                            </tr>
 
-                <!-- PERTENENCIA -->
-                <tr>
-                    <td class="cat-cell" rowspan="2">PERTENENCIA</td>
-                    <td class="subcat-cell">Orgullo y Significado</td>
-                    <td class="preg-cell">¿Qué significa la CUN en tu vida?</td>
-                    <td class="preg-cell">¿Qué palabra usarías para describir la CUN?</td>
-                </tr>
-                <tr>
-                    <td class="subcat-cell">Recomendación</td>
-                    <td class="preg-cell">¿Recomendarías la CUN a un amigo o familiar?</td>
-                    <td class="preg-cell">¿Qué es lo que más valoras de la CUN?</td>
-                </tr>
+                            <!-- PERTENENCIA -->
+                            <tr>
+                                <td class="cat-cell" rowspan="2">PERTENENCIA</td>
+                                <td class="subcat-cell">Orgullo y Significado</td>
+                                <td class="preg-cell">¿Qué significa la CUN en tu vida?</td>
+                                <td class="preg-cell">¿Qué palabra usarías para describir la CUN?</td>
+                            </tr>
+                            <tr>
+                                <td class="subcat-cell">Recomendación</td>
+                                <td class="preg-cell">¿Recomendarías la CUN a un amigo o familiar?</td>
+                                <td class="preg-cell">¿Qué es lo que más valoras de la CUN?</td>
+                            </tr>
 
-                <!-- KUN CoWork -->
-                <tr>
-                    <td class="cat-cell" rowspan="4">KUN CoWork</td>
-                    <td class="subcat-cell" rowspan="2">Conocimiento</td>
-                    <td class="preg-cell">¿Conoces o has escuchado de KUN CoWork?</td>
-                    <td class="preg-cell">¿Qué sabes de él?</td>
-                </tr>
-                <tr>
-                    <td class="preg-cell">Si no lo conoces, ¿por qué crees que no has escuchado de él?</td>
-                    <td class="preg-cell">—</td>
-                </tr>
-                <tr>
-                    <td class="subcat-cell">Uso y Visita</td>
-                    <td class="preg-cell">¿Has ido o lo has visitado?</td>
-                    <td class="preg-cell">¿Qué te pareció?</td>
-                </tr>
-                <tr>
-                    <td class="subcat-cell">Percepción</td>
-                    <td class="preg-cell">¿Te parece interesante la idea de un espacio de coworking?</td>
-                    <td class="preg-cell">¿Te gustaría ir o participar?</td>
-                </tr>
-
-            </tbody>
-        </table>
-    </div>
-    <p style="color: #94a3b8; font-size: 0.7rem; margin-top: 8px; font-style: italic;">
-        * Preguntas extraídas de las transcripciones de los grupos focales de Administración de Empresas.
-    </p>
-</div>
+                            <!-- NOTA: KUN NO ESTÁ EN ESTA TABLA -->
+                        </tbody>
+                    </table>
+                </div>
+                <p style="color: #94a3b8; font-size: 0.7rem; margin-top: 8px; font-style: italic;">
+                    * Preguntas extraídas de las transcripciones de los grupos focales de Administración de Empresas.
+                </p>
+            </div>
 
         </section>
 
@@ -545,6 +574,55 @@
                 </div>
             </div>
 
+            <!-- ===== PREGUNTAS DE KUN (SOLO AQUÍ) ===== -->
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #e2e8f0;">
+                <div class="preguntas-section-title" style="font-size: 1rem; border-bottom-color: #8b5cf6;">
+                    📋 PREGUNTAS ORIENTADORAS - KUN CoWork
+                    <span class="badge-count" style="background: #8b5cf6;">4 subcategorías</span>
+                </div>
+                <p style="color: #6b7280; font-size: 0.85rem; margin-bottom: 15px;">
+                    Preguntas específicas sobre KUN CoWork utilizadas en los grupos focales de Bogotá.
+                </p>
+
+                <div class="table-responsive">
+                    <table class="kun-preguntas-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 18%;">Categoría</th>
+                                <th style="width: 22%;">Subcategoría</th>
+                                <th style="width: 30%;">Pregunta Orientadora 1</th>
+                                <th style="width: 30%;">Pregunta Orientadora 2</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="cat-cell" rowspan="4">KUN CoWork</td>
+                                <td class="subcat-cell" rowspan="2">Conocimiento</td>
+                                <td class="preg-cell">¿Conoces o has escuchado de KUN CoWork?</td>
+                                <td class="preg-cell">¿Qué sabes de él?</td>
+                            </tr>
+                            <tr>
+                                <td class="preg-cell">Si no lo conoces, ¿por qué crees que no has escuchado de él?</td>
+                                <td class="preg-cell">—</td>
+                            </tr>
+                            <tr>
+                                <td class="subcat-cell">Uso y Visita</td>
+                                <td class="preg-cell">¿Has ido o lo has visitado?</td>
+                                <td class="preg-cell">¿Qué te pareció?</td>
+                            </tr>
+                            <tr>
+                                <td class="subcat-cell">Percepción</td>
+                                <td class="preg-cell">¿Te parece interesante la idea de un espacio de coworking?</td>
+                                <td class="preg-cell">¿Te gustaría ir o participar?</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="color: #94a3b8; font-size: 0.7rem; margin-top: 8px; font-style: italic;">
+                    * Preguntas extraídas de las transcripciones de los grupos focales de Bogotá.
+                </p>
+            </div>
+
             <!-- ===== ANÁLISIS ESTRATÉGICO ===== -->
             <h4 style="color: #1a2a4f; margin: 30px 0 15px 0; font-size: 1.1rem;">🔍 Análisis de la situación actual</h4>
 
@@ -609,7 +687,7 @@
                     <h5 style="margin: 0; color: #1a2a4f; font-size: 1rem;">4. Desconexión con los cambios institucionales</h5>
                 </div>
                 <p style="margin: 0; color: #4b5563; font-size: 0.9rem; line-height: 1.6;">
-                    Los estudiantes ven con preocupación el cierre de sedes, pero no tienen claro que así mismo se estan incluyendo otros espacios.
+                    Los estudiantes ven con preocupación el cierre de sedes, pero no tienen claro que así mismo se están incluyendo otros espacios.
                 </p>
             </div>
 
