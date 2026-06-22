@@ -6,6 +6,178 @@
     <title>Auditoría CUN - Administración de Empresas</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="estilos.css">
+    <style>
+        /* ===== ESTILOS PARA EL EMBUDO DE KUN ===== */
+        .funnel-container {
+            max-width: 700px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+        .funnel-title {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1a2a4f;
+            margin-bottom: 25px;
+        }
+        .funnel-step {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 20px;
+            margin-bottom: 8px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+            border-left: 5px solid #1a2a4f;
+            transition: all 0.2s;
+        }
+        .funnel-step:hover {
+            transform: translateX(5px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .funnel-step .step-icon {
+            font-size: 1.8rem;
+            width: 45px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .funnel-step .step-info {
+            flex: 1;
+        }
+        .funnel-step .step-info .step-label {
+            font-size: 0.85rem;
+            color: #4b5563;
+            font-weight: 600;
+        }
+        .funnel-step .step-info .step-detail {
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        .funnel-step .step-number {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: #1a2a4f;
+            min-width: 50px;
+            text-align: right;
+        }
+        .funnel-step .step-percent {
+            font-size: 0.75rem;
+            color: #6b7280;
+            font-weight: 600;
+            min-width: 50px;
+            text-align: right;
+        }
+        .funnel-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #94a3b8;
+            line-height: 1;
+            margin: -2px 0;
+        }
+        .funnel-step.level-1 { border-left-color: #1a2a4f; }
+        .funnel-step.level-2 { border-left-color: #ef4444; }
+        .funnel-step.level-3 { border-left-color: #10b981; }
+        .funnel-step.level-4 { border-left-color: #f59e0b; }
+        .funnel-step.level-5 { border-left-color: #8b5cf6; }
+        .funnel-note {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #94a3b8;
+            margin-top: 15px;
+            font-style: italic;
+        }
+        .funnel-source {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #94a3b8;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        /* ===== ESTILOS PARA LA TABLA DE PREGUNTAS ===== */
+        .preguntas-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin: 20px 0;
+        }
+        .preguntas-table thead th {
+            background: #1a2a4f;
+            color: white;
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .preguntas-table tbody td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+        .preguntas-table tbody tr:hover {
+            background: #f1f5f9;
+        }
+        .preguntas-table .cat-cell {
+            font-weight: 700;
+            color: #1a2a4f;
+            background: #f8fafc;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .preguntas-table .subcat-cell {
+            font-weight: 600;
+            color: #334155;
+            font-size: 0.8rem;
+        }
+        .preguntas-table .preg-cell {
+            color: #4b5563;
+            font-size: 0.8rem;
+        }
+        .preguntas-section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a2a4f;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #1a2a4f;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .preguntas-section-title .badge-count {
+            background: #1a2a4f;
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .funnel-step {
+                flex-wrap: wrap;
+                padding: 10px 15px;
+            }
+            .funnel-step .step-number {
+                font-size: 1.2rem;
+                min-width: 40px;
+            }
+            .preguntas-table {
+                font-size: 0.75rem;
+            }
+            .preguntas-table thead th,
+            .preguntas-table tbody td {
+                padding: 6px 8px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -75,11 +247,10 @@
         <!-- ============================================================ -->
         <section id="resumen" class="tab-pane active">
             <h1 class="main-title">📊 Resumen General</h1>
-            <h1 class="main-title">Estudiantes administración de empresas </h1>
+            <h1 class="main-title">Estudiantes administración de empresas</h1>
 
             <!-- ESTADÍSTICAS GENERALES -->
             <div class="stats-grid">
-              
                 <div class="stat-card">
                     <div class="number">24</div>
                     <div class="label">Total estudiantes</div>
@@ -132,218 +303,362 @@
                     </tbody>
                 </table>
             </div>
+
+            <!-- ============================================================ -->
+            <!-- TABLA DE PREGUNTAS ORIENTADORAS (SOLO AQUÍ, SIN KUN) -->
+            <!-- ============================================================ -->
+            <div style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #e2e8f0;">
+                <div class="preguntas-section-title">
+                    📋 TABLA DE PREGUNTAS ORIENTADORAS - GRUPOS FOCALES ADMINISTRACIÓN DE EMPRESAS
+                    <span class="badge-count">18 subcategorías</span>
+                </div>
+                <p style="color: #6b7280; font-size: 0.85rem; margin-bottom: 15px;">
+                    Preguntas reales utilizadas en los grupos focales con estudiantes de Administración de Empresas.
+                </p>
+
+                <div class="table-responsive">
+                    <table class="preguntas-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 18%;">Categoría</th>
+                                <th style="width: 22%;">Subcategoría</th>
+                                <th style="width: 30%;">Pregunta Orientadora 1</th>
+                                <th style="width: 30%;">Pregunta Orientadora 2</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- ACADÉMICO -->
+                            <tr>
+                                <td class="cat-cell" rowspan="5">ACADÉMICO</td>
+                                <td class="subcat-cell" rowspan="3">Calidad del Pensum y Contenidos</td>
+                                <td class="preg-cell">¿Qué opinas de la metodología que se usa?</td>
+                                <td class="preg-cell">¿Los contenidos son útiles y aplicables al medio laboral?</td>
+                            </tr>
+                            <tr>
+                                <td class="preg-cell">¿La organización por semanas en la plataforma es clara?</td>
+                                <td class="preg-cell">¿El material en plataforma es suficiente para aprender?</td>
+                            </tr>
+                            <tr>
+                                <td class="preg-cell">¿Los contenidos son interactivos?</td>
+                                <td class="preg-cell">¿Los contenidos están actualizados?</td>
+                            </tr>
+                            <tr>
+                                <td class="subcat-cell">Docencia y Metodología</td>
+                                <td class="preg-cell">¿Cómo calificarías la calidad de los docentes?</td>
+                                <td class="preg-cell">¿Los docentes explican bien y son accesibles?</td>
+                            </tr>
+                            <tr>
+                                <td class="subcat-cell">Prácticas Profesionales</td>
+                                <td class="preg-cell">¿Cómo están las prácticas profesionales?</td>
+                                <td class="preg-cell">¿La universidad te ha apoyado para conseguir prácticas?</td>
+                            </tr>
+
+                            <!-- TECNOLÓGICO -->
+                            <tr>
+                                <td class="cat-cell" rowspan="4">TECNOLÓGICO</td>
+                                <td class="subcat-cell" rowspan="2">Plataforma CDigital</td>
+                                <td class="preg-cell">¿Qué opinas de la plataforma CDigital?</td>
+                                <td class="preg-cell">¿Es estable y fácil de usar?</td>
+                            </tr>
+                            <tr>
+                                <td class="preg-cell">¿La plataforma avisa cuando se va a cerrar un trabajo?</td>
+                                <td class="preg-cell">¿Los mantenimientos se anuncian con anticipación?</td>
+                            </tr>
+                            <tr>
+                                <td class="subcat-cell">Plataforma SINU</td>
+                                <td class="preg-cell">¿Qué opinas de la plataforma SINU?</td>
+                                <td class="preg-cell">¿La has utilizado para trámites?</td>
+                            </tr>
+                            <tr>
+                                <td class="subcat-cell">CUN Experience / CUN 360</td>
+                                <td class="preg-cell">¿Conoces CUN Experience o CUN 360?</td>
+                                <td class="preg-cell">¿Qué funcionalidad le ves?</td>
+                            </tr>
+
+                            <!-- SERVICIO AL CLIENTE -->
+                            <tr>
+                                <td class="cat-cell" rowspan="1">SERVICIO AL CLIENTE</td>
+                                <td class="subcat-cell">CamiTicket</td>
+                                <td class="preg-cell">¿Has utilizado CamiTicket para resolver algún problema?</td>
+                                <td class="preg-cell">¿Cómo fue tu experiencia con CamiTicket?</td>
+                            </tr>
+
+                            <!-- BIENESTAR -->
+                            <tr>
+                                <td class="cat-cell" rowspan="2">BIENESTAR</td>
+                                <td class="subcat-cell">Beneficios y Becas</td>
+                                <td class="preg-cell">¿Conoces los beneficios que ofrece Bienestar Universitario?</td>
+                                <td class="preg-cell">¿Has utilizado algún servicio de bienestar?</td>
+                            </tr>
+                            <tr>
+                                <td class="subcat-cell">Actividades de Bienestar</td>
+                                <td class="preg-cell">¿Has participado en actividades de bienestar?</td>
+                                <td class="preg-cell">¿Qué actividades conoces?</td>
+                            </tr>
+
+                            <!-- PERTENENCIA -->
+                            <tr>
+                                <td class="cat-cell" rowspan="2">PERTENENCIA</td>
+                                <td class="subcat-cell">Orgullo y Significado</td>
+                                <td class="preg-cell">¿Qué significa la CUN en tu vida?</td>
+                                <td class="preg-cell">¿Qué palabra usarías para describir la CUN?</td>
+                            </tr>
+                            <tr>
+                                <td class="subcat-cell">Recomendación</td>
+                                <td class="preg-cell">¿Recomendarías la CUN a un amigo o familiar?</td>
+                                <td class="preg-cell">¿Qué es lo que más valoras de la CUN?</td>
+                            </tr>
+
+                            <!-- NOTA: KUN NO ESTÁ EN LA TABLA DE PREGUNTAS -->
+                        </tbody>
+                    </table>
+                </div>
+                <p style="color: #94a3b8; font-size: 0.7rem; margin-top: 8px; font-style: italic;">
+                    * Preguntas extraídas de las transcripciones de los grupos focales de Administración de Empresas.
+                </p>
+            </div>
+
         </section>
 
         <!-- ============================================================ -->
-        <!-- SECCIÓN 2: KUN-BOGOTÁ -->
+        <!-- SECCIÓN KUN-BOGOTÁ (pestaña EXCLUSIVA) -->
         <!-- ============================================================ -->
-        <!-- ============================================================ -->
-<!-- SECCIÓN KUN-BOGOTÁ -->
-<!-- ============================================================ -->
-<div class="accordion-container" style="margin-top: 20px;">
-    <button class="accordion-header" onclick="toggleAccordion('kun')">
-        <span>🏢 KUN-Bogotá: Análisis Estratégico de KUN CoWork</span>
-        <span id="acc-icon-kun" style="color: #e10915; font-size: 1.5rem; font-weight: bold;">+</span>
-    </button>
-    <div id="kun" class="accordion-content">
-
-        <!-- ===== DESCRIPCIÓN ===== -->
-        <div style="margin-bottom: 25px; padding: 15px 20px; background: #f0f4fa; border-radius: 8px; border-left: 5px solid #1a2a4f;">
-            <p style="margin: 0; color: #1a2a4f; font-size: 0.95rem;">
-                <strong>Resumen de la perspectiva</strong> sobre el espacio de co-working <strong>KUN CoWork</strong> en los grupos focales de Bogotá.
+        <section id="kun" class="tab-pane">
+            <h1 class="main-title">🏢 KUN-Bogotá</h1>
+            <p style="color: #6b7280; margin-bottom: 20px;">
+                Análisis del conocimiento y percepción de KUN CoWork en Bogotá.
             </p>
-        </div>
 
-        <!-- ===== TARJETA DE DATOS (3 COLUMNAS) ===== -->
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; text-align: center; margin: 20px 0;">
-            <div style="background: white; padding: 18px 10px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-top: 4px solid #1a2a4f;">
-                <div style="font-size: 2.2rem; font-weight: 900; color: #1a2a4f;">109</div>
-                <div style="font-size: 0.8rem; color: #6b7280; font-weight: 600;">Total contactados</div>
+            <!-- ===== DESCRIPCIÓN ===== -->
+            <div style="margin-bottom: 25px; padding: 15px 20px; background: #f0f4fa; border-radius: 8px; border-left: 5px solid #1a2a4f;">
+                <p style="margin: 0; color: #1a2a4f; font-size: 0.95rem;">
+                    <strong>Resumen de la perspectiva</strong> sobre el espacio de co-working <strong>KUN CoWork</strong> en los grupos focales de Bogotá.
+                </p>
             </div>
-            <div style="background: white; padding: 18px 10px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-top: 4px solid #10b981;">
-                <div style="font-size: 2.2rem; font-weight: 900; color: #10b981;">28</div>
-                <div style="font-size: 0.8rem; color: #6b7280; font-weight: 600;">✅ Conocen KUN CoWork</div>
-                <div style="font-size: 0.7rem; color: #10b981;">25.7%</div>
-            </div>
-            <div style="background: white; padding: 18px 10px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-top: 4px solid #ef4444;">
-                <div style="font-size: 2.2rem; font-weight: 900; color: #ef4444;">81</div>
-                <div style="font-size: 0.8rem; color: #6b7280; font-weight: 600;">❌ No conocen KUN CoWork</div>
-                <div style="font-size: 0.7rem; color: #ef4444;">74.3%</div>
-            </div>
-        </div>
 
-        <!-- ===== ANÁLISIS ESTRATÉGICO ===== -->
-        <h4 style="color: #1a2a4f; margin: 30px 0 15px 0; font-size: 1.1rem;">🔍 Análisis de la situación actual</h4>
+            <!-- ===== EMBUDO DE KUN CoWork ===== -->
+            <div class="funnel-container">
+                <div class="funnel-title">📊 Embudo de conocimiento de KUN CoWork</div>
 
-        <!-- Tarjeta 1: Desconocimiento masivo -->
-        <div style="background: #fef2f2; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #ef4444;">
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                <span style="font-size: 1.8rem;">🔴</span>
-                <h5 style="margin: 0; color: #1a2a4f; font-size: 1rem;">1. El problema central: desconocimiento masivo</h5>
-            </div>
-            <p style="margin: 0 0 10px 0; color: #4b5563; font-size: 0.9rem; line-height: 1.6;">
-                El <strong>74.3%</strong> de los estudiantes contactados <strong>nunca ha escuchado hablar de KUN CoWork</strong>. 
-                No es un problema de rechazo al espacio, sino de <strong>falta total de exposición</strong>. 
-                Los estudiantes no han visto publicidad, no han recibido correos, no han escuchado mencionar el espacio en clases ni en redes sociales.
-            </p>
-            <p style="margin: 0; color: #991b1b; font-size: 0.85rem; font-weight: 600;">
-                ⚠️ Impacto: Un espacio diseñado para mejorar la experiencia universitaria está siendo desaprovechado porque los estudiantes ni siquiera saben que existe.
-            </p>
-        </div>
-
-        <!-- Tarjeta 2: Percepción positiva -->
-        <div style="background: #f0fdf4; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #10b981;">
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                <span style="font-size: 1.8rem;">🟢</span>
-                <h5 style="margin: 0; color: #1a2a4f; font-size: 1rem;">2. La oportunidad: percepción positiva al conocerlo</h5>
-            </div>
-            <p style="margin: 0 0 10px 0; color: #4b5563; font-size: 0.9rem; line-height: 1.6;">
-                Cuando se les explica el concepto, <strong>no hay rechazo</strong>. Los estudiantes identifican valor en KUN CoWork porque:
-            </p>
-            <ul style="margin: 5px 0 0 20px; color: #4b5563; font-size: 0.85rem; line-height: 1.6;">
-                <li>Serviría como un lugar para estudiar o trabajar</li>
-                <li>Permitiría realizar trabajos académicos en grupo</li>
-                <li>Ofrecería espacios de esparcimiento y socialización</li>
-                <li>Facilitaría conocer otros estudiantes</li>
-            </ul>
-            <p style="margin: 10px 0 0 0; color: #065f46; font-size: 0.85rem; font-weight: 600;">
-                ✅ Conclusión: El producto no es el problema. <strong>La adopción es el problema.</strong>
-            </p>
-        </div>
-
-        <!-- Tarjeta 3: Necesidades reales -->
-        <div style="background: #fffbeb; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #f59e0b;">
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                <span style="font-size: 1.8rem;">🟡</span>
-                <h5 style="margin: 0; color: #1a2a4f; font-size: 1rem;">3. KUN CoWork responde a necesidades reales</h5>
-            </div>
-            <p style="margin: 0 0 10px 0; color: #4b5563; font-size: 0.9rem; line-height: 1.6;">
-                Los estudiantes expresaron necesidades que KUN CoWork puede satisfacer:
-            </p>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.85rem;">
-                <div style="background: white; padding: 8px 12px; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.04);">
-                    <strong style="color: #1a2a4f;">Tiempos muertos</strong>
-                    <span style="color: #6b7280; display: block; font-size: 0.75rem;">Espacios disponibles todo el día</span>
+                <div class="funnel-step level-1">
+                    <div class="step-icon">👥</div>
+                    <div class="step-info">
+                        <div class="step-label">Total de estudiantes contactados</div>
+                        <div class="step-detail">Estudiantes de Administración de Empresas en Bogotá</div>
+                    </div>
+                    <div class="step-number">109</div>
+                    <div class="step-percent">100%</div>
                 </div>
-                <div style="background: white; padding: 8px 12px; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.04);">
-                    <strong style="color: #1a2a4f;">Zonas de descanso</strong>
-                    <span style="color: #6b7280; display: block; font-size: 0.75rem;">Áreas para relajarse entre clases</span>
+
+                <div class="funnel-arrow">▼</div>
+
+                <div class="funnel-step level-2">
+                    <div class="step-icon">❌</div>
+                    <div class="step-info">
+                        <div class="step-label">No conocen KUN CoWork</div>
+                        <div class="step-detail">Nunca han escuchado hablar del espacio</div>
+                    </div>
+                    <div class="step-number">81</div>
+                    <div class="step-percent">74.3%</div>
                 </div>
-                <div style="background: white; padding: 8px 12px; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.04);">
-                    <strong style="color: #1a2a4f;">Actividades recreativas</strong>
-                    <span style="color: #6b7280; display: block; font-size: 0.75rem;">Juegos de mesa, videojuegos, bolos</span>
+
+                <div class="funnel-arrow">▼</div>
+
+                <div class="funnel-step level-3">
+                    <div class="step-icon">✅</div>
+                    <div class="step-info">
+                        <div class="step-label">Sí conocen KUN CoWork</div>
+                        <div class="step-detail">Han escuchado o visto información del espacio</div>
+                    </div>
+                    <div class="step-number">28</div>
+                    <div class="step-percent">25.7%</div>
                 </div>
-                <div style="background: white; padding: 8px 12px; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.04);">
-                    <strong style="color: #1a2a4f;">Trabajo colaborativo</strong>
-                    <span style="color: #6b7280; display: block; font-size: 0.75rem;">Espacios grupales para proyectos</span>
+
+                <div class="funnel-arrow">▼</div>
+
+                <div class="funnel-step level-4">
+                    <div class="step-icon">🏠</div>
+                    <div class="step-info">
+                        <div class="step-label">Han visitado KUN CoWork</div>
+                        <div class="step-detail">Han ido al menos una vez al espacio (grupos focales)</div>
+                    </div>
+                    <div class="step-number">2</div>
+                    <div class="step-percent">7.1%</div>
+                </div>
+
+                <div class="funnel-arrow">▼</div>
+
+                <div class="funnel-step level-5">
+                    <div class="step-icon">⭐</div>
+                    <div class="step-info">
+                        <div class="step-label">Lo recomendarían</div>
+                        <div class="step-detail">De los que lo visitaron, todos lo recomiendan</div>
+                    </div>
+                    <div class="step-number">2</div>
+                    <div class="step-percent">100%</div>
+                </div>
+
+                <div class="funnel-note">
+                    📌 2 estudiantes de grupos focales de Ingeniería de Sistemas visitaron KUN CoWork (sede Bosa)
+                </div>
+                <div class="funnel-source">
+                    Fuente: Grupos focales Bogotá - Ingeniería de Sistemas (Presencial)
                 </div>
             </div>
-            <p style="margin: 10px 0 0 0; color: #92400e; font-size: 0.85rem; font-weight: 600;">
-                💡 Insight: No están diciendo "no quiero". Están diciendo <strong>"no sabía que existía"</strong>.
-            </p>
-        </div>
 
-        <!-- Tarjeta 4: Desconexión institucional -->
-        <div style="background: #f5f3ff; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #8b5cf6;">
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                <span style="font-size: 1.8rem;">🟣</span>
-                <h5 style="margin: 0; color: #1a2a4f; font-size: 1rem;">4. Desconexión con los cambios institucionales</h5>
+            <!-- ===== TARJETA DE DATOS ===== -->
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; text-align: center; margin: 20px 0;">
+                <div style="background: white; padding: 18px 10px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-top: 4px solid #1a2a4f;">
+                    <div style="font-size: 2.2rem; font-weight: 900; color: #1a2a4f;">109</div>
+                    <div style="font-size: 0.8rem; color: #6b7280; font-weight: 600;">Total contactados</div>
+                </div>
+                <div style="background: white; padding: 18px 10px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-top: 4px solid #10b981;">
+                    <div style="font-size: 2.2rem; font-weight: 900; color: #10b981;">28</div>
+                    <div style="font-size: 0.8rem; color: #6b7280; font-weight: 600;">✅ Conocen KUN CoWork</div>
+                    <div style="font-size: 0.7rem; color: #10b981;">25.7%</div>
+                </div>
+                <div style="background: white; padding: 18px 10px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-top: 4px solid #ef4444;">
+                    <div style="font-size: 2.2rem; font-weight: 900; color: #ef4444;">81</div>
+                    <div style="font-size: 0.8rem; color: #6b7280; font-weight: 600;">❌ No conocen KUN CoWork</div>
+                    <div style="font-size: 0.7rem; color: #ef4444;">74.3%</div>
+                </div>
             </div>
-            <p style="margin: 0; color: #4b5563; font-size: 0.9rem; line-height: 1.6;">
-                Los estudiantes han escuchado rumores sobre el cierre de sedes, pero <strong>no entienden el propósito detrás de esos cambios</strong>. 
-                No saben que KUN CoWork es parte de una estrategia institucional para ofrecer espacios alternativos.
-            </p>
-            <ul style="margin: 5px 0 0 20px; color: #4b5563; font-size: 0.85rem; line-height: 1.6;">
-                <li>Incertidumbre sobre el futuro de la universidad</li>
-                <li>Percepción de que los cambios son arbitrarios</li>
-                <li>Falta de apropiación de nuevas iniciativas</li>
-            </ul>
-        </div>
 
-        <!-- ===== INSIGHT ESTRATÉGICO ===== -->
-        <div style="margin-top: 25px; padding: 18px 22px; background: #fef3c7; border-radius: 10px; border: 2px solid #f59e0b;">
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
-                <span style="font-size: 1.5rem;">🔍</span>
-                <h5 style="margin: 0; color: #92400e; font-size: 1rem;">Insight estratégico</h5>
-            </div>
-            <p style="margin: 0; color: #78350f; font-size: 0.9rem; line-height: 1.6;">
-                El reto principal de KUN CoWork <strong>no es el producto, sino su adopción</strong>. 
-                Los estudiantes valoran espacios para estudiar, descansar y socializar, pero <strong>no saben que la institución ya está desarrollando una solución</strong> con esas características. 
-                Antes de ampliar la oferta o invertir en nuevos servicios, el mayor impacto vendrá de <strong>aumentar la visibilidad</strong> y explicar con claridad:
-            </p>
-            <ul style="margin: 8px 0 0 20px; color: #78350f; font-size: 0.85rem; line-height: 1.6;">
-                <li><strong>Qué es</strong> KUN CoWork</li>
-                <li><strong>Dónde está</strong> ubicado</li>
-                <li><strong>Quién puede</strong> usarlo</li>
-                <li><strong>Qué beneficios</strong> ofrece</li>
-                <li><strong>Cómo complementa</strong> la experiencia universitaria</li>
-            </ul>
-        </div>
+            <!-- ===== ANÁLISIS ESTRATÉGICO ===== -->
+            <h4 style="color: #1a2a4f; margin: 30px 0 15px 0; font-size: 1.1rem;">🔍 Análisis de la situación actual</h4>
 
-        <!-- ===== HALLAZGO PARA DIRECTIVOS ===== -->
-        <div style="margin-top: 15px; padding: 18px 22px; background: #ede9fe; border-radius: 10px; border: 2px solid #8b5cf6;">
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
-                <span style="font-size: 1.5rem;">🎯</span>
-                <h5 style="margin: 0; color: #5b21b6; font-size: 1rem;">Hallazgo para directivos</h5>
+            <div style="background: #fef2f2; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #ef4444;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                    <span style="font-size: 1.8rem;">🔴</span>
+                    <h5 style="margin: 0; color: #1a2a4f; font-size: 1rem;">1. El problema central: desconocimiento masivo</h5>
+                </div>
+                <p style="margin: 0 0 10px 0; color: #4b5563; font-size: 0.9rem; line-height: 1.6;">
+                    El <strong>74.3%</strong> de los estudiantes contactados <strong>nunca ha escuchado hablar de KUN CoWork</strong>.
+                    No es un problema de rechazo al espacio, sino de <strong>falta total de exposición</strong>.
+                </p>
+                <p style="margin: 0; color: #991b1b; font-size: 0.85rem; font-weight: 600;">
+                    ⚠️ Impacto: Un espacio diseñado para mejorar la experiencia universitaria está siendo desaprovechado.
+                </p>
             </div>
-            <p style="margin: 0; color: #1e1b4b; font-size: 0.9rem; line-height: 1.6;">
-                KUN CoWork tiene un <strong>bajo nivel de reconocimiento</strong> (solo el 25.7% lo conoce), a pesar de responder a necesidades reales identificadas en el grupo focal. 
-                El desafío principal <strong>no es la aceptación del concepto, sino su comunicación y posicionamiento</strong>.
-            </p>
-            <p style="margin: 10px 0 0 0; color: #1e1b4b; font-size: 0.85rem; line-height: 1.6;">
-                <strong>Recomendación:</strong> Invertir en una <strong>campaña de comunicación masiva</strong> que incluya:
-            </p>
-            <ul style="margin: 5px 0 0 20px; color: #1e1b4b; font-size: 0.85rem; line-height: 1.6;">
-                <li>Tours guiados para estudiantes</li>
-                <li>Difusión en redes sociales y correos institucionales</li>
-                <li>Menciones en clases por parte de docentes</li>
-                <li>Integración con plataformas como CUN 360</li>
-            </ul>
-        </div>
 
-        <!-- ===== PLAN DE ACCIÓN ===== -->
-        <div style="margin-top: 15px; padding: 18px 22px; background: #f0fdf4; border-radius: 10px; border: 2px solid #10b981;">
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
-                <span style="font-size: 1.5rem;">📋</span>
-                <h5 style="margin: 0; color: #065f46; font-size: 1rem;">Plan de acción sugerido</h5>
+            <div style="background: #f0fdf4; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #10b981;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                    <span style="font-size: 1.8rem;">🟢</span>
+                    <h5 style="margin: 0; color: #1a2a4f; font-size: 1rem;">2. La oportunidad: percepción positiva al conocerlo</h5>
+                </div>
+                <p style="margin: 0 0 10px 0; color: #4b5563; font-size: 0.9rem; line-height: 1.6;">
+                    Cuando se les explica el concepto, <strong>no hay rechazo</strong>. Los estudiantes identifican valor en KUN CoWork.
+                </p>
+                <p style="margin: 10px 0 0 0; color: #065f46; font-size: 0.85rem; font-weight: 600;">
+                    ✅ Conclusión: El producto no es el problema. <strong>La adopción es el problema.</strong>
+                </p>
             </div>
-            <div class="table-wrapper">
-                <table class="table-custom" style="font-size: 0.85rem;">
-                    <thead>
-                        <tr>
-                            <th style="width: 40%;">Acción</th>
-                            <th style="width: 30%;">Plazo</th>
-                            <th style="width: 30%;">Responsable</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Campaña de lanzamiento "Descubre KUN CoWork"</td>
-                            <td><span style="color: #ef4444; font-weight: 700;">Inmediato</span></td>
-                            <td>Comunicaciones</td>
-                        </tr>
-                        <tr>
-                            <td>Tours guiados para estudiantes nuevos y antiguos</td>
-                            <td><span style="color: #f59e0b; font-weight: 700;">1 mes</span></td>
-                            <td>Bienestar</td>
-                        </tr>
-                        <tr>
-                            <td>Integración de KUN CoWork en inducción de nuevos estudiantes</td>
-                            <td><span style="color: #3b82f6; font-weight: 700;">Próximo semestre</span></td>
-                            <td>Dirección de Programa</td>
-                        </tr>
-                        <tr>
-                            <td>Difusión mensual en correos y CUN 360</td>
-                            <td><span style="color: #10b981; font-weight: 700;">Continuo</span></td>
-                            <td>Comunicaciones</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
 
-    </div>
-</div>
+            <div style="background: #fffbeb; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #f59e0b;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                    <span style="font-size: 1.8rem;">🟡</span>
+                    <h5 style="margin: 0; color: #1a2a4f; font-size: 1rem;">3. KUN CoWork responde a necesidades reales</h5>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.85rem;">
+                    <div style="background: white; padding: 8px 12px; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.04);">
+                        <strong style="color: #1a2a4f;">Tiempos muertos</strong>
+                        <span style="color: #6b7280; display: block; font-size: 0.75rem;">Espacios disponibles todo el día</span>
+                    </div>
+                    <div style="background: white; padding: 8px 12px; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.04);">
+                        <strong style="color: #1a2a4f;">Zonas de descanso</strong>
+                        <span style="color: #6b7280; display: block; font-size: 0.75rem;">Áreas para relajarse entre clases</span>
+                    </div>
+                    <div style="background: white; padding: 8px 12px; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.04);">
+                        <strong style="color: #1a2a4f;">Actividades recreativas</strong>
+                        <span style="color: #6b7280; display: block; font-size: 0.75rem;">Juegos de mesa, videojuegos, bolos</span>
+                    </div>
+                    <div style="background: white; padding: 8px 12px; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.04);">
+                        <strong style="color: #1a2a4f;">Trabajo colaborativo</strong>
+                        <span style="color: #6b7280; display: block; font-size: 0.75rem;">Espacios grupales para proyectos</span>
+                    </div>
+                </div>
+                <p style="margin: 10px 0 0 0; color: #92400e; font-size: 0.85rem; font-weight: 600;">
+                    💡 Insight: No están diciendo "no quiero". Están diciendo <strong>"no sabía que existía"</strong>.
+                </p>
+            </div>
+
+            <div style="background: #f5f3ff; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #8b5cf6;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                    <span style="font-size: 1.8rem;">🟣</span>
+                    <h5 style="margin: 0; color: #1a2a4f; font-size: 1rem;">4. Desconexión con los cambios institucionales</h5>
+                </div>
+                <p style="margin: 0; color: #4b5563; font-size: 0.9rem; line-height: 1.6;">
+                    Los estudiantes han escuchado rumores sobre el cierre de sedes, pero <strong>no entienden el propósito detrás de esos cambios</strong>.
+                    No saben que KUN CoWork es parte de una estrategia institucional.
+                </p>
+            </div>
+
+            <!-- ===== INSIGHT ESTRATÉGICO ===== -->
+            <div style="margin-top: 25px; padding: 18px 22px; background: #fef3c7; border-radius: 10px; border: 2px solid #f59e0b;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                    <span style="font-size: 1.5rem;">🔍</span>
+                    <h5 style="margin: 0; color: #92400e; font-size: 1rem;">Insight estratégico</h5>
+                </div>
+                <p style="margin: 0; color: #78350f; font-size: 0.9rem; line-height: 1.6;">
+                    El reto principal de KUN CoWork <strong>no es el producto, sino su adopción</strong>.
+                    Los estudiantes valoran espacios para estudiar, descansar y socializar, pero <strong>no saben que la institución ya está desarrollando una solución</strong>.
+                </p>
+            </div>
+
+            <!-- ===== HALLAZGO PARA DIRECTIVOS ===== -->
+            <div style="margin-top: 15px; padding: 18px 22px; background: #ede9fe; border-radius: 10px; border: 2px solid #8b5cf6;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                    <span style="font-size: 1.5rem;">🎯</span>
+                    <h5 style="margin: 0; color: #5b21b6; font-size: 1rem;">Hallazgo para directivos</h5>
+                </div>
+                <p style="margin: 0; color: #1e1b4b; font-size: 0.9rem; line-height: 1.6;">
+                    KUN CoWork tiene un <strong>bajo nivel de reconocimiento</strong> (solo el 25.7% lo conoce), a pesar de responder a necesidades reales.
+                    El desafío principal <strong>no es la aceptación del concepto, sino su comunicación y posicionamiento</strong>.
+                </p>
+            </div>
+
+            <!-- ===== PLAN DE ACCIÓN ===== -->
+            <div style="margin-top: 15px; padding: 18px 22px; background: #f0fdf4; border-radius: 10px; border: 2px solid #10b981;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                    <span style="font-size: 1.5rem;">📋</span>
+                    <h5 style="margin: 0; color: #065f46; font-size: 1rem;">Plan de acción sugerido</h5>
+                </div>
+                <div class="table-wrapper">
+                    <table class="table-custom" style="font-size: 0.85rem;">
+                        <thead>
+                            <tr>
+                                <th style="width: 40%;">Acción</th>
+                                <th style="width: 30%;">Plazo</th>
+                                <th style="width: 30%;">Responsable</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Campaña de lanzamiento "Descubre KUN CoWork"</td>
+                                <td><span style="color: #ef4444; font-weight: 700;">Inmediato</span></td>
+                                <td>Comunicaciones</td>
+                            </tr>
+                            <tr>
+                                <td>Tours guiados para estudiantes nuevos y antiguos</td>
+                                <td><span style="color: #f59e0b; font-weight: 700;">1 mes</span></td>
+                                <td>Bienestar</td>
+                            </tr>
+                            <tr>
+                                <td>Integración de KUN CoWork en inducción de nuevos estudiantes</td>
+                                <td><span style="color: #3b82f6; font-weight: 700;">Próximo semestre</span></td>
+                                <td>Dirección de Programa</td>
+                            </tr>
+                            <tr>
+                                <td>Difusión mensual en correos y CUN 360</td>
+                                <td><span style="color: #10b981; font-weight: 700;">Continuo</span></td>
+                                <td>Comunicaciones</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
 
         <!-- ============================================================ -->
         <!-- SECCIÓN 3: ACADÉMICO -->
@@ -1006,7 +1321,6 @@
                 Matriz de semáforo que resume el estado de cada categoría por ciudad para <strong>Administración de Empresas</strong>.
             </p>
 
-            <!-- Leyenda -->
             <div class="semaphore-legend">
                 <span class="semaphore-legend-item"><span class="dot" style="background: #10b981;"></span> Bueno</span>
                 <span class="semaphore-legend-item"><span class="dot" style="background: #f59e0b;"></span> Regular</span>
@@ -1014,9 +1328,6 @@
                 <span class="semaphore-legend-item"><span class="dot" style="background: #9ca3af;"></span> Sin datos</span>
             </div>
 
-            <!-- ============================================ -->
-            <!-- ZONA NORTE / CARIBE -->
-            <!-- ============================================ -->
             <div class="accordion-container" style="margin-top: 20px;">
                 <button class="accordion-header" onclick="toggleAccordion('zona_norte')">
                     <span>🌊 ZONA NORTE / CARIBE</span>
@@ -1066,9 +1377,6 @@
                 </div>
             </div>
 
-            <!-- ============================================ -->
-            <!-- ZONA CENTRO -->
-            <!-- ============================================ -->
             <div class="accordion-container" style="margin-top: 20px;">
                 <button class="accordion-header" onclick="toggleAccordion('zona_centro')">
                     <span>⛰️ ZONA CENTRO</span>
@@ -1150,9 +1458,6 @@
                 </div>
             </div>
 
-            <!-- ============================================ -->
-            <!-- ZONA SUR -->
-            <!-- ============================================ -->
             <div class="accordion-container" style="margin-top: 20px;">
                 <button class="accordion-header" onclick="toggleAccordion('zona_sur')">
                     <span>🏔️ ZONA SUR</span>
@@ -1202,302 +1507,273 @@
         <!-- ============================================================ -->
         <!-- SECCIÓN 9: INSIGHTS ESTRATÉGICOS -->
         <!-- ============================================================ -->
-        <!-- ============================================================ -->
-<!-- SECCIÓN 9: INSIGHTS ESTRATÉGICOS -->
-<!-- ============================================================ -->
-<!-- ============================================================ -->
-<!-- SECCIÓN 9: INSIGHTS ESTRATÉGICOS -->
-<!-- ============================================================ -->
-<section id="insights" class="tab-pane">
-    <h1 class="main-title">💡 Insights Estratégicos</h1>
-    <p style="color: #4b5563; margin-bottom: 20px; font-size: 0.95rem;">
-        Análisis de los hallazgos más relevantes, con sugerencias de intervención y su justificación.
-    </p>
-
-    <!-- ===== INSIGHT GENERAL ===== -->
-    <div style="background: #f0f4fa; padding: 20px; border-radius: 10px; margin-bottom: 25px; border-left: 5px solid #1a2a4f;">
-        <h4 style="color: #1a2a4f; margin: 0 0 8px 0;">🔍 Insight General</h4>
-        <p style="margin: 0; color: #1e293b; font-size: 0.95rem; line-height: 1.6;">
-            La percepción de los estudiantes de Administración de Empresas sobre la CUN es <strong>altamente positiva en lo académico y tecnológico</strong>, pero <strong>críticamente negativa en el servicio al cliente</strong>. 
-            La flexibilidad de la virtualidad y los precios accesibles son los principales motores de permanencia, mientras que la falta de respuesta en CamiTicket y los problemas administrativos son la principal causa de frustración y riesgo de deserción.
-        </p>
-    </div>
-
-    <!-- ===== TABLA DE INSIGHTS ===== -->
-    <div class="table-wrapper">
-        <table class="table-custom">
-            <thead>
-                <tr>
-                    <th style="width: 25%;">💡 Insight</th>
-                    <th style="width: 25%;">🎯 Sugerencia</th>
-                    <th style="width: 50%;">❓ ¿Por qué?</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Bajo reconocimiento de KUN CoWork</strong><br><span style="font-size:0.8rem; color:#6b7280;">Solo el 25.7% lo conoce</span></td>
-                    <td>Campana de comunicación masiva con tours guiados</td>
-                    <td>El 74.3% no ha escuchado del espacio. Tiene alto potencial si se comunica bien.</td>
-                </tr>
-                <tr>
-                    <td><strong>El servicio al cliente es el punto más crítico</strong><br><span style="font-size:0.8rem; color:#6b7280;">Promociones no respetadas, tickets sin respuesta</span></td>
-                    <td>Auditoría inmediata de tickets y creación de SLA</td>
-                    <td>La falta de respuesta genera desconfianza y ha causado pérdida de semestres.</td>
-                </tr>
-                <tr>
-                    <td><strong>Los estudiantes no conocen los beneficios de bienestar</strong><br><span style="font-size:0.8rem; color:#6b7280;">Baja participación en actividades</span></td>
-                    <td>Difusión activa por correo, WhatsApp y CUN 360</td>
-                    <td>Los estudiantes valoran los beneficios pero no los conocen. Mejora la experiencia y el sentido de pertenencia.</td>
-                </tr>
-                <tr>
-                    <td><strong>CDigital es una fortaleza consolidada</strong><br><span style="font-size:0.8rem; color:#6b7280;">Evaluación positiva en todas las ciudades</span></td>
-                    <td>Mantener inversión y estabilidad de la plataforma</td>
-                    <td>Es el soporte principal de la modalidad virtual. Su estabilidad genera confianza y satisfacción.</td>
-                </tr>
-                <tr>
-                    <td><strong>SINU es percibido como obsoleto</strong><br><span style="font-size:0.8rem; color:#6b7280;">"Feíta", "no confío", "no la uso"</span></td>
-                    <td>Rediseño de interfaz y mejora de usabilidad</td>
-                    <td>Los estudiantes prefieren no usarla. Afecta la percepción de modernidad de la institución.</td>
-                </tr>
-                <tr>
-                    <td><strong>La calidad del pensum es un diferenciador clave</strong><br><span style="font-size:0.8rem; color:#6b7280;">Contenidos actualizados y aplicables</span></td>
-                    <td>Mantener actualización constante del pensum</td>
-                    <td>Es el principal motivo de satisfacción y orgullo de los estudiantes.</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- ===== INSIGHTS POR CIUDAD ===== -->
-    <h4 style="color: #1a2a4f; margin: 30px 0 15px 0;">📍 Insights por Ciudad</h4>
-
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
-
-        <!-- Barranquilla -->
-        <div style="background: #fef2f2; padding: 15px; border-radius: 8px; border-left: 4px solid #ef4444;">
-            <h5 style="margin: 0 0 5px 0; color: #991b1b;">Barranquilla</h5>
-            <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
-                <li>Promociones mal aplicadas generan desconfianza</li>
-                <li>2 meses sin respuesta es inaceptable</li>
-                <li>Riesgo de cobro injusto afecta la permanencia</li>
-            </ul>
-            <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
-                💡 Auditar promociones y crear canal financiero prioritario
+        <section id="insights" class="tab-pane">
+            <h1 class="main-title">💡 Insights Estratégicos</h1>
+            <p style="color: #4b5563; margin-bottom: 20px; font-size: 0.95rem;">
+                Análisis de los hallazgos más relevantes, con sugerencias de intervención y su justificación.
             </p>
-        </div>
 
-        <!-- Ibagué -->
-        <div style="background: #fffbeb; padding: 15px; border-radius: 8px; border-left: 4px solid #f59e0b;">
-            <h5 style="margin: 0 0 5px 0; color: #92400e;">Ibagué</h5>
-            <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
-                <li>Docentes destacados por su paciencia</li>
-                <li>C Te Ayuda es un diferenciador clave</li>
-                <li>Baja participación en bienestar por ubicación</li>
-            </ul>
-            <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
-                💡 Activar bienestar virtual y mantener flexibilidad de pagos
-            </p>
-        </div>
+            <div style="background: #f0f4fa; padding: 20px; border-radius: 10px; margin-bottom: 25px; border-left: 5px solid #1a2a4f;">
+                <h4 style="color: #1a2a4f; margin: 0 0 8px 0;">🔍 Insight General</h4>
+                <p style="margin: 0; color: #1e293b; font-size: 0.95rem; line-height: 1.6;">
+                    La percepción de los estudiantes de Administración de Empresas sobre la CUN es <strong>altamente positiva en lo académico y tecnológico</strong>, pero <strong>críticamente negativa en el servicio al cliente</strong>.
+                    La flexibilidad de la virtualidad y los precios accesibles son los principales motores de permanencia, mientras que la falta de respuesta en CamiTicket y los problemas administrativos son la principal causa de frustración y riesgo de deserción.
+                </p>
+            </div>
 
-        <!-- Bogotá Presencial -->
-        <div style="background: #f0fdf4; padding: 15px; border-radius: 8px; border-left: 4px solid #10b981;">
-            <h5 style="margin: 0 0 5px 0; color: #065f46;">Bogotá Presencial</h5>
-            <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
-                <li>Grupos reducidos facilitan el aprendizaje</li>
-                <li>Infraestructura tecnológica bien equipada</li>
-                <li>Coordinación debe mejorar su atención</li>
-            </ul>
-            <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
-                💡 Capacitar al personal de coordinación en atención al estudiante
-            </p>
-        </div>
+            <div class="table-wrapper">
+                <table class="table-custom">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">💡 Insight</th>
+                            <th style="width: 25%;">🎯 Sugerencia</th>
+                            <th style="width: 50%;">❓ ¿Por qué?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Bajo reconocimiento de KUN CoWork</strong><br><span style="font-size:0.8rem; color:#6b7280;">Solo el 25.7% lo conoce</span></td>
+                            <td>Campana de comunicación masiva con tours guiados</td>
+                            <td>El 74.3% no ha escuchado del espacio. Tiene alto potencial si se comunica bien.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>El servicio al cliente es el punto más crítico</strong><br><span style="font-size:0.8rem; color:#6b7280;">Promociones no respetadas, tickets sin respuesta</span></td>
+                            <td>Auditoría inmediata de tickets y creación de SLA</td>
+                            <td>La falta de respuesta genera desconfianza y ha causado pérdida de semestres.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Los estudiantes no conocen los beneficios de bienestar</strong><br><span style="font-size:0.8rem; color:#6b7280;">Baja participación en actividades</span></td>
+                            <td>Difusión activa por correo, WhatsApp y CUN 360</td>
+                            <td>Los estudiantes valoran los beneficios pero no los conocen. Mejora la experiencia y el sentido de pertenencia.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CDigital es una fortaleza consolidada</strong><br><span style="font-size:0.8rem; color:#6b7280;">Evaluación positiva en todas las ciudades</span></td>
+                            <td>Mantener inversión y estabilidad de la plataforma</td>
+                            <td>Es el soporte principal de la modalidad virtual. Su estabilidad genera confianza y satisfacción.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SINU es percibido como obsoleto</strong><br><span style="font-size:0.8rem; color:#6b7280;">"Feíta", "no confío", "no la uso"</span></td>
+                            <td>Rediseño de interfaz y mejora de usabilidad</td>
+                            <td>Los estudiantes prefieren no usarla. Afecta la percepción de modernidad de la institución.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>La calidad del pensum es un diferenciador clave</strong><br><span style="font-size:0.8rem; color:#6b7280;">Contenidos actualizados y aplicables</span></td>
+                            <td>Mantener actualización constante del pensum</td>
+                            <td>Es el principal motivo de satisfacción y orgullo de los estudiantes.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-        <!-- Bogotá Virtual -->
-        <div style="background: #fef2f2; padding: 15px; border-radius: 8px; border-left: 4px solid #ef4444;">
-            <h5 style="margin: 0 0 5px 0; color: #991b1b;">Bogotá Virtual</h5>
-            <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
-                <li>CDigital 24/7 es su principal fortaleza</li>
-                <li>Comunicación financiera debe ser más clara</li>
-                <li>Pérdida de semestre por falta de respuesta</li>
-            </ul>
-            <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
-                💡 Establecer SLA de respuesta para tickets financieros
-            </p>
-        </div>
+            <h4 style="color: #1a2a4f; margin: 30px 0 15px 0;">📍 Insights por Ciudad</h4>
 
-        <!-- Bucaramanga -->
-        <div style="background: #fffbeb; padding: 15px; border-radius: 8px; border-left: 4px solid #f59e0b;">
-            <h5 style="margin: 0 0 5px 0; color: #92400e;">Bucaramanga</h5>
-            <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
-                <li>CDigital excelente, SINU es el problema</li>
-                <li>Homologación fue un buen gancho para quedarse</li>
-                <li>Tickets que no leen bien las preguntas</li>
-            </ul>
-            <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
-                💡 Rediseñar SINU y capacitar en lectura de tickets
-            </p>
-        </div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
 
-        <!-- Cali -->
-        <div style="background: #f0fdf4; padding: 15px; border-radius: 8px; border-left: 4px solid #10b981;">
-            <h5 style="margin: 0 0 5px 0; color: #065f46;">Cali</h5>
-            <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
-                <li>Contenidos actualizados y docentes amigables</li>
-                <li>CDigital funcional pero requiere adaptación</li>
-                <li>Los tickets han respondido bien cuando se usan</li>
-            </ul>
-            <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
-                💡 Crear tutoriales para nueva plataforma y mantener buen servicio
-            </p>
-        </div>
+                <div style="background: #fef2f2; padding: 15px; border-radius: 8px; border-left: 4px solid #ef4444;">
+                    <h5 style="margin: 0 0 5px 0; color: #991b1b;">Barranquilla</h5>
+                    <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
+                        <li>Promociones mal aplicadas generan desconfianza</li>
+                        <li>2 meses sin respuesta es inaceptable</li>
+                        <li>Riesgo de cobro injusto afecta la permanencia</li>
+                    </ul>
+                    <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
+                        💡 Auditar promociones y crear canal financiero prioritario
+                    </p>
+                </div>
 
-        <!-- Cartagena -->
-        <div style="background: #fef2f2; padding: 15px; border-radius: 8px; border-left: 4px solid #ef4444;">
-            <h5 style="margin: 0 0 5px 0; color: #991b1b;">Cartagena</h5>
-            <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
-                <li>No hay presencia física clara en la ciudad</li>
-                <li>WhatsApp como chatbot no es suficiente</li>
-                <li>Los estudiantes se sienten abandonados</li>
-            </ul>
-            <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
-                💡 Habilitar asesor real por WhatsApp y sede móvil
-            </p>
-        </div>
+                <div style="background: #fffbeb; padding: 15px; border-radius: 8px; border-left: 4px solid #f59e0b;">
+                    <h5 style="margin: 0 0 5px 0; color: #92400e;">Ibagué</h5>
+                    <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
+                        <li>Docentes destacados por su paciencia</li>
+                        <li>C Te Ayuda es un diferenciador clave</li>
+                        <li>Baja participación en bienestar por ubicación</li>
+                    </ul>
+                    <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
+                        💡 Activar bienestar virtual y mantener flexibilidad de pagos
+                    </p>
+                </div>
 
-        <!-- Medellín -->
-        <div style="background: #fef2f2; padding: 15px; border-radius: 8px; border-left: 4px solid #ef4444;">
-            <h5 style="margin: 0 0 5px 0; color: #991b1b;">Medellín</h5>
-            <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
-                <li>Docentes flexibles y contenidos aplicables</li>
-                <li>1.5 meses esperando certificado es inaceptable</li>
-                <li>Beneficios médicos existen pero no se difunden</li>
-            </ul>
-            <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
-                💡 Establecer tiempos máximos de respuesta para certificados
-            </p>
-        </div>
+                <div style="background: #f0fdf4; padding: 15px; border-radius: 8px; border-left: 4px solid #10b981;">
+                    <h5 style="margin: 0 0 5px 0; color: #065f46;">Bogotá Presencial</h5>
+                    <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
+                        <li>Grupos reducidos facilitan el aprendizaje</li>
+                        <li>Infraestructura tecnológica bien equipada</li>
+                        <li>Coordinación debe mejorar su atención</li>
+                    </ul>
+                    <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
+                        💡 Capacitar al personal de coordinación en atención al estudiante
+                    </p>
+                </div>
 
-        <!-- Montería -->
-        <div style="background: #fffbeb; padding: 15px; border-radius: 8px; border-left: 4px solid #f59e0b;">
-            <h5 style="margin: 0 0 5px 0; color: #92400e;">Montería</h5>
-            <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
-                <li>Docentes jóvenes son más dinámicos</li>
-                <li>Promoción 2x1 fue clave para elegir</li>
-                <li>Inconsistencia entre clase y plataforma</li>
-            </ul>
-            <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
-                💡 Estandarizar contenidos entre clase y plataforma
-            </p>
-        </div>
+                <div style="background: #fef2f2; padding: 15px; border-radius: 8px; border-left: 4px solid #ef4444;">
+                    <h5 style="margin: 0 0 5px 0; color: #991b1b;">Bogotá Virtual</h5>
+                    <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
+                        <li>CDigital 24/7 es su principal fortaleza</li>
+                        <li>Comunicación financiera debe ser más clara</li>
+                        <li>Pérdida de semestre por falta de respuesta</li>
+                    </ul>
+                    <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
+                        💡 Establecer SLA de respuesta para tickets financieros
+                    </p>
+                </div>
 
-        <!-- Pereira -->
-        <div style="background: #f0fdf4; padding: 15px; border-radius: 8px; border-left: 4px solid #10b981;">
-            <h5 style="margin: 0 0 5px 0; color: #065f46;">Pereira</h5>
-            <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
-                <li>Contenidos ajustados a la realidad laboral</li>
-                <li>CDigital se cae en horas nocturnas</li>
-                <li>SINU genera desconfianza total</li>
-            </ul>
-            <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
-                💡 Optimizar servidores de CDigital en horas pico
-            </p>
-        </div>
+                <div style="background: #fffbeb; padding: 15px; border-radius: 8px; border-left: 4px solid #f59e0b;">
+                    <h5 style="margin: 0 0 5px 0; color: #92400e;">Bucaramanga</h5>
+                    <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
+                        <li>CDigital excelente, SINU es el problema</li>
+                        <li>Homologación fue un buen gancho para quedarse</li>
+                        <li>Tickets que no leen bien las preguntas</li>
+                    </ul>
+                    <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
+                        💡 Rediseñar SINU y capacitar en lectura de tickets
+                    </p>
+                </div>
 
-        <!-- Villavicencio -->
-        <div style="background: #fef2f2; padding: 15px; border-radius: 8px; border-left: 4px solid #ef4444;">
-            <h5 style="margin: 0 0 5px 0; color: #991b1b;">Villavicencio</h5>
-            <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
-                <li>Excelente enseñanza de IA como valor agregado</li>
-                <li>Problemas con recibo de matrícula casi causan deserción</li>
-                <li>Los tickets no responden lo que se pregunta</li>
-            </ul>
-            <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
-                💡 Mesa de ayuda para trámites de matrícula
-            </p>
-        </div>
+                <div style="background: #f0fdf4; padding: 15px; border-radius: 8px; border-left: 4px solid #10b981;">
+                    <h5 style="margin: 0 0 5px 0; color: #065f46;">Cali</h5>
+                    <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
+                        <li>Contenidos actualizados y docentes amigables</li>
+                        <li>CDigital funcional pero requiere adaptación</li>
+                        <li>Los tickets han respondido bien cuando se usan</li>
+                    </ul>
+                    <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
+                        💡 Crear tutoriales para nueva plataforma y mantener buen servicio
+                    </p>
+                </div>
 
-        <!-- Yopal -->
-        <div style="background: #f0fdf4; padding: 15px; border-radius: 8px; border-left: 4px solid #10b981;">
-            <h5 style="margin: 0 0 5px 0; color: #065f46;">Yopal</h5>
-            <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
-                <li>Contenidos completos y clases participativas</li>
-                <li>CDigital práctica y fácil de usar</li>
-                <li>Experiencia positiva con CamiTicket</li>
-            </ul>
-            <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
-                💡 Mantener y replicar buenas prácticas en otras sedes
-            </p>
-        </div>
+                <div style="background: #fef2f2; padding: 15px; border-radius: 8px; border-left: 4px solid #ef4444;">
+                    <h5 style="margin: 0 0 5px 0; color: #991b1b;">Cartagena</h5>
+                    <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
+                        <li>No hay presencia física clara en la ciudad</li>
+                        <li>WhatsApp como chatbot no es suficiente</li>
+                        <li>Los estudiantes se sienten abandonados</li>
+                    </ul>
+                    <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
+                        💡 Habilitar asesor real por WhatsApp y sede móvil
+                    </p>
+                </div>
 
-    </div>
+                <div style="background: #fef2f2; padding: 15px; border-radius: 8px; border-left: 4px solid #ef4444;">
+                    <h5 style="margin: 0 0 5px 0; color: #991b1b;">Medellín</h5>
+                    <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
+                        <li>Docentes flexibles y contenidos aplicables</li>
+                        <li>1.5 meses esperando certificado es inaceptable</li>
+                        <li>Beneficios médicos existen pero no se difunden</li>
+                    </ul>
+                    <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
+                        💡 Establecer tiempos máximos de respuesta para certificados
+                    </p>
+                </div>
 
-    <!-- ===== INSIGHTS POR REGIÓN ===== -->
-    <h4 style="color: #1a2a4f; margin: 30px 0 15px 0;">🌍 Insights por Región</h4>
+                <div style="background: #fffbeb; padding: 15px; border-radius: 8px; border-left: 4px solid #f59e0b;">
+                    <h5 style="margin: 0 0 5px 0; color: #92400e;">Montería</h5>
+                    <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
+                        <li>Docentes jóvenes son más dinámicos</li>
+                        <li>Promoción 2x1 fue clave para elegir</li>
+                        <li>Inconsistencia entre clase y plataforma</li>
+                    </ul>
+                    <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
+                        💡 Estandarizar contenidos entre clase y plataforma
+                    </p>
+                </div>
 
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+                <div style="background: #f0fdf4; padding: 15px; border-radius: 8px; border-left: 4px solid #10b981;">
+                    <h5 style="margin: 0 0 5px 0; color: #065f46;">Pereira</h5>
+                    <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
+                        <li>Contenidos ajustados a la realidad laboral</li>
+                        <li>CDigital se cae en horas nocturnas</li>
+                        <li>SINU genera desconfianza total</li>
+                    </ul>
+                    <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
+                        💡 Optimizar servidores de CDigital en horas pico
+                    </p>
+                </div>
 
-        <div style="background: #dbeafe; padding: 15px; border-radius: 8px; border-left: 4px solid #2563eb;">
-            <h5 style="margin: 0 0 5px 0; color: #1e40af;">🌊 Norte / Caribe</h5>
-            <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
-                <li>Problemas de servicio al cliente son recurrentes</li>
-                <li>Promociones no cumplidas generan desconfianza</li>
-                <li>Falta de canales de comunicación efectivos</li>
-            </ul>
-            <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
-                💡 Implementar oficina de atención regional
-            </p>
-        </div>
+                <div style="background: #fef2f2; padding: 15px; border-radius: 8px; border-left: 4px solid #ef4444;">
+                    <h5 style="margin: 0 0 5px 0; color: #991b1b;">Villavicencio</h5>
+                    <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
+                        <li>Excelente enseñanza de IA como valor agregado</li>
+                        <li>Problemas con recibo de matrícula casi causan deserción</li>
+                        <li>Los tickets no responden lo que se pregunta</li>
+                    </ul>
+                    <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
+                        💡 Mesa de ayuda para trámites de matrícula
+                    </p>
+                </div>
 
-        <div style="background: #dbeafe; padding: 15px; border-radius: 8px; border-left: 4px solid #2563eb;">
-            <h5 style="margin: 0 0 5px 0; color: #1e40af;">⛰️ Centro</h5>
-            <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
-                <li>Inconsistencia en la calidad docente</li>
-                <li>Comunicación financiera debe ser más clara</li>
-                <li>La virtualidad funciona pero requiere mejor soporte</li>
-            </ul>
-            <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
-                💡 Estandarizar metodologías y canales de comunicación
-            </p>
-        </div>
+                <div style="background: #f0fdf4; padding: 15px; border-radius: 8px; border-left: 4px solid #10b981;">
+                    <h5 style="margin: 0 0 5px 0; color: #065f46;">Yopal</h5>
+                    <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
+                        <li>Contenidos completos y clases participativas</li>
+                        <li>CDigital práctica y fácil de usar</li>
+                        <li>Experiencia positiva con CamiTicket</li>
+                    </ul>
+                    <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
+                        💡 Mantener y replicar buenas prácticas en otras sedes
+                    </p>
+                </div>
 
-        <div style="background: #dbeafe; padding: 15px; border-radius: 8px; border-left: 4px solid #2563eb;">
-            <h5 style="margin: 0 0 5px 0; color: #1e40af;">🏔️ Sur</h5>
-            <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
-                <li>Demoras administrativas desgastan a los estudiantes</li>
-                <li>Certificados y trámites toman demasiado tiempo</li>
-                <li>Los estudiantes son persistentes pero la burocracia los agota</li>
-            </ul>
-            <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
-                💡 Digitalizar y agilizar procesos administrativos
-            </p>
-        </div>
+            </div>
 
-    </div>
+            <h4 style="color: #1a2a4f; margin: 30px 0 15px 0;">🌍 Insights por Región</h4>
 
-</section>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+
+                <div style="background: #dbeafe; padding: 15px; border-radius: 8px; border-left: 4px solid #2563eb;">
+                    <h5 style="margin: 0 0 5px 0; color: #1e40af;">🌊 Norte / Caribe</h5>
+                    <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
+                        <li>Problemas de servicio al cliente son recurrentes</li>
+                        <li>Promociones no cumplidas generan desconfianza</li>
+                        <li>Falta de canales de comunicación efectivos</li>
+                    </ul>
+                    <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
+                        💡 Implementar oficina de atención regional
+                    </p>
+                </div>
+
+                <div style="background: #dbeafe; padding: 15px; border-radius: 8px; border-left: 4px solid #2563eb;">
+                    <h5 style="margin: 0 0 5px 0; color: #1e40af;">⛰️ Centro</h5>
+                    <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
+                        <li>Inconsistencia en la calidad docente</li>
+                        <li>Comunicación financiera debe ser más clara</li>
+                        <li>La virtualidad funciona pero requiere mejor soporte</li>
+                    </ul>
+                    <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
+                        💡 Estandarizar metodologías y canales de comunicación
+                    </p>
+                </div>
+
+                <div style="background: #dbeafe; padding: 15px; border-radius: 8px; border-left: 4px solid #2563eb;">
+                    <h5 style="margin: 0 0 5px 0; color: #1e40af;">🏔️ Sur</h5>
+                    <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
+                        <li>Demoras administrativas desgastan a los estudiantes</li>
+                        <li>Certificados y trámites toman demasiado tiempo</li>
+                        <li>Los estudiantes son persistentes pero la burocracia los agota</li>
+                    </ul>
+                    <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
+                        💡 Digitalizar y agilizar procesos administrativos
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
 
     </main>
 </div>
 
 <script>
-    // ============================================================
-    // FUNCIONES
-    // ============================================================
-
     function openTab(evt, tabName) {
         var i, tabcontent, tablinks;
-
         tabcontent = document.getElementsByClassName("tab-pane");
         for (i = 0; i < tabcontent.length; i++) {
             tabcontent[i].classList.remove("active");
             tabcontent[i].style.display = "none";
         }
-
         tablinks = document.getElementsByClassName("nav-btn");
         for (i = 0; i < tablinks.length; i++) {
             tablinks[i].classList.remove("active");
         }
-
         document.getElementById(tabName).style.display = "block";
         document.getElementById(tabName).classList.add("active");
         evt.currentTarget.classList.add("active");
@@ -1515,7 +1791,6 @@
         }
     }
 
-    // Inicializar: mostrar la primera pestaña
     document.addEventListener('DOMContentLoaded', function() {
         var firstTab = document.querySelector('.tab-pane');
         if (firstTab) {
