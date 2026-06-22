@@ -137,122 +137,213 @@
         <!-- ============================================================ -->
         <!-- SECCIÓN 2: KUN-BOGOTÁ -->
         <!-- ============================================================ -->
-        <section id="kun" class="tab-pane">
-            <h1 class="main-title">🏢 KUN-Bogotá</h1>
+        <!-- ============================================================ -->
+<!-- SECCIÓN KUN-BOGOTÁ -->
+<!-- ============================================================ -->
+<div class="accordion-container" style="margin-top: 20px;">
+    <button class="accordion-header" onclick="toggleAccordion('kun')">
+        <span>🏢 KUN-Bogotá: Análisis Estratégico de KUN CoWork</span>
+        <span id="acc-icon-kun" style="color: #e10915; font-size: 1.5rem; font-weight: bold;">+</span>
+    </button>
+    <div id="kun" class="accordion-content">
 
-            <div style="margin-bottom: 25px; padding: 15px 20px; background: #f0f4fa; border-radius: 8px; border-left: 5px solid #1a2a4f;">
-                <p style="margin: 0; color: #1a2a4f; font-size: 0.95rem;">
-                    <strong>Resumen de la perspectiva</strong> sobre el espacio de co-working <strong>KUN CoWork</strong> en los grupos focales de Bogotá.
-                </p>
+        <!-- ===== DESCRIPCIÓN ===== -->
+        <div style="margin-bottom: 25px; padding: 15px 20px; background: #f0f4fa; border-radius: 8px; border-left: 5px solid #1a2a4f;">
+            <p style="margin: 0; color: #1a2a4f; font-size: 0.95rem;">
+                <strong>Resumen de la perspectiva</strong> sobre el espacio de co-working <strong>KUN CoWork</strong> en los grupos focales de Bogotá.
+            </p>
+        </div>
+
+        <!-- ===== TARJETA DE DATOS (3 COLUMNAS) ===== -->
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; text-align: center; margin: 20px 0;">
+            <div style="background: white; padding: 18px 10px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-top: 4px solid #1a2a4f;">
+                <div style="font-size: 2.2rem; font-weight: 900; color: #1a2a4f;">109</div>
+                <div style="font-size: 0.8rem; color: #6b7280; font-weight: 600;">Total contactados</div>
             </div>
+            <div style="background: white; padding: 18px 10px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-top: 4px solid #10b981;">
+                <div style="font-size: 2.2rem; font-weight: 900; color: #10b981;">28</div>
+                <div style="font-size: 0.8rem; color: #6b7280; font-weight: 600;">✅ Conocen KUN CoWork</div>
+                <div style="font-size: 0.7rem; color: #10b981;">25.7%</div>
+            </div>
+            <div style="background: white; padding: 18px 10px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-top: 4px solid #ef4444;">
+                <div style="font-size: 2.2rem; font-weight: 900; color: #ef4444;">81</div>
+                <div style="font-size: 0.8rem; color: #6b7280; font-weight: 600;">❌ No conocen KUN CoWork</div>
+                <div style="font-size: 0.7rem; color: #ef4444;">74.3%</div>
+            </div>
+        </div>
 
-            <!-- ===== TARJETA DE DATOS (4 COLUMNAS) ===== -->
-            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; text-align: center; margin: 20px 0;">
-                <div style="background: white; padding: 18px 10px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-top: 4px solid #1a2a4f;">
-                    <div style="font-size: 2.2rem; font-weight: 900; color: #1a2a4f;">109</div>
-                    <div style="font-size: 0.8rem; color: #6b7280; font-weight: 600;">Total contactados</div>
+        <!-- ===== ANÁLISIS ESTRATÉGICO ===== -->
+        <h4 style="color: #1a2a4f; margin: 30px 0 15px 0; font-size: 1.1rem;">🔍 Análisis de la situación actual</h4>
+
+        <!-- Tarjeta 1: Desconocimiento masivo -->
+        <div style="background: #fef2f2; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #ef4444;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                <span style="font-size: 1.8rem;">🔴</span>
+                <h5 style="margin: 0; color: #1a2a4f; font-size: 1rem;">1. El problema central: desconocimiento masivo</h5>
+            </div>
+            <p style="margin: 0 0 10px 0; color: #4b5563; font-size: 0.9rem; line-height: 1.6;">
+                El <strong>74.3%</strong> de los estudiantes contactados <strong>nunca ha escuchado hablar de KUN CoWork</strong>. 
+                No es un problema de rechazo al espacio, sino de <strong>falta total de exposición</strong>. 
+                Los estudiantes no han visto publicidad, no han recibido correos, no han escuchado mencionar el espacio en clases ni en redes sociales.
+            </p>
+            <p style="margin: 0; color: #991b1b; font-size: 0.85rem; font-weight: 600;">
+                ⚠️ Impacto: Un espacio diseñado para mejorar la experiencia universitaria está siendo desaprovechado porque los estudiantes ni siquiera saben que existe.
+            </p>
+        </div>
+
+        <!-- Tarjeta 2: Percepción positiva -->
+        <div style="background: #f0fdf4; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #10b981;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                <span style="font-size: 1.8rem;">🟢</span>
+                <h5 style="margin: 0; color: #1a2a4f; font-size: 1rem;">2. La oportunidad: percepción positiva al conocerlo</h5>
+            </div>
+            <p style="margin: 0 0 10px 0; color: #4b5563; font-size: 0.9rem; line-height: 1.6;">
+                Cuando se les explica el concepto, <strong>no hay rechazo</strong>. Los estudiantes identifican valor en KUN CoWork porque:
+            </p>
+            <ul style="margin: 5px 0 0 20px; color: #4b5563; font-size: 0.85rem; line-height: 1.6;">
+                <li>Serviría como un lugar para estudiar o trabajar</li>
+                <li>Permitiría realizar trabajos académicos en grupo</li>
+                <li>Ofrecería espacios de esparcimiento y socialización</li>
+                <li>Facilitaría conocer otros estudiantes</li>
+            </ul>
+            <p style="margin: 10px 0 0 0; color: #065f46; font-size: 0.85rem; font-weight: 600;">
+                ✅ Conclusión: El producto no es el problema. <strong>La adopción es el problema.</strong>
+            </p>
+        </div>
+
+        <!-- Tarjeta 3: Necesidades reales -->
+        <div style="background: #fffbeb; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #f59e0b;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                <span style="font-size: 1.8rem;">🟡</span>
+                <h5 style="margin: 0; color: #1a2a4f; font-size: 1rem;">3. KUN CoWork responde a necesidades reales</h5>
+            </div>
+            <p style="margin: 0 0 10px 0; color: #4b5563; font-size: 0.9rem; line-height: 1.6;">
+                Los estudiantes expresaron necesidades que KUN CoWork puede satisfacer:
+            </p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.85rem;">
+                <div style="background: white; padding: 8px 12px; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.04);">
+                    <strong style="color: #1a2a4f;">Tiempos muertos</strong>
+                    <span style="color: #6b7280; display: block; font-size: 0.75rem;">Espacios disponibles todo el día</span>
                 </div>
-                <div style="background: white; padding: 18px 10px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-top: 4px solid #10b981;">
-                    <div style="font-size: 2.2rem; font-weight: 900; color: #10b981;">28</div>
-                    <div style="font-size: 0.8rem; color: #6b7280; font-weight: 600;">✅ Sí conocen</div>
-                    <div style="font-size: 0.7rem; color: #10b981;">25.7%</div>
+                <div style="background: white; padding: 8px 12px; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.04);">
+                    <strong style="color: #1a2a4f;">Zonas de descanso</strong>
+                    <span style="color: #6b7280; display: block; font-size: 0.75rem;">Áreas para relajarse entre clases</span>
                 </div>
-                <div style="background: white; padding: 18px 10px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-top: 4px solid #ef4444;">
-                    <div style="font-size: 2.2rem; font-weight: 900; color: #ef4444;">81</div>
-                    <div style="font-size: 0.8rem; color: #6b7280; font-weight: 600;">❌ No conocen</div>
-                    <div style="font-size: 0.7rem; color: #ef4444;">74.3%</div>
+                <div style="background: white; padding: 8px 12px; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.04);">
+                    <strong style="color: #1a2a4f;">Actividades recreativas</strong>
+                    <span style="color: #6b7280; display: block; font-size: 0.75rem;">Juegos de mesa, videojuegos, bolos</span>
                 </div>
-                <div style="background: white; padding: 18px 10px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-top: 4px solid #f59e0b;">
-                    <div style="font-size: 2.2rem; font-weight: 900; color: #f59e0b;">0</div>
-                    <div style="font-size: 0.8rem; color: #6b7280; font-weight: 600;">📭 Sin respuesta</div>
-                    <div style="font-size: 0.7rem; color: #f59e0b;">0%</div>
+                <div style="background: white; padding: 8px 12px; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.04);">
+                    <strong style="color: #1a2a4f;">Trabajo colaborativo</strong>
+                    <span style="color: #6b7280; display: block; font-size: 0.75rem;">Espacios grupales para proyectos</span>
                 </div>
             </div>
+            <p style="margin: 10px 0 0 0; color: #92400e; font-size: 0.85rem; font-weight: 600;">
+                💡 Insight: No están diciendo "no quiero". Están diciendo <strong>"no sabía que existía"</strong>.
+            </p>
+        </div>
 
-            <!-- ===== TARJETAS DE INSIGHTS ===== -->
-            <h4 style="color: #1a2a4f; margin: 30px 0 15px 0; font-size: 1.1rem;">📋 Análisis de la perspectiva sobre KUN CoWork</h4>
-
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 15px 0;">
-
-                <div style="background: #fef2f2; padding: 20px; border-radius: 10px; border-left: 5px solid #ef4444;">
-                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                        <span style="font-size: 1.8rem;">🔴</span>
-                        <h5 style="margin: 0; color: #1a2a4f; font-size: 1rem;">1. El principal problema es el desconocimiento</h5>
-                    </div>
-                    <ul style="margin: 5px 0 0 20px; color: #4b5563; font-size: 0.85rem; line-height: 1.6;">
-                        <li>Solo el <strong>25.7%</strong> conoce KUN CoWork.</li>
-                        <li>El <strong>74.3%</strong> no ha escuchado hablar del espacio.</li>
-                        <li>No han visto publicidad ni recibido información.</li>
-                        <li>La <strong>estrategia de comunicación</strong> no está posicionando el servicio.</li>
-                    </ul>
-                </div>
-
-                <div style="background: #f0fdf4; padding: 20px; border-radius: 10px; border-left: 5px solid #10b981;">
-                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                        <span style="font-size: 1.8rem;">🟢</span>
-                        <h5 style="margin: 0; color: #1a2a4f; font-size: 1rem;">2. Percepción positiva al explicarlo</h5>
-                    </div>
-                    <ul style="margin: 5px 0 0 20px; color: #4b5563; font-size: 0.85rem; line-height: 1.6;">
-                        <li><strong>No hubo rechazo</strong> al conocer el concepto.</li>
-                        <li>Lo ven útil para estudiar o trabajar.</li>
-                        <li>Permite trabajos académicos en grupo.</li>
-                        <li>Ofrece espacios de esparcimiento y socialización.</li>
-                    </ul>
-                </div>
-
-                <div style="background: #fffbeb; padding: 20px; border-radius: 10px; border-left: 5px solid #f59e0b;">
-                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                        <span style="font-size: 1.8rem;">🟡</span>
-                        <h5 style="margin: 0; color: #1a2a4f; font-size: 1rem;">3. Responde a necesidades reales</h5>
-                    </div>
-                    <ul style="margin: 5px 0 0 20px; color: #4b5563; font-size: 0.85rem; line-height: 1.6;">
-                        <li>Espacios para <strong>tiempos muertos</strong> entre clases.</li>
-                        <li>Zonas de <strong>descanso</strong>.</li>
-                        <li>Juegos de mesa y actividades recreativas.</li>
-                        <li>Espacios para estudio y trabajo colaborativo.</li>
-                    </ul>
-                </div>
-
-                <div style="background: #f5f3ff; padding: 20px; border-radius: 10px; border-left: 5px solid #8b5cf6;">
-                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                        <span style="font-size: 1.8rem;">🟣</span>
-                        <h5 style="margin: 0; color: #1a2a4f; font-size: 1rem;">4. Desconexión con los cambios institucionales</h5>
-                    </div>
-                    <ul style="margin: 5px 0 0 20px; color: #4b5563; font-size: 0.85rem; line-height: 1.6;">
-                        <li>Estudiantes escucharon rumores de cierre de sedes.</li>
-                        <li>Desconocen que KUN CoWork es parte de la <strong>estrategia institucional</strong>.</li>
-                        <li>Perciben los cambios pero <strong>no entienden su propósito</strong>.</li>
-                    </ul>
-                </div>
-
+        <!-- Tarjeta 4: Desconexión institucional -->
+        <div style="background: #f5f3ff; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #8b5cf6;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                <span style="font-size: 1.8rem;">🟣</span>
+                <h5 style="margin: 0; color: #1a2a4f; font-size: 1rem;">4. Desconexión con los cambios institucionales</h5>
             </div>
+            <p style="margin: 0; color: #4b5563; font-size: 0.9rem; line-height: 1.6;">
+                Los estudiantes han escuchado rumores sobre el cierre de sedes, pero <strong>no entienden el propósito detrás de esos cambios</strong>. 
+                No saben que KUN CoWork es parte de una estrategia institucional para ofrecer espacios alternativos.
+            </p>
+            <ul style="margin: 5px 0 0 20px; color: #4b5563; font-size: 0.85rem; line-height: 1.6;">
+                <li>Incertidumbre sobre el futuro de la universidad</li>
+                <li>Percepción de que los cambios son arbitrarios</li>
+                <li>Falta de apropiación de nuevas iniciativas</li>
+            </ul>
+        </div>
 
-            <!-- ===== INSIGHT ESTRATÉGICO ===== -->
-            <div style="margin-top: 25px; padding: 18px 22px; background: #fef3c7; border-radius: 10px; border: 2px solid #f59e0b;">
-                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
-                    <span style="font-size: 1.5rem;">🔍</span>
-                    <h5 style="margin: 0; color: #92400e; font-size: 1rem;">Insight estratégico</h5>
-                </div>
-                <p style="margin: 0; color: #78350f; font-size: 0.9rem; line-height: 1.6;">
-                    El reto principal de KUN CoWork <strong>no es el producto, sino su adopción</strong>. 
-                    Los estudiantes valoran espacios para estudiar, descansar y socializar, pero <strong>no conocen que la institución ya está desarrollando una solución</strong> con esas características. 
-                    El mayor impacto vendrá de <strong>aumentar la visibilidad</strong> y comunicar con claridad: qué es, dónde está, quién puede usarlo, qué beneficios ofrece y cómo complementa la experiencia universitaria.
-                </p>
+        <!-- ===== INSIGHT ESTRATÉGICO ===== -->
+        <div style="margin-top: 25px; padding: 18px 22px; background: #fef3c7; border-radius: 10px; border: 2px solid #f59e0b;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                <span style="font-size: 1.5rem;">🔍</span>
+                <h5 style="margin: 0; color: #92400e; font-size: 1rem;">Insight estratégico</h5>
             </div>
+            <p style="margin: 0; color: #78350f; font-size: 0.9rem; line-height: 1.6;">
+                El reto principal de KUN CoWork <strong>no es el producto, sino su adopción</strong>. 
+                Los estudiantes valoran espacios para estudiar, descansar y socializar, pero <strong>no saben que la institución ya está desarrollando una solución</strong> con esas características. 
+                Antes de ampliar la oferta o invertir en nuevos servicios, el mayor impacto vendrá de <strong>aumentar la visibilidad</strong> y explicar con claridad:
+            </p>
+            <ul style="margin: 8px 0 0 20px; color: #78350f; font-size: 0.85rem; line-height: 1.6;">
+                <li><strong>Qué es</strong> KUN CoWork</li>
+                <li><strong>Dónde está</strong> ubicado</li>
+                <li><strong>Quién puede</strong> usarlo</li>
+                <li><strong>Qué beneficios</strong> ofrece</li>
+                <li><strong>Cómo complementa</strong> la experiencia universitaria</li>
+            </ul>
+        </div>
 
-            <!-- ===== HALLAZGO PARA DIRECTIVOS ===== -->
-            <div style="margin-top: 15px; padding: 18px 22px; background: #ede9fe; border-radius: 10px; border: 2px solid #8b5cf6;">
-                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
-                    <span style="font-size: 1.5rem;">🎯</span>
-                    <h5 style="margin: 0; color: #5b21b6; font-size: 1rem;">Hallazgo para directivos</h5>
-                </div>
-                <p style="margin: 0; color: #1e1b4b; font-size: 0.9rem; line-height: 1.6;">
-                    KUN CoWork presenta un <strong>bajo nivel de reconocimiento</strong> (solo el 25.7% lo conoce), pese a responder a necesidades reales identificadas en el grupo focal. 
-                    El desafío principal <strong>no es la aceptación del concepto, sino su comunicación y posicionamiento</strong>. 
-                    Existe una oportunidad de fortalecer la propuesta incorporando espacios para estudio, socialización y prácticas especializadas, especialmente para programas tecnológicos.
-                </p>
+        <!-- ===== HALLAZGO PARA DIRECTIVOS ===== -->
+        <div style="margin-top: 15px; padding: 18px 22px; background: #ede9fe; border-radius: 10px; border: 2px solid #8b5cf6;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                <span style="font-size: 1.5rem;">🎯</span>
+                <h5 style="margin: 0; color: #5b21b6; font-size: 1rem;">Hallazgo para directivos</h5>
             </div>
-        </section>
+            <p style="margin: 0; color: #1e1b4b; font-size: 0.9rem; line-height: 1.6;">
+                KUN CoWork tiene un <strong>bajo nivel de reconocimiento</strong> (solo el 25.7% lo conoce), a pesar de responder a necesidades reales identificadas en el grupo focal. 
+                El desafío principal <strong>no es la aceptación del concepto, sino su comunicación y posicionamiento</strong>.
+            </p>
+            <p style="margin: 10px 0 0 0; color: #1e1b4b; font-size: 0.85rem; line-height: 1.6;">
+                <strong>Recomendación:</strong> Invertir en una <strong>campaña de comunicación masiva</strong> que incluya:
+            </p>
+            <ul style="margin: 5px 0 0 20px; color: #1e1b4b; font-size: 0.85rem; line-height: 1.6;">
+                <li>Tours guiados para estudiantes</li>
+                <li>Difusión en redes sociales y correos institucionales</li>
+                <li>Menciones en clases por parte de docentes</li>
+                <li>Integración con plataformas como CUN 360</li>
+            </ul>
+        </div>
+
+        <!-- ===== PLAN DE ACCIÓN ===== -->
+        <div style="margin-top: 15px; padding: 18px 22px; background: #f0fdf4; border-radius: 10px; border: 2px solid #10b981;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                <span style="font-size: 1.5rem;">📋</span>
+                <h5 style="margin: 0; color: #065f46; font-size: 1rem;">Plan de acción sugerido</h5>
+            </div>
+            <div class="table-wrapper">
+                <table class="table-custom" style="font-size: 0.85rem;">
+                    <thead>
+                        <tr>
+                            <th style="width: 40%;">Acción</th>
+                            <th style="width: 30%;">Plazo</th>
+                            <th style="width: 30%;">Responsable</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Campaña de lanzamiento "Descubre KUN CoWork"</td>
+                            <td><span style="color: #ef4444; font-weight: 700;">Inmediato</span></td>
+                            <td>Comunicaciones</td>
+                        </tr>
+                        <tr>
+                            <td>Tours guiados para estudiantes nuevos y antiguos</td>
+                            <td><span style="color: #f59e0b; font-weight: 700;">1 mes</span></td>
+                            <td>Bienestar</td>
+                        </tr>
+                        <tr>
+                            <td>Integración de KUN CoWork en inducción de nuevos estudiantes</td>
+                            <td><span style="color: #3b82f6; font-weight: 700;">Próximo semestre</span></td>
+                            <td>Dirección de Programa</td>
+                        </tr>
+                        <tr>
+                            <td>Difusión mensual en correos y CUN 360</td>
+                            <td><span style="color: #10b981; font-weight: 700;">Continuo</span></td>
+                            <td>Comunicaciones</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
 
         <!-- ============================================================ -->
         <!-- SECCIÓN 3: ACADÉMICO -->
