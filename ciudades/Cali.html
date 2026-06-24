@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matriz de Auditoría - Cali (Virtual)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/ciudades/css/estilos_ciudades.css">
+</head>
+<!-- ✅ VARIABLE GLOBAL: ciudad = "Cali" -->
+<body>
+    <aside class="sidebar">
+        <div class="brand">CUN ANALYTICS</div>
+        <nav class="nav-menu">
+            <button class="nav-btn active" onclick="openTab(event, 'academico')">ACADÉMICO</button>
+            <button class="nav-btn" onclick="openTab(event, 'tecnologico')">TECNOLÓGICO</button>
+            <button class="nav-btn" onclick="openTab(event, 'servicio')">SERVICIO AL CLIENTE</button>
+            <button class="nav-btn" onclick="openTab(event, 'bienestar')">BIENESTAR</button>
+            <button class="nav-btn" onclick="openTab(event, 'pertenencia')">SENTIDO DE PERTENENCIA</button>
+            <a href="../index.html">
+                <button class="nav-btn" id="back-btn">Regresar</button>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+
+        <!-- ================= SECCIÓN ACADÉMICO ================= -->
+        <section id="academico" class="tab-pane active">
+            <h1 class="main-title">ACADÉMICO</h1>
+            
+            <section>
+                <div class="item-container">
+                    <div class="container mt-4">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover align-middle text-center">
+                                <thead class="table-primary">
+                                    <tr>
+                                        <th>Modalidad</th>
+                                        <th>Carrera</th>
+                                        <th>Semestres</th>
+                                        <th>Participantes</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-start">Virtual</td>
+                                        <td class="text-start">Ingeniería de Sistemas / Técnico en Sistemas</td>
+                                        <td class="text-start">2do, 3ro y 4to</td>
+                                        <td>3</td>
+                                        <td><strong>3</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Calidad del Pensum -->
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ACADÉMICO</td>
+                            <td>Calidad del Pensum y Actualización</td>
+                            <td><span class="badge-pos">Positiva</span></td>
+                            <td>8.5 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Bajo. Los estudiantes valoran que los contenidos están actualizados y alineados con el mercado laboral (metodologías ágiles, mantenimiento de sistemas, redes, pensamiento crítico). Maribel con 8 años de experiencia en tecnología confirma que los temas los ha visto en su trabajo. Hay quejas sobre un profesor que solo ponía videos de YouTube sin explicación práctica. Los estudiantes perciben que los profesores nocturnos son más estrictos.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. Contenidos actualizados y alineados al mercado laboral.</td>
+                            <td>2. Maribel confirma que los temas los aplica en su trabajo diario.</td>
+                        </tr>
+                        <tr>
+                            <td>3. Metodologías ágiles y pensamiento crítico son valorados.</td>
+                            <td>4. Un profesor usaba solo videos de YouTube sin explicación práctica.</td>
+                        </tr>
+                        <tr>
+                            <td>5. Los estudiantes nocturnos perciben profesores más estrictos.</td>
+                            <td>6. Sergio en 2do semestre siente que el pensum llena expectativas.</td>
+                        </tr>
+                        <tr>
+                            <td>7. Esteban valora actividades dinámicas como Kahoot.</td>
+                            <td>8. Las clases grabadas son una herramienta clave para la flexibilidad.</td>
+                        </tr>
+                        <tr>
+                            <td>9. El sistema 335 (tres titulaciones) es un diferenciador.</td>
+                            <td>10. Hay diferencia en profundidad entre jornada diurna y nocturna.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"La mayoría de los temas prácticamente todos los he visto en mi trabajo, me ha servido como apoyo a lo que ya he hecho." – Maribel</div>
+                    <div class="verbatim">"Un profesor utilizaba muchos videos de YouTube, simplemente decía 'hagan lo mismo que está en YouTube' y yo sentí que no aprendí mucho." – Maribel</div>
+                    <div class="verbatim">"Los profesores nocturnos son más estrictos, se meten mucho en la temática." – Sergio</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_pensum_cali">Tickets</button>
+                <div class="collapse" id="tk_pensum_cali">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Calidad del Pensum</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Calidad_Pensum"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Docencia y Metodología -->
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ACADÉMICO</td>
+                            <td>Docencia y Metodología</td>
+                            <td><span class="badge-neutral">Neutral / Mixta</span></td>
+                            <td>7.0 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Medio. La mayoría de los docentes son buenos, amigables y cercanos. Usan herramientas interactivas como Kahoot y actividades grupales. El profesor de inglés es destacado por su dinamismo. Sin embargo, hay críticas: un profesor solo usaba videos de YouTube sin práctica, y otro profesor no subía bien las grabaciones o los links no funcionaban, obligando a los estudiantes a enviar correos y atrasarse.</td>
+                        </tr>
+                        <tr class="eval-docente">
+                            <td colspan="4" class="p-3">
+                                <strong class="me-2">Promedio Calificación evaluación docente</strong>
+                                <span class="badge border border-success-emphasis text-success-emphasis bg-success-subtle p-2 px-3">4.20</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. La mayoría de los docentes son buenos y amigables.</td>
+                            <td>2. El profesor de inglés usa herramientas interactivas y dinámicas.</td>
+                        </tr>
+                        <tr>
+                            <td>3. Se usan Kahoot y actividades grupales en clase.</td>
+                            <td>4. Un profesor solo ponía videos de YouTube sin explicación.</td>
+                        </tr>
+                        <tr>
+                            <td>5. Un profesor no subía bien las grabaciones o links no funcionaban.</td>
+                            <td>6. Los estudiantes se atrasaron esperando que habilitaran las grabaciones.</td>
+                        </tr>
+                        <tr>
+                            <td>7. No hay un lugar específico en la plataforma para las grabaciones.</td>
+                            <td>8. Los docentes son accesibles para resolver dudas.</td>
+                        </tr>
+                        <tr>
+                            <td>9. Las clases en vivo son dinámicas cuando el profesor es interactivo.</td>
+                            <td>10. La metodología es predominantemente plana (PowerPoint).</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"Los docentes han sido muy buenos, muy amigables con uno, uno tiene confianza en ellos." – Sergio</div>
+                    <div class="verbatim">"El profesor de inglés siempre utiliza herramientas interactivas, nos separaba en grupos y nos hacía llamadas para dialogar." – Maribel</div>
+                    <div class="verbatim">"Pasaba con una profesora que los links no daban para ver la clase, tuve que mandar correos y me atrasé." – Sergio</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_docencia_cali">Tickets</button>
+                <div class="collapse" id="tk_docencia_cali">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Docencia y Metodología</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Docencia_Metodologia"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cruce de horarios -->
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ACADÉMICO</td>
+                            <td>Programación de Clases (Horarios)</td>
+                            <td><span class="badge-neutral">Neutral / Regular</span></td>
+                            <td>5.5 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Medio-Alto. Es recurrente que las materias se crucen en el mismo horario. Los estudiantes tienen que elegir a cuál conectarse en vivo y ver la otra grabada. Aunque ven esto como una solución, afecta la experiencia de aprendizaje en vivo. Maribel reporta que en este bloque se le cruzan casi todas las materias (lunes dos materias mismo horario, miércoles también).</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. Las materias se cruzan frecuentemente en el mismo horario.</td>
+                            <td>2. En el bloque actual, a Maribel se le cruzan casi todas.</td>
+                        </tr>
+                        <tr>
+                            <td>3. Los estudiantes deben escoger una clase en vivo y ver la otra grabada.</td>
+                            <td>4. El bloque pasado, Sergio tenía 2 de 3 materias cruzadas.</td>
+                        </tr>
+                        <tr>
+                            <td>5. Las grabaciones son la solución principal para este problema.</td>
+                            <td>6. No todos los profesores suben las grabaciones de forma accesible.</td>
+                        </tr>
+                        <tr>
+                            <td>7. La programación horaria es una queja recurrente.</td>
+                            <td>8. La virtualidad mitiga el problema pero no lo resuelve.</td>
+                        </tr>
+                        <tr>
+                            <td>9. Los estudiantes se adaptan, pero afecta la experiencia.</td>
+                            <td>10. Se requiere revisar la asignación de horarios por programa.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"Este bloque que arrancó, sí se me cruzan todas, casi todas las materias. El lunes me dan dos materias en el mismo horario." – Maribel</div>
+                    <div class="verbatim">"En el bloque pasado habían dos de tres materias que se cruzaban el mismo día." – Sergio</div>
+                    <div class="verbatim">"Cuando se cruzan, le dedico tiempo a una y al día siguiente veo la clase grabada." – Esteban</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_horarios_cali">Tickets</button>
+                <div class="collapse" id="tk_horarios_cali">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Programación de Horarios</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Horarios"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECCIÓN TECNOLÓGICO ================= -->
+        <section id="tecnologico" class="tab-pane">
+            <h1 class="main-title">TECNOLÓGICO</h1>
+
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>TECNOLÓGICO</td>
+                            <td>Plataforma CDigital</td>
+                            <td><span class="badge-pos">Positiva</span></td>
+                            <td>9.0 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Bajo. Los estudiantes están satisfechos con CDigital. Es una buena plataforma, bien diseñada, dinámica. Las materias se cargan en los tiempos establecidos. El único punto débil es que algunos profesores no organizan bien la información y cuando la materia es muy grande, los estudiantes se pierden.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. CDigital es una buena plataforma, bien diseñada.</td>
+                            <td>2. Es dinámica y fácil de usar.</td>
+                        </tr>
+                        <tr>
+                            <td>3. Las materias se cargan en los tiempos establecidos.</td>
+                            <td>4. No se reportan caídas ni problemas técnicos graves.</td>
+                        </tr>
+                        <tr>
+                            <td>5. Algunos profesores no organizan bien la información.</td>
+                            <td>6. En materias grandes, los estudiantes se pierden en la plataforma.</td>
+                        </tr>
+                        <tr>
+                            <td>7. La experiencia general es satisfactoria.</td>
+                            <td>8. Es la principal herramienta de gestión académica.</td>
+                        </tr>
+                        <tr>
+                            <td>9. Los estudiantes la recomiendan.</td>
+                            <td>10. Se requiere mejor organización de contenidos por materia.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"C Digital me gusta mucho, es muy chévere. Lo que no me gusta es que algunos profesores no acomodan bien la información y uno se pierde." – Maribel</div>
+                    <div class="verbatim">"CDigital ha sido hasta el momento una experiencia satisfactoria, las materias se cargan en los tiempos que son." – Esteban</div>
+                    <div class="verbatim">"Es una buena plataforma, creo que está muy bien diseñada." – Sergio</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_cd_cali">Tickets</button>
+                <div class="collapse" id="tk_cd_cali">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - CDigital</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Tecnologico_Tickets"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SINU -->
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>TECNOLÓGICO</td>
+                            <td>Plataforma SINU / CUN Experience</td>
+                            <td><span class="badge-neg">Negativa / Crítica</span></td>
+                            <td>4.0 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Alto. SINU es considerada una plataforma no dinámica, poco amigable visualmente, difícil de usar. Los estudiantes reportan que se queda pegada, es tardada, y para descargar algo hay que buscar en múltiples opciones. Una persona no familiarizada con sistemas se enredaría completamente. Algunos ni siquiera la usan porque prefieren que les carguen las materias automáticamente.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. SINU no es dinámica ni amigable visualmente.</td>
+                            <td>2. Uno tiene que tener "malicia" para encontrar las opciones.</td>
+                        </tr>
+                        <tr>
+                            <td>3. Se queda pegada y es tardada.</td>
+                            <td>4. Para descargar un informe hay que buscar en múltiples opciones.</td>
+                        </tr>
+                        <tr>
+                            <td>5. Una persona no familiarizada con sistemas se enredaría.</td>
+                            <td>6. Los estudiantes evitan usarla porque no dan ganas de entrar.</td>
+                        </tr>
+                        <tr>
+                            <td>7. Maribel no sabía que se llamaba CUN Experience.</td>
+                            <td>8. Algunos estudiantes no sabían que existía la plataforma.</td>
+                        </tr>
+                        <tr>
+                            <td>9. La usan principalmente para temas financieros y pagos.</td>
+                            <td>10. Se requiere un rediseño completo de la plataforma.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"No es muy amigable visualmente. Yo trabajo en calidad de software, tengo un ojo crítico, pero uno se va acomodando." – Maribel</div>
+                    <div class="verbatim">"No es una buena plataforma, no es dinámica. Uno tiene que tener mucha malicia para poder mirar bien dónde ingresar." – Sergio</div>
+                    <div class="verbatim">"La plataforma llegué a tener inconvenientes, a veces se queda pegada, era tardado." – Esteban</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_sinu_cali">Tickets</button>
+                <div class="collapse" id="tk_sinu_cali">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - SINU / CUN Experience</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_SINU"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECCIÓN SERVICIO AL CLIENTE ================= -->
+        <section id="servicio" class="tab-pane">
+            <h1 class="main-title">SERVICIO AL CLIENTE</h1>
+
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>SERVICIO AL CLIENTE</td>
+                            <td>CamiTicket y Atención al Cliente</td>
+                            <td><span class="badge-critico">Crítico / Negativo</span></td>
+                            <td>2.5 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Alto. Es la queja más grave y recurrente. Los tiempos de respuesta son muy largos (una semana, dos semanas, hasta tres semanas). Cuando responden, la información muchas veces es incorrecta o incompleta, obligando a enviar nuevos tickets. Las líneas telefónicas: las llamadas se caen, las cuelgan, se ríen al fondo. El chat de WhatsApp es un bot que no resuelve. Los asesores dan información contradictoria. No hay sede física en Cali ni en el sur occidente (la más cercana es Ibagué). Sergio tiene grabaciones de más de 2 horas esperando en llamadas.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. Respuestas tardan de 1 a 3 semanas.</td>
+                            <td>2. La información que dan es incompleta o incorrecta.</td>
+                        </tr>
+                        <tr>
+                            <td>3. Las llamadas telefónicas se caen, las cuelgan.</td>
+                            <td>4. Se escucha al fondo que se ríen mientras no atienden.</td>
+                        </tr>
+                        <tr>
+                            <td>5. Sergio tiene grabaciones de más de 2 horas esperando.</td>
+                            <td>6. El chat de WhatsApp es un bot que no resuelve.</td>
+                        </tr>
+                        <tr>
+                            <td>7. Los asesores dan información contradictoria.</td>
+                            <td>8. No hay sede física en Cali ni en el sur occidente.</td>
+                        </tr>
+                        <tr>
+                            <td>9. La sede más cercana es Ibagué (muy lejos).</td>
+                            <td>10. El servicio es "pésimo" y es lo peor calificado.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"Es pésimo el servicio de ustedes. Uno llama y le cuelgan, tengo grabaciones de más de una hora, dos horas esperando." – Sergio</div>
+                    <div class="verbatim">"Al principio el servicio era mucho mejor, ahora se demora mucho en contestar los tickets. Uno busca todas las maneras antes de dejar esa opción." – Maribel</div>
+                    <div class="verbatim">"Tuve que mandar un correo porque no me estaban contestando los tickets. La atención al usuario no es tan ágil." – Esteban</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_cami_cali">Tickets</button>
+                <div class="collapse" id="tk_cami_cali">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - CamiTicket</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_CamiTicket"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prácticas Profesionales -->
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>SERVICIO AL CLIENTE</td>
+                            <td>Prácticas Profesionales</td>
+                            <td><span class="badge-neutral">Regular / Crítico</span></td>
+                            <td>4.5 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Medio-Alto. Maribel reporta que la materia de prácticas es difícil, el profesor inicial se retiró, y las sesiones obligatorias son en horario diurno (11am) cuando ella trabaja. Esteban está en proceso de homologación de prácticas del SENA y no ha recibido respuesta en 3 días. Sergio (2do semestre) no tiene información clara sobre prácticas: no sabe cuántas horas, dónde hacerlas, ni el proceso. Los asesores no están capacitados para explicar el tema.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. La materia de prácticas es considerada difícil.</td>
+                            <td>2. El profesor inicial se retiró y dejaron a los estudiantes sin guía.</td>
+                        </tr>
+                        <tr>
+                            <td>3. Las sesiones obligatorias son en horario diurno (incompatibles con trabajo).</td>
+                            <td>4. Maribel se conectó a las 11am desde el trabajo y le llamaron la atención.</td>
+                        </tr>
+                        <tr>
+                            <td>5. Esteban lleva 3 días esperando respuesta por homologación.</td>
+                            <td>6. Sergio (2do semestre) no sabe nada del proceso de prácticas.</td>
+                        </tr>
+                        <tr>
+                            <td>7. Los asesores no están capacitados para explicar prácticas.</td>
+                            <td>8. No hay información clara sobre horas, lugares o proceso.</td>
+                        </tr>
+                        <tr>
+                            <td>9. Los estudiantes se sienten desinformados y solos.</td>
+                            <td>10. Se requiere un plan de comunicación proactivo sobre prácticas.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"Es una de las materias más difíciles. Colocaron un profesor y después dijeron que se había retirado. Las sesiones eran en el día y yo trabajo." – Maribel</div>
+                    <div class="verbatim">"Estoy en el proceso de que me validen las prácticas del SENA, llevo 3 días y no he tenido respuesta." – Esteban</div>
+                    <div class="verbatim">"No sé ni siquiera cómo es el proceso de prácticas, no hay buena información. Los asesores no saben." – Sergio</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_practicas_cali">Tickets</button>
+                <div class="collapse" id="tk_practicas_cali">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Prácticas Profesionales</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Practicas_Profesionales"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECCIÓN BIENESTAR ================= -->
+        <section id="bienestar" class="tab-pane">
+            <h1 class="main-title">BIENESTAR</h1>
+            <div class="sub-title">Actividades y Comunicación</div>
+
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>BIENESTAR</td>
+                            <td>Actividades y Comunicación</td>
+                            <td><span class="badge-neutral">Neutral / Regular</span></td>
+                            <td>6.0 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Medio. Los estudiantes reciben correos sobre actividades de bienestar e internacionalización, pero no pueden participar porque son en horario laboral/diurno. Sergio reporta que esta es la primera actividad externa a clases en la que participa, y que los asesores ya no existen (les bloquearon el contacto). Hay una percepción de abandono en la comunicación institucional.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. Llegan correos sobre actividades de bienestar e internacionalización.</td>
+                            <td>2. Las actividades son en horario diurno, incompatibles con trabajo.</td>
+                        </tr>
+                        <tr>
+                            <td>3. Los estudiantes no han podido participar por temas laborales.</td>
+                            <td>4. Esta es la primera actividad externa de Sergio en la CUN.</td>
+                        </tr>
+                        <tr>
+                            <td>5. Los asesores ya no existen o les bloquearon el contacto.</td>
+                            <td>6. Hay percepción de abandono en comunicación institucional.</td>
+                        </tr>
+                        <tr>
+                            <td>7. Las actividades están bien difundidas pero mal horadas.</td>
+                            <td>8. Se requieren actividades en horarios flexibles (noche/fin de semana).</td>
+                        </tr>
+                        <tr>
+                            <td>9. La comunicación es unidireccional (correos) sin seguimiento.</td>
+                            <td>10. Los estudiantes valoran que por fin los contactaron para este grupo focal.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"Me han llegado bastantes correos de internacionalización, de actividades de la semana, pero como son en el día, se me dificulta." – Maribel</div>
+                    <div class="verbatim">"Ayer me asusté cuando me llamaste porque dije 'por fin se están comunicando con uno, por fin el servicio apareció'." – Sergio</div>
+                    <div class="verbatim">"Las asesoras ya no existen, prácticamente ya no tengo asesora porque les bloquearon a uno." – Sergio</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_bien_cali">Tickets</button>
+                <div class="collapse" id="tk_bien_cali">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Bienestar</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Bienestar"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECCIÓN SENTIDO DE PERTENENCIA ================= -->
+        <section id="pertenencia" class="tab-pane">
+            <h1 class="main-title">SENTIDO DE PERTENENCIA</h1>
+            <div class="sub-title">Orgullo y Recomendación</div>
+
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PERTENENCIA</td>
+                            <td>Orgullo y Recomendación</td>
+                            <td><span class="badge-pos">Positiva</span></td>
+                            <td>9.0 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Bajo. A pesar de las graves fallas en servicio al cliente, los estudiantes valoran profundamente la oportunidad que la CUN les ha dado. Maribel (madre, esposa, trabaja, canta en la iglesia) ve la universidad como una "bendición" que le permite retomar sus estudios. Esteban la ve como una oportunidad para crecer y obtener un título. Sergio la ve como una nueva experiencia y un nuevo camino en su vida. Llegaron por recomendación de amigos o familiares.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. La CUN es una "bendición" que permite retomar estudios.</td>
+                            <td>2. A pesar de las fallas, los estudiantes no se retiran.</td>
+                        </tr>
+                        <tr>
+                            <td>3. La flexibilidad de horarios y clases grabadas es clave.</td>
+                            <td>4. El sistema 335 (tres titulaciones) fue un factor de decisión.</td>
+                        </tr>
+                        <tr>
+                            <td>5. Los estudiantes llegaron por recomendación de amigos/familiares.</td>
+                            <td>6. Maribel es el caso más inspirador: madre, trabaja, canta, estudia.</td>
+                        </tr>
+                        <tr>
+                            <td>7. La universidad les ha permitido crecer profesionalmente.</td>
+                            <td>8. Los estudiantes recomiendan activamente la CUN.</td>
+                        </tr>
+                        <tr>
+                            <td>9. El orgullo se basa en oportunidades, no en servicios.</td>
+                            <td>10. Hay una fuerte gratitud institucional a pesar de todo.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"Para mí ha sido una bendición. A pesar de todas mis ocupaciones (trabajo, familia, canto en la iglesia), la universidad me facilita los tiempos." – Maribel</div>
+                    <div class="verbatim">"La CUN es una oportunidad de crecer, de aprender más y obtener un título para crecer laboralmente." – Esteban</div>
+                    <div class="verbatim">"Ha sido como una nueva experiencia en mi vida, un nuevo camino." – Sergio</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_pert_cali">Tickets</button>
+                <div class="collapse" id="tk_pert_cali">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Pertenencia</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Pertenencia"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================================== -->
+    <!-- ✅ DEFINIR LA CIUDAD ANTES DE CARGAR SCRIPTS -->
+    <!-- ========================================== -->
+    <script>
+        var ciudad = "Cali";
+    </script>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/funciones.js"></script>
+    <script src="scripts/Graficas.js"></script>
+</body>
+</html>

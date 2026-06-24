@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matriz de Auditoría - Bogotá (Presencial)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/ciudades/css/estilos_ciudades.css">
+</head>
+<!-- ✅ VARIABLE GLOBAL: ciudad = "Bogotá Presencial" -->
+<body>
+    <aside class="sidebar">
+        <div class="brand">CUN ANALYTICS</div>
+        <nav class="nav-menu">
+            <button class="nav-btn active" onclick="openTab(event, 'academico')">ACADÉMICO</button>
+            <button class="nav-btn" onclick="openTab(event, 'tecnologico')">TECNOLÓGICO</button>
+            <button class="nav-btn" onclick="openTab(event, 'servicio')">SERVICIO AL CLIENTE</button>
+            <button class="nav-btn" onclick="openTab(event, 'bienestar')">BIENESTAR</button>
+            <button class="nav-btn" onclick="openTab(event, 'pertenencia')">SENTIDO DE PERTENENCIA</button>
+            <a href="../index.html">
+                <button class="nav-btn" id="back-btn">Regresar</button>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+
+        <!-- ================= SECCIÓN ACADÉMICO ================= -->
+        <section id="academico" class="tab-pane active">
+            <h1 class="main-title">ACADÉMICO</h1>
+            
+            <section>
+                <div class="item-container">
+                    <div class="container mt-4">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover align-middle text-center">
+                                <thead class="table-primary">
+                                    <tr>
+                                        <th>Población</th>
+                                        <th>Carrera</th>
+                                        <th>Semestres</th>
+                                        <th>Hombres</th>
+                                        <th>Mujeres</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-start">Estudiantes</td>
+                                        <td class="text-start">Administración de Empresas</td>
+                                        <td class="text-start">4to semestre</td>
+                                        <td>3</td>
+                                        <td>2</td>
+                                        <td><strong>5</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Calidad del Pensum -->
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ACADÉMICO</td>
+                            <td>Calidad del Pensum y Actualización</td>
+                            <td><span class="badge-pos">Positiva</span></td>
+                            <td>8.0 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Los estudiantes valoran la calidad del pensum. Consideran que los contenidos son actualizados y pertinentes para el mercado laboral. La metodología presencial facilita la interacción con los docentes.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. Los contenidos son actualizados y pertinentes.</td>
+                            <td>2. La metodología presencial facilita el aprendizaje.</td>
+                        </tr>
+                        <tr>
+                            <td>3. Los estudiantes valoran la interacción en clase.</td>
+                            <td>4. El pensum está alineado con las necesidades del mercado.</td>
+                        </tr>
+                        <tr>
+                            <td>5. Las materias son relevantes para la carrera.</td>
+                            <td>6. La carga académica es adecuada.</td>
+                        </tr>
+                        <tr>
+                            <td>7. Los estudiantes se sienten preparados para el mundo laboral.</td>
+                            <td>8. La actualización del pensum es constante.</td>
+                        </tr>
+                        <tr>
+                            <td>9. Los contenidos son de calidad.</td>
+                            <td>10. Los estudiantes recomiendan la carrera por su pensum.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"El pensum es muy completo y actualizado, nos prepara bien para el mercado laboral." – Estudiante Bogotá</div>
+                    <div class="verbatim">"Me gusta que las materias sean prácticas y aplicadas a la realidad empresarial." – Estudiante Bogotá</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_pensum_bogota">Tickets</button>
+                <div class="collapse" id="tk_pensum_bogota">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Calidad del Pensum</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Calidad_Pensum"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Docencia y Metodología -->
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ACADÉMICO</td>
+                            <td>Docencia y Metodología</td>
+                            <td><span class="badge-pos">Positiva</span></td>
+                            <td>8.5 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Los docentes son calificados como excelentes. La metodología presencial permite una mejor comprensión de los temas. Los estudiantes valoran la disponibilidad de los profesores para resolver dudas.</td>
+                        </tr>
+                        <tr class="eval-docente">
+                            <td colspan="4" class="p-3">
+                                <strong class="me-2">Promedio Calificación evaluación docente</strong>
+                                <span class="badge border border-success-emphasis text-success-emphasis bg-success-subtle p-2 px-3">4.70</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. Los docentes son excelentes y explican bien.</td>
+                            <td>2. La metodología presencial facilita la comprensión.</td>
+                        </tr>
+                        <tr>
+                            <td>3. Los profesores están disponibles para resolver dudas.</td>
+                            <td>4. Las clases son dinámicas y participativas.</td>
+                        </tr>
+                        <tr>
+                            <td>5. Los docentes tienen experiencia en el campo laboral.</td>
+                            <td>6. La retroalimentación es constante y útil.</td>
+                        </tr>
+                        <tr>
+                            <td>7. Los estudiantes se sienten apoyados por los docentes.</td>
+                            <td>8. La metodología fomenta el pensamiento crítico.</td>
+                        </tr>
+                        <tr>
+                            <td>9. Los profesores son accesibles fuera del horario de clase.</td>
+                            <td>10. En general, la experiencia docente es muy positiva.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"Los profesores son excelentes, tienen mucha experiencia y saben transmitir el conocimiento." – Estudiante Bogotá</div>
+                    <div class="verbatim">"La metodología presencial es la mejor, se aprende más y se pueden hacer preguntas en el momento." – Estudiante Bogotá</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_docencia_bogota">Tickets</button>
+                <div class="collapse" id="tk_docencia_bogota">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Docencia y Metodología</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Docencia_Metodologia"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prácticas Profesionales -->
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ACADÉMICO</td>
+                            <td>Prácticas Profesionales</td>
+                            <td><span class="badge-pos">Positiva</span></td>
+                            <td>8.0 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Los estudiantes valoran las prácticas profesionales como complemento a su formación. Consideran que les permite aplicar los conocimientos adquiridos en el aula.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. Las prácticas profesionales son importantes para la formación.</td>
+                            <td>2. Permiten aplicar los conocimientos en el mundo real.</td>
+                        </tr>
+                        <tr>
+                            <td>3. Los estudiantes valoran la experiencia práctica.</td>
+                            <td>4. Las empresas reciben estudiantes con buena preparación.</td>
+                        </tr>
+                        <tr>
+                            <td>5. Las prácticas complementan la formación académica.</td>
+                            <td>6. Los estudiantes se sienten preparados para las prácticas.</td>
+                        </tr>
+                        <tr>
+                            <td>7. La universidad apoya el proceso de prácticas.</td>
+                            <td>8. Los estudiantes recomiendan hacer prácticas profesionales.</td>
+                        </tr>
+                        <tr>
+                            <td>9. Las prácticas abren puertas laborales.</td>
+                            <td>10. La experiencia en prácticas es enriquecedora.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"Las prácticas profesionales son excelentes, nos permiten aplicar lo que aprendemos en clase." – Estudiante Bogotá</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_practicas_bogota">Tickets</button>
+                <div class="collapse" id="tk_practicas_bogota">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Prácticas Profesionales</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Practicas_Profesionales"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECCIÓN TECNOLÓGICO ================= -->
+        <section id="tecnologico" class="tab-pane">
+            <h1 class="main-title">TECNOLÓGICO</h1>
+
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>TECNOLÓGICO</td>
+                            <td>Infraestructura Tecnológica</td>
+                            <td><span class="badge-pos">Positiva</span></td>
+                            <td>8.0 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> La infraestructura tecnológica en la sede Bogotá es buena. Los estudiantes valoran el acceso a laboratorios de cómputo y la conectividad en el campus.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. Los laboratorios de cómputo son adecuados.</td>
+                            <td>2. La conectividad en el campus es buena.</td>
+                        </tr>
+                        <tr>
+                            <td>3. Los equipos tecnológicos están en buen estado.</td>
+                            <td>4. El acceso a internet es estable.</td>
+                        </tr>
+                        <tr>
+                            <td>5. Hay suficientes equipos para los estudiantes.</td>
+                            <td>6. La plataforma virtual es funcional.</td>
+                        </tr>
+                        <tr>
+                            <td>7. Los estudiantes pueden acceder a recursos digitales.</td>
+                            <td>8. La tecnología apoya el proceso de aprendizaje.</td>
+                        </tr>
+                        <tr>
+                            <td>9. Los estudiantes valoran la infraestructura tecnológica.</td>
+                            <td>10. La universidad invierte en tecnología.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"La infraestructura tecnológica es buena, los laboratorios están bien equipados." – Estudiante Bogotá</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_tecnologico_bogota">Tickets</button>
+                <div class="collapse" id="tk_tecnologico_bogota">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Tecnológico</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Tecnologico_Tickets"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECCIÓN SERVICIO AL CLIENTE ================= -->
+        <section id="servicio" class="tab-pane">
+            <h1 class="main-title">SERVICIO AL CLIENTE</h1>
+
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>SERVICIO AL CLIENTE</td>
+                            <td>CamiTicket y Respuesta</td>
+                            <td><span class="badge-neutral">Neutral</span></td>
+                            <td>6.0 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Los estudiantes reportan que el servicio de CamiTicket es regular. Algunos han tenido respuestas rápidas, otros han experimentado demoras. Se sugiere mejorar los tiempos de respuesta.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. El servicio de CamiTicket es regular.</td>
+                            <td>2. Algunos estudiantes tienen respuestas rápidas.</td>
+                        </tr>
+                        <tr>
+                            <td>3. Otros experimentan demoras en las respuestas.</td>
+                            <td>4. Los estudiantes valoran la atención recibida.</td>
+                        </tr>
+                        <tr>
+                            <td>5. Se sugiere mejorar los tiempos de respuesta.</td>
+                            <td>6. La comunicación con el área de servicio es importante.</td>
+                        </tr>
+                        <tr>
+                            <td>7. Los estudiantes esperan soluciones oportunas.</td>
+                            <td>8. El servicio al cliente es clave para la satisfacción.</td>
+                        </tr>
+                        <tr>
+                            <td>9. Se recomienda agilizar los procesos de CamiTicket.</td>
+                            <td>10. La universidad debe mejorar este aspecto.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"El CamiTicket a veces demora, pero cuando responden solucionan el problema." – Estudiante Bogotá</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_camiticket_bogota">Tickets</button>
+                <div class="collapse" id="tk_camiticket_bogota">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - CamiTicket</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_CamiTicket"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INFRAESTRUCTURA -->
+            <div class="item-container">
+                <h1 class="main-title" style="font-size: 1.8rem; margin-top: 2rem;">INFRAESTRUCTURA</h1>
+                <div class="sub-title">Instalaciones Físicas</div>
+                <table class="table table-bordered" style="margin-top: 1rem;">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="odd">
+                            <td>INFRAESTRUCTURA</td>
+                            <td>Instalaciones Físicas</td>
+                            <td><span class="badge-pos">Positiva</span></td>
+                            <td>8.0 / 10</td>
+                        </tr>
+                        <tr class="even">
+                            <td colspan="4"><strong>Análisis (CES):</strong> Las instalaciones de la sede Bogotá son adecuadas. Los estudiantes valoran los espacios de estudio, las aulas cómodas y los servicios disponibles en el campus.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. Las instalaciones son adecuadas para el aprendizaje.</td>
+                            <td>2. Las aulas son cómodas y bien iluminadas.</td>
+                        </tr>
+                        <tr>
+                            <td>3. Hay espacios de estudio disponibles.</td>
+                            <td>4. Los servicios del campus son de calidad.</td>
+                        </tr>
+                        <tr>
+                            <td>5. La ubicación de la sede es accesible.</td>
+                            <td>6. Los estudiantes valoran las instalaciones.</td>
+                        </tr>
+                        <tr>
+                            <td>7. La universidad mantiene las instalaciones en buen estado.</td>
+                            <td>8. Los espacios son limpios y organizados.</td>
+                        </tr>
+                        <tr>
+                            <td>9. Hay zonas de descanso para los estudiantes.</td>
+                            <td>10. En general, las instalaciones son satisfactorias.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"La sede es muy bonita y bien ubicada, las instalaciones son excelentes." – Estudiante Bogotá</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_infra_bogota">Tickets</button>
+                <div class="collapse" id="tk_infra_bogota">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Comodidad y Servicios</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Comodidad_Servicios"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECCIÓN BIENESTAR ================= -->
+        <section id="bienestar" class="tab-pane">
+            <h1 class="main-title">BIENESTAR</h1>
+            <div class="sub-title">Beneficios y Becas</div>
+
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>BIENESTAR</td>
+                            <td>Beneficios y Becas</td>
+                            <td><span class="badge-pos">Positiva</span></td>
+                            <td>8.5 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Los estudiantes valoran los beneficios ofrecidos por Bienestar Universitario. Las becas y apoyos económicos son importantes para su permanencia en la universidad.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. Los beneficios de bienestar son valorados por los estudiantes.</td>
+                            <td>2. Las becas son importantes para la permanencia.</td>
+                        </tr>
+                        <tr>
+                            <td>3. Los apoyos económicos ayudan a los estudiantes.</td>
+                            <td>4. El programa C Te Ayuda es conocido y utilizado.</td>
+                        </tr>
+                        <tr>
+                            <td>5. Los estudiantes recomiendan los beneficios de bienestar.</td>
+                            <td>6. La universidad apoya a los estudiantes con dificultades.</td>
+                        </tr>
+                        <tr>
+                            <td>7. Los beneficios son un factor para elegir la CUN.</td>
+                            <td>8. Los estudiantes se sienten respaldados por bienestar.</td>
+                        </tr>
+                        <tr>
+                            <td>9. Los servicios de bienestar son de calidad.</td>
+                            <td>10. La comunicación de beneficios es adecuada.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"Los beneficios de bienestar son muy buenos, las becas ayudan mucho a los estudiantes." – Estudiante Bogotá</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_bienestar_bogota">Tickets</button>
+                <div class="collapse" id="tk_bienestar_bogota">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Bienestar</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Bienestar_Institucional"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECCIÓN SENTIDO DE PERTENENCIA ================= -->
+        <section id="pertenencia" class="tab-pane">
+            <h1 class="main-title">SENTIDO DE PERTENENCIA</h1>
+            <div class="sub-title">Identidad Cunista</div>
+
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PERTENENCIA</td>
+                            <td>Orgullo y Recomendación</td>
+                            <td><span class="badge-pos">Positiva</span></td>
+                            <td>9.0 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Los estudiantes de Bogotá sienten un fuerte sentido de pertenencia con la CUN. Recomiendan la universidad por su calidad académica, sus instalaciones y los beneficios que ofrece.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. Los estudiantes se sienten orgullosos de ser parte de la CUN.</td>
+                            <td>2. Recomiendan la universidad a otros.</td>
+                        </tr>
+                        <tr>
+                            <td>3. El sentido de pertenencia es fuerte.</td>
+                            <td>4. La calidad académica genera orgullo.</td>
+                        </tr>
+                        <tr>
+                            <td>5. Las instalaciones son un motivo de orgullo.</td>
+                            <td>6. Los beneficios de bienestar fortalecen la pertenencia.</td>
+                        </tr>
+                        <tr>
+                            <td>7. Los estudiantes se identifican con la comunidad universitaria.</td>
+                            <td>8. Participan en actividades de la universidad.</td>
+                        </tr>
+                        <tr>
+                            <td>9. La CUN es una buena opción de estudio.</td>
+                            <td>10. Los estudiantes se sienten parte de la familia CUN.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"Me siento orgulloso de ser de la CUN, es una excelente universidad." – Estudiante Bogotá</div>
+                    <div class="verbatim">"Recomiendo la CUN por su calidad académica y sus instalaciones." – Estudiante Bogotá</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_orgullo_bogota">Tickets</button>
+                <div class="collapse" id="tk_orgullo_bogota">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Orgullo y Recomendación</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Orgullo_Recomendacion"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================================== -->
+    <!-- ✅ DEFINIR LA CIUDAD ANTES DE CARGAR SCRIPTS -->
+    <!-- ========================================== -->
+    <script>
+        var ciudad = "Bogotá Presencial";
+    </script>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/funciones.js"></script>
+    <script src="scripts/Graficas.js"></script>
+</body>
+</html>

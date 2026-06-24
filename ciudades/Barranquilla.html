@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matriz de Auditoría - Barranquilla (Virtual)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/ciudades/css/estilos_ciudades.css">
+</head>
+<!-- ✅ VARIABLE GLOBAL: ciudad = "Barranquilla" -->
+<body>
+    <aside class="sidebar">
+        <div class="brand">CUN ANALYTICS</div>
+        <nav class="nav-menu">
+            <button class="nav-btn active" onclick="openTab(event, 'academico')">ACADÉMICO</button>
+            <button class="nav-btn" onclick="openTab(event, 'tecnologico')">TECNOLÓGICO</button>
+            <button class="nav-btn" onclick="openTab(event, 'servicio')">SERVICIO AL CLIENTE</button>
+            <button class="nav-btn" onclick="openTab(event, 'bienestar')">BIENESTAR</button>
+            <button class="nav-btn" onclick="openTab(event, 'pertenencia')">SENTIDO DE PERTENENCIA</button>
+            <a href="../index.html">
+                <button class="nav-btn" id="back-btn">Regresar</button>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+
+        <!-- ================= SECCIÓN ACADÉMICO ================= -->
+        <section id="academico" class="tab-pane active">
+            <h1 class="main-title">ACADÉMICO</h1>
+            
+            <section>
+                <div class="item-container">
+                    <div class="container mt-4">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover align-middle text-center">
+                                <thead class="table-primary">
+                                    <tr>
+                                        <th>Población</th>
+                                        <th>Carrera</th>
+                                        <th>Semestres</th>
+                                        <th>Hombres</th>
+                                        <th>Mujeres</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-start">Estudiantes</td>
+                                        <td class="text-start">Administración de Empresas</td>
+                                        <td class="text-start">2do semestre</td>
+                                        <td>2</td>
+                                        <td>0</td>
+                                        <td><strong>2</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Calidad del Pensum -->
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ACADÉMICO</td>
+                            <td>Calidad del Pensum y Actualización</td>
+                            <td><span class="badge-pos">Positiva</span></td>
+                            <td>8.5 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Bajo. La metodología es buena y facilita el aprendizaje. Las clases grabadas permiten retomar temas. Los contenidos son útiles.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. La metodología que se usa está bien.</td>
+                            <td>2. Las grabaciones de clases ayudan cuando no se puede conectar.</td>
+                        </tr>
+                        <tr>
+                            <td>3. La plataforma nunca ha presentado fallas.</td>
+                            <td>4. La organización por semanas es clara.</td>
+                        </tr>
+                        <tr>
+                            <td>5. Los contenidos son útiles para el aprendizaje.</td>
+                            <td>6. La virtualidad permite estudiar mientras se trabaja.</td>
+                        </tr>
+                        <tr>
+                            <td>7. El material en plataforma es suficiente para aprender.</td>
+                            <td>8. Los estudiantes valoran poder acceder a los contenidos desde cualquier lugar.</td>
+                        </tr>
+                        <tr>
+                            <td>9. La calidad del contenido es buena.</td>
+                            <td>10. Los estudiantes se sienten satisfechos con lo aprendido.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"La metodología que se usa está bien, el aprendizaje como tal ha sido excelente." – Gualdo</div>
+                    <div class="verbatim">"El día que uno no puede, queda la clase grabada, al día siguiente uno puede nuevamente retomar." – Gualdo</div>
+                    <div class="verbatim">"La plataforma nunca me ha pasado que se haya caído, nunca." – José Javier</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_pensum_cdigital">Tickets</button>
+                <div class="collapse" id="tk_pensum_cdigital">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Calidad del Pensum</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Calidad_Pensum"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Docencia y Metodología -->
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ACADÉMICO</td>
+                            <td>Docencia y Metodología</td>
+                            <td><span class="badge-pos">Positiva</span></td>
+                            <td>8.5 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Bajo. Los docentes explican bien. Las tutorías y consultorías ayudan a resolver dudas específicas. José Javier tiene dificultades con materias de números en virtual.</td>
+                        </tr>
+                        <tr class="eval-docente">
+                            <td colspan="4" class="p-3">
+                                <strong class="me-2">Promedio Calificación evaluación docente</strong>
+                                <span class="badge border border-success-emphasis text-success-emphasis bg-success-subtle p-2 px-3">4.50</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. Los docentes explican de manera clara.</td>
+                            <td>2. Las tutorías permiten resolver dudas.</td>
+                        </tr>
+                        <tr>
+                            <td>3. La consultoría con instructores es útil.</td>
+                            <td>4. Los profesores responden a las inquietudes.</td>
+                        </tr>
+                        <tr>
+                            <td>5. Las materias de números son más difíciles en virtual.</td>
+                            <td>6. Los estudiantes pueden preguntar en clase o por correo.</td>
+                        </tr>
+                        <tr>
+                            <td>7. La metodología de enseñanza es flexible.</td>
+                            <td>8. Los estudiantes valoran poder participar en clase.</td>
+                        </tr>
+                        <tr>
+                            <td>9. La relación docente-estudiante es buena.</td>
+                            <td>10. En general, la experiencia con los docentes es positiva.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"La parte académica me ha ido superbién, la metodología que se usa está bien." – Gualdo</div>
+                    <div class="verbatim">"Siempre está la parte de consultoría con el instructor, uno le escribe y te dice vamos a hacer la consultoría tal día." – Gualdo</div>
+                    <div class="verbatim">"En las materias de números se me complica, pero los profesores son accesibles." – José Javier</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_docencia_cdigital">Tickets</button>
+                <div class="collapse" id="tk_docencia_cdigital">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Docencia y Metodología</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Docencia_Metodologia"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prácticas Profesionales -->
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ACADÉMICO</td>
+                            <td>Prácticas Profesionales</td>
+                            <td><span class="badge-neutral">Sin información disponible</span></td>
+                            <td><span class="text-muted">No reportado</span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> No se reportaron observaciones sobre prácticas profesionales en esta sesión (estudiantes de 2do semestre).</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <div class="alert alert-info">No hay información disponible sobre prácticas profesionales en esta sede.</div>
+                <div class="verbatim-container">
+                    <div class="verbatim">Sin testimonios disponibles para esta categoría.</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_practicas">Tickets</button>
+                <div class="collapse" id="tk_practicas">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Prácticas Profesionales</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Practicas_Profesionales"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECCIÓN TECNOLÓGICO ================= -->
+        <section id="tecnologico" class="tab-pane">
+            <h1 class="main-title">TECNOLÓGICO</h1>
+
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>TECNOLÓGICO</td>
+                            <td>Plataforma CDigital</td>
+                            <td><span class="badge-pos">Positiva</span></td>
+                            <td>9.0 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Bajo. La plataforma nunca se ha caído. Es fácil de usar y permite cargar trabajos sin problemas. Los mantenimientos se anuncian con anticipación.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. La plataforma nunca ha presentado fallas.</td>
+                            <td>2. Los mantenimientos se anuncian con anticipación.</td>
+                        </tr>
+                        <tr>
+                            <td>3. Es fácil de usar y los pasos son claros.</td>
+                            <td>4. Permite cargar trabajos sin inconvenientes.</td>
+                        </tr>
+                        <tr>
+                            <td>5. Las grabaciones de clases están disponibles 24/7.</td>
+                            <td>6. La plataforma avisa cuando se acerca la fecha de cierre de trabajos.</td>
+                        </tr>
+                        <tr>
+                            <td>7. Se puede acceder desde cualquier dispositivo.</td>
+                            <td>8. La organización por semanas es clara.</td>
+                        </tr>
+                        <tr>
+                            <td>9. Es el principal soporte para la modalidad virtual.</td>
+                            <td>10. Su estabilidad genera confianza en los estudiantes.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"La plataforma nunca me ha pasado que se haya caído, nunca." – José Javier</div>
+                    <div class="verbatim">"Uno entra mediante Moodle, hasta le avisa a uno cuando se va a cerrar un trabajo." – José Javier</div>
+                    <div class="verbatim">"Cuando no ha habido mantenimientos avisan, afortunadamente no se me han cruzado mis actividades." – José Javier</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_tecnologico_cdigital">Tickets</button>
+                <div class="collapse" id="tk_tecnologico_cdigital">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Tecnológico</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Tecnologico_Tickets"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECCIÓN SERVICIO AL CLIENTE ================= -->
+        <section id="servicio" class="tab-pane">
+            <h1 class="main-title">SERVICIO AL CLIENTE</h1>
+
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>SERVICIO AL CLIENTE</td>
+                            <td>CamiTicket y Respuesta</td>
+                            <td><span class="badge-critico">Crítica (promoción no respetada)</span></td>
+                            <td>4.0 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Alto. Gualdo tiene un problema grave con la promoción "pague uno, lleve dos". Pagó el primer semestre de contado, el segundo debía ser gratuito, pero ahora le cobran una deuda de 900 mil pesos. Lleva 2 meses sin respuesta del CamiTicket. Lo están llamando de una casa de cobranza.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. Había una promoción "pague uno, lleve dos" (2x1).</td>
+                            <td>2. Gualdo pagó el primer semestre de contado.</td>
+                        </tr>
+                        <tr>
+                            <td>3. El segundo semestre debía ser gratuito.</td>
+                            <td>4. Ahora le cobran una deuda de 900 mil pesos.</td>
+                        </tr>
+                        <tr>
+                            <td>5. Lleva 2 meses sin respuesta del CamiTicket.</td>
+                            <td>6. Lo están llamando de una casa de cobranza externa.</td>
+                        </tr>
+                        <tr>
+                            <td>7. La información en CUN 360 no coincide.</td>
+                            <td>8. En CUN 360 solo aparece una deuda de un seguro.</td>
+                        </tr>
+                        <tr>
+                            <td>9. Los estudiantes no saben a quién acudir.</td>
+                            <td>10. La comunicación sobre promociones es deficiente.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"Había una promoción que pagaba un semestre y el otro me salía gratis, ahora me dicen que tengo una deuda de 900 y pico mil de pesos." – Gualdo</div>
+                    <div class="verbatim">"Me mandaron un Camiticket, me mandaron una captura de pantalla, y es la hora y todavía me aparece la deuda." – Gualdo</div>
+                    <div class="verbatim">"Llevo dos meses sin respuesta." – Gualdo</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_camiticket">Tickets</button>
+                <div class="collapse" id="tk_camiticket">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - CamiTicket</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_CamiTicket"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INFRAESTRUCTURA -->
+            <div class="item-container">
+                <h1 class="main-title" style="font-size: 1.8rem; margin-top: 2rem;">INFRAESTRUCTURA</h1>
+                <div class="sub-title">Comodidad y Servicios Físicos</div>
+                <table class="table table-bordered" style="margin-top: 1rem;">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="odd">
+                            <td>INFRAESTRUCTURA</td>
+                            <td>Comodidad y Servicios Físicos</td>
+                            <td><span class="badge-neutral">Sin información disponible</span></td>
+                            <td><span class="text-muted">No reportado</span></td>
+                        </tr>
+                        <tr class="even">
+                            <td colspan="4"><strong>Análisis (CES):</strong> No se reportaron observaciones sobre infraestructura física (modalidad virtual).</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <div class="alert alert-info">No hay información disponible sobre infraestructura en esta sede (modalidad virtual).</div>
+                <div class="verbatim-container">
+                    <div class="verbatim">Sin testimonios disponibles para esta categoría.</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_infra">Tickets</button>
+                <div class="collapse" id="tk_infra">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Comodidad y Servicios</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Comodidad_Servicios"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECCIÓN BIENESTAR (SIN GRÁFICA) ================= -->
+        <section id="bienestar" class="tab-pane">
+            <h1 class="main-title">BIENESTAR</h1>
+            <div class="sub-title">Beneficios y Becas</div>
+
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>BIENESTAR</td>
+                            <td>Beneficios y Becas</td>
+                            <td><span class="badge-pos">Positiva (asistencia veterinaria)</span></td>
+                            <td>9.0 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Bajo. Gualdo ha utilizado la asistencia veterinaria con su perro y fue excelente. Le respondieron en menos de 3 minutos y le consiguieron traslado a una clínica. También ha usado la asistencia médica con su hija.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. La asistencia veterinaria es un beneficio muy valorado.</td>
+                            <td>2. La respuesta fue rápida (menos de 3 minutos).</td>
+                        </tr>
+                        <tr>
+                            <td>3. Le consiguieron traslado a una clínica veterinaria.</td>
+                            <td>4. El servicio es mejor que el de algunas prepagadas.</td>
+                        </tr>
+                        <tr>
+                            <td>5. La asistencia médica también ha sido utilizada.</td>
+                            <td>6. Los estudiantes valoran estos beneficios adicionales.</td>
+                        </tr>
+                        <tr>
+                            <td>7. El programa C Te Ayuda es valorado por su flexibilidad.</td>
+                            <td>8. Los precios accesibles son un factor clave.</td>
+                        </tr>
+                        <tr>
+                            <td>9. La promoción 2x1 fue un factor para elegir la CUN.</td>
+                            <td>10. A pesar del problema, el costo-beneficio sigue siendo bueno.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"La asistencia veterinaria fue excelente, menos de 3 minutos ya tenía un asesor, a los 15 minutos me llamaron de un veterinario." – Gualdo</div>
+                    <div class="verbatim">"El servicio es mejor que de la prepagada que uno paga por ahí adicional." – Gualdo</div>
+                    <div class="verbatim">"La promoción era que pagaba un semestre y el otro me salía gratis." – Gualdo</div>
+                </div>
+                <!-- SIN GRÁFICA EN BIENESTAR -->
+            </div>
+        </section>
+
+        <!-- ================= SECCIÓN SENTIDO DE PERTENENCIA (SIN GRÁFICA) ================= -->
+        <section id="pertenencia" class="tab-pane">
+            <h1 class="main-title">SENTIDO DE PERTENENCIA</h1>
+            <div class="sub-title">Identidad Cunista</div>
+
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PERTENENCIA</td>
+                            <td>Orgullo y Recomendación</td>
+                            <td><span class="badge-pos">Positiva</span></td>
+                            <td>8.5 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Bajo. A pesar del problema con la promoción, Gualdo se siente contento y no ha pensado en retirarse. José Javier se ha adaptado bien a la virtualidad. La oportunidad de estudio es lo que más valoran.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. A pesar del problema financiero, no ha pensado en retirarse.</td>
+                            <td>2. La virtualidad le permite trabajar y estudiar.</td>
+                        </tr>
+                        <tr>
+                            <td>3. Los precios accesibles fueron un factor clave.</td>
+                            <td>4. Gualdo se siente contento con la experiencia general.</td>
+                        </tr>
+                        <tr>
+                            <td>5. José Javier se ha adaptado bien a la virtualidad.</td>
+                            <td>6. La oportunidad de estudio es lo que más valoran.</td>
+                        </tr>
+                        <tr>
+                            <td>7. Han podido equilibrar trabajo y estudio.</td>
+                            <td>8. A pesar de las fallas, la experiencia es positiva.</td>
+                        </tr>
+                        <tr>
+                            <td>9. Recomendarían la CUN por los beneficios y la virtualidad.</td>
+                            <td>10. El sentido de pertenencia está ligado a la oportunidad.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"Por lo menos hasta ahora me siento contento y no se me ha pasado por la cabeza retirarme o cancelar el semestre." – Gualdo</div>
+                    <div class="verbatim">"No, no he pensado en retirarme, nunca se me ha pasado por la cabeza." – José Javier</div>
+                    <div class="verbatim">"Me ha parecido bien todo esto, me contestan a tiempo, todo me parece bien." – José Javier</div>
+                </div>
+                <!-- SIN GRÁFICA EN PERTENENCIA -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================================== -->
+    <!-- ✅ DEFINIR LA CIUDAD ANTES DE CARGAR SCRIPTS -->
+    <!-- ========================================== -->
+    <script>
+        var ciudad = "Barranquilla";
+    </script>
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/funciones.js"></script>
+    <script src="scripts/Graficas.js"></script>
+</body>
+</html>

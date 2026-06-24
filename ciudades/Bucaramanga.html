@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matriz de Auditoría - Bucaramanga (Virtual)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/ciudades/css/estilos_ciudades.css">
+</head>
+<!-- ✅ VARIABLE GLOBAL: ciudad = "Bucaramanga" -->
+<body>
+    <aside class="sidebar">
+        <div class="brand">CUN ANALYTICS</div>
+        <nav class="nav-menu">
+            <button class="nav-btn active" onclick="openTab(event, 'academico')">ACADÉMICO</button>
+            <button class="nav-btn" onclick="openTab(event, 'tecnologico')">TECNOLÓGICO</button>
+            <button class="nav-btn" onclick="openTab(event, 'servicio')">SERVICIO AL CLIENTE</button>
+            <button class="nav-btn" onclick="openTab(event, 'bienestar')">BIENESTAR</button>
+            <button class="nav-btn" onclick="openTab(event, 'pertenencia')">SENTIDO DE PERTENENCIA</button>
+            <a href="../index.html">
+                <button class="nav-btn" id="back-btn">Regresar</button>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+
+        <!-- ================= SECCIÓN ACADÉMICO ================= -->
+        <section id="academico" class="tab-pane active">
+            <h1 class="main-title">ACADÉMICO</h1>
+
+            <section>
+                <div class="item-container">
+                    <div class="container mt-4">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover align-middle text-center">
+                                <thead class="table-primary">
+                                    <tr>
+                                        <th>Población</th>
+                                        <th>Carrera</th>
+                                        <th>Semestres</th>
+                                        <th>Hombres</th>
+                                        <th>Mujeres</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-start">Estudiantes</td>
+                                        <td class="text-start">Administración de Empresas</td>
+                                        <td class="text-start">2do semestre (335)</td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                        <td><strong>1</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Calidad del Pensum -->
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ACADÉMICO</td>
+                            <td>Calidad del Pensum y Actualización</td>
+                            <td><span class="badge-pos">Positiva</span></td>
+                            <td>8.5 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Bajo. Mairen considera que el material de los docentes es muy bueno. Sin embargo, encuentra debilidades en algunos profesores de Excel e IA, que resuelven los ejercicios de manera poco práctica.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. El material de los docentes es muy bueno en general.</td>
+                            <td>2. Algunos docentes de Excel e IA tienen debilidades.</td>
+                        </tr>
+                        <tr>
+                            <td>3. Resuelven los ejercicios de manera poco práctica.</td>
+                            <td>4. Lo que enseñan no es aplicable eficazmente en el trabajo.</td>
+                        </tr>
+                        <tr>
+                            <td>5. Hay docentes muy buenos que dan herramientas aplicables.</td>
+                            <td>6. No todos los que dictan estas materias son igual de buenos.</td>
+                        </tr>
+                        <tr>
+                            <td>7. La calidad docente varía significativamente entre profesores.</td>
+                            <td>8. Se requiere mejorar la formación práctica en Excel e IA.</td>
+                        </tr>
+                        <tr>
+                            <td>9. La universidad tiene un buen pensum en general.</td>
+                            <td>10. La aplicabilidad laboral debería ser un estándar.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"El material que me he encontrado con todos los docentes es muy bueno." – Mairen</div>
+                    <div class="verbatim">"Encuentro debilidades en la parte de Excel y de inteligencia artificial, sacan las soluciones de una manera muy poco práctica." – Mairen</div>
+                    <div class="verbatim">"Hay unos muy buenos que dan herramientas aplicables al trabajo." – Mairen</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_pensum">Tickets</button>
+                <div class="collapse" id="tk_pensum">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Calidad del Pensum</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Calidad_Pensum"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Docencia y Metodología -->
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ACADÉMICO</td>
+                            <td>Docencia y Metodología</td>
+                            <td><span class="badge-critico">Crítica (casos graves)</span></td>
+                            <td>5.0 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Alto. Mairen ha tenido una experiencia muy negativa con una docente en particular, que le ha puesto una autoevaluación de 33 (cuando ella se califica en 5) y una coevaluación de 01, poniendo en riesgo su materia. No ha podido encontrar un canal para escalar el problema.</td>
+                        </tr>
+                        <tr class="eval-docente">
+                            <td colspan="4" class="p-3">
+                                <strong class="me-2">Promedio Calificación evaluación docente</strong>
+                                <span class="badge border border-success-emphasis text-success-emphasis bg-success-subtle p-2 px-3">3.50</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. Mairen envió correos a 5 docentes solicitando habilitación de actividades por ser 335.</td>
+                            <td>2. 4 de ellos respondieron con preguntas, como si no entendieran qué es 335.</td>
+                        </tr>
+                        <tr>
+                            <td>3. Una docente le puso autoevaluación de 33 usando un cuestionario que califica respuestas correctas/incorrectas.</td>
+                            <td>4. Cuando Mairen pidió corrección, la docente no respondió pero supuestamente corrigió.</td>
+                        </tr>
+                        <tr>
+                            <td>5. Luego le puso coevaluación de 01, poniendo en riesgo la materia.</td>
+                            <td>6. Mairen no sabe a quién acudir ni quién es el superior de la docente.</td>
+                        </tr>
+                        <tr>
+                            <td>7. No tiene herramientas claras para escalar estos problemas académicos.</td>
+                            <td>8. La situación le ha generado una "indignación de estudiante".</td>
+                        </tr>
+                        <tr>
+                            <td>9. La calidad de algunos docentes es deficiente y afecta la experiencia.</td>
+                            <td>10. Se requiere un canal claro para que los estudiantes reporten malas prácticas docentes.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"De cinco docentes, cuatro me responden con preguntas, no saben qué es 335." – Mairen</div>
+                    <div class="verbatim">"La autoevaluación me la computó con su algoritmo en 33, le pedí corrección y no respondió." – Mairen</div>
+                    <div class="verbatim">"Ahora coevaluación me la califican 01, estoy a punto de perder la materia y no encuentro a quién acudir." – Mairen</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_docencia">Tickets</button>
+                <div class="collapse" id="tk_docencia">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Docencia y Metodología</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Docencia_Metodologia"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prácticas Profesionales -->
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ACADÉMICO</td>
+                            <td>Prácticas Profesionales</td>
+                            <td><span class="badge-warn">Problemas de gestión</span></td>
+                            <td>4.0 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Alto. Mairen ha tenido problemas con prácticas: le cambiaron el docente, los documentos subidos hace un mes no han sido revisados, y las charlas son en horario laboral.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. Le cambiaron el docente de prácticas.</td>
+                            <td>2. Los documentos que subió hace un mes no han sido revisados.</td>
+                        </tr>
+                        <tr>
+                            <td>3. El nuevo docente dijo que atendería primero otros casos.</td>
+                            <td>4. Las charlas de prácticas son en horario laboral (no después de las 6 pm).</td>
+                        </tr>
+                        <tr>
+                            <td>5. Pierde la oportunidad de hacer contrapreguntas en vivo.</td>
+                            <td>6. Solo queda la grabación, que no permite interacción.</td>
+                        </tr>
+                        <tr>
+                            <td>7. La atención en prácticas es insuficiente para la cantidad de estudiantes.</td>
+                            <td>8. Se requiere un mejor acompañamiento en el proceso.</td>
+                        </tr>
+                        <tr>
+                            <td>9. Los horarios deberían ser flexibles para estudiantes que trabajan.</td>
+                            <td>10. La comunicación con el área de prácticas es deficiente.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"Subí documentos hace como un mes y todavía no me aparece aprobado." – Mairen</div>
+                    <div class="verbatim">"Las charlas son en horarios laborales, queda la grabación pero pierde uno la oportunidad de hacer la contrapregunta." – Mairen</div>
+                    <div class="verbatim">"No sé si son muchos estudiantes para el pobre docente o hace falta crear otra dinámica." – Mairen</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_practicas">Tickets</button>
+                <div class="collapse" id="tk_practicas">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Prácticas Profesionales</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Practicas_Profesionales"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECCIÓN TECNOLÓGICO ================= -->
+        <section id="tecnologico" class="tab-pane">
+            <h1 class="main-title">TECNOLÓGICO</h1>
+
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>TECNOLÓGICO</td>
+                            <td>Plataforma CDigital</td>
+                            <td><span class="badge-pos">Positiva</span></td>
+                            <td>9.0 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Bajo. Mairen reporta que CDigital le ha ido excelente. No ha tenido inconvenientes, avisan los mantenimientos y no se le han cruzado con actividades.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. Mairen no ha tenido ningún inconveniente con CDigital.</td>
+                            <td>2. Cuando hay mantenimientos, avisan con anticipación.</td>
+                        </tr>
+                        <tr>
+                            <td>3. No se le han cruzado las actividades con problemas de la plataforma.</td>
+                            <td>4. Le ha ido excelente en todo aspecto.</td>
+                        </tr>
+                        <tr>
+                            <td>5. A veces se enreda con la interpretación del cálculo de notas.</td>
+                            <td>6. Sugiere una manera más sencilla de ver el cálculo de notas.</td>
+                        </tr>
+                        <tr>
+                            <td>7. En general, es una herramienta confiable.</td>
+                            <td>8. Los contenidos se descargan y ven fácilmente.</td>
+                        </tr>
+                        <tr>
+                            <td>9. La plataforma es práctica y fácil de manejar.</td>
+                            <td>10. Es la principal herramienta para los estudiantes virtuales.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"Uf, excelente, no he tenido ningún inconveniente." – Mairen</div>
+                    <div class="verbatim">"Cuando no ha habido mantenimientos avisan, afortunadamente no se me han cruzado mis actividades." – Mairen</div>
+                    <div class="verbatim">"A veces me enredo con la interpretación del cálculo de las notas." – Mairen</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_cdigital">Tickets</button>
+                <div class="collapse" id="tk_cdigital">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Plataforma CDigital</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Tecnologico_Tickets"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SINU -->
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>TECNOLÓGICO</td>
+                            <td>Plataforma SINU</td>
+                            <td><span class="badge-critico">Crítica (inconsistencias)</span></td>
+                            <td>4.0 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Alto. Mairen tiene graves problemas con SINU: cobros inconsistentes, le han cargado seguros repetidos, y ha tenido que poner tickets para solucionar. Le ha "sacado canas".</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. Mairen ha tenido múltiples inconsistencias con SINU.</td>
+                            <td>2. Le han puesto cobros que no le corresponden.</td>
+                        </tr>
+                        <tr>
+                            <td>3. Los tickets los solucionan o se demoran en solucionar.</td>
+                            <td>4. Le mandan mensajes de cobro cuando ya pagó.</td>
+                        </tr>
+                        <tr>
+                            <td>5. Le han cobrado el seguro varias veces.</td>
+                            <td>6. Tiene temor de que la reporten a central de riesgo.</td>
+                        </tr>
+                        <tr>
+                            <td>7. El portal de pagos le ha sacado canas.</td>
+                            <td>8. La información no está al día.</td>
+                        </tr>
+                        <tr>
+                            <td>9. No se puede descargar el recibo de matrícula fácilmente.</td>
+                            <td>10. La experiencia general con SINU es frustrante.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"SINU me ha sacado canas, me han puesto cobros que no me corresponden." – Mairen</div>
+                    <div class="verbatim">"Me están cobrando otra vez el seguro, demasiada inconsistencia con ese tema de pagos." – Mairen</div>
+                    <div class="verbatim">"Tengo ese temor de ¿será que me están reportando al central de riesgo?" – Mairen</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_sinu">Tickets</button>
+                <div class="collapse" id="tk_sinu">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Plataforma SINU</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_SINU"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECCIÓN SERVICIO AL CLIENTE ================= -->
+        <section id="servicio" class="tab-pane">
+            <h1 class="main-title">SERVICIO AL CLIENTE</h1>
+
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>SERVICIO AL CLIENTE</td>
+                            <td>CamiTicket y Respuesta</td>
+                            <td><span class="badge-warn">Mixta (inconsistente)</span></td>
+                            <td>5.0 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Medio. Mairen reporta que los CamiTicket a veces solucionan y otras veces se demoran. Ha tenido problemas recurrentes con cobros y pagos.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. Mairen ha puesto tickets para resolver problemas de SINU.</td>
+                            <td>2. A veces los solucionan, otras veces se demoran.</td>
+                        </tr>
+                        <tr>
+                            <td>3. No leen bien los tickets, responden lo primero que les sale.</td>
+                            <td>4. Le mandaron mensajes de cobro cuando ya había pagado.</td>
+                        </tr>
+                        <tr>
+                            <td>5. Tuvo que escribir por Facebook para que la atendieran.</td>
+                            <td>6. Los contactos de WhatsApp cambian o dejan de responder.</td>
+                        </tr>
+                        <tr>
+                            <td>7. Se siente "navegando en un mar" con el servicio al cliente.</td>
+                            <td>8. La homologación la retuvo, no el servicio.</td>
+                        </tr>
+                        <tr>
+                            <td>9. Si hubiera sido por servicio, ya habría optado por otra opción.</td>
+                            <td>10. El servicio al cliente tiene muchísimo por mejorar.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"Pongo el ticket, lo solucionan o se demoran en solucionar." – Mairen</div>
+                    <div class="verbatim">"No leen, responden como lo que primero les sale." – Mairen</div>
+                    <div class="verbatim">"Si hubiese sido por servicio, ya hubiese optado por otra opción." – Mairen</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_camiticket">Tickets</button>
+                <div class="collapse" id="tk_camiticket">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - CamiTicket</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_CamiTicket"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INFRAESTRUCTURA -->
+            <div class="item-container">
+                <h1 class="main-title" style="font-size: 1.8rem; margin-top: 2rem;">INFRAESTRUCTURA</h1>
+                <div class="sub-title">Comodidad y Servicios Físicos</div>
+                <table class="table table-bordered" style="margin-top: 1rem;">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="odd">
+                            <td>INFRAESTRUCTURA</td>
+                            <td>Comodidad y Servicios Físicos</td>
+                            <td><span class="badge-neutral">Sin información disponible</span></td>
+                            <td><span class="text-muted">No reportado</span></td>
+                        </tr>
+                        <tr class="even">
+                            <td colspan="4"><strong>Análisis (CES):</strong> No se reportaron observaciones sobre infraestructura física (modalidad virtual).</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <div class="alert alert-info">No hay información disponible sobre infraestructura en esta sede (modalidad virtual).</div>
+                <div class="verbatim-container">
+                    <div class="verbatim">Sin testimonios disponibles para esta categoría.</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_infra">Tickets</button>
+                <div class="collapse" id="tk_infra">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Comodidad y Servicios</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <p class="text-muted">No hay datos disponibles para mostrar en la gráfica.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECCIÓN BIENESTAR ================= -->
+        <section id="bienestar" class="tab-pane">
+            <h1 class="main-title">BIENESTAR</h1>
+            <div class="sub-title">Beneficios y Becas</div>
+
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>BIENESTAR</td>
+                            <td>Beneficios y Becas</td>
+                            <td><span class="badge-pos">Positiva (homologación)</span></td>
+                            <td>9.0 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Bajo. La homologación de materias fue un factor clave para que Mairen se quedara en la CUN. También valora los precios accesibles y el perfil tecnológico.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. La homologación de materias fue un buen gancho para quedarse.</td>
+                            <td>2. Los precios son accesibles para estudiar y crecer profesionalmente.</td>
+                        </tr>
+                        <tr>
+                            <td>3. El perfil tecnológico es super necesario para el cambio laboral.</td>
+                            <td>4. La publicidad del plan curricular es llamativa.</td>
+                        </tr>
+                        <tr>
+                            <td>5. La CUN ha sido una oportunidad de estudio virtual con precios accesibles.</td>
+                            <td>6. La relación calidad-precio es buena.</td>
+                        </tr>
+                        <tr>
+                            <td>7. La flexibilidad de pagos es valorada.</td>
+                            <td>8. Los beneficios económicos permiten estudiar a adultos trabajadores.</td>
+                        </tr>
+                        <tr>
+                            <td>9. La oferta académica es atractiva por su costo.</td>
+                            <td>10. La homologación retiene a estudiantes que vienen de otras instituciones.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"Me homologaron, fue un buen gancho." – Mairen</div>
+                    <div class="verbatim">"La CUN ha sido una oportunidad de estudio virtual con precios accesibles." – Mairen</div>
+                    <div class="verbatim">"Con un perfil tecnológico super necesario para el cambio laboral." – Mairen</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_becas">Tickets</button>
+                <div class="collapse" id="tk_becas">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Beneficios y Becas</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Beneficios_Becas"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECCIÓN SENTIDO DE PERTENENCIA ================= -->
+        <section id="pertenencia" class="tab-pane">
+            <h1 class="main-title">SENTIDO DE PERTENENCIA</h1>
+            <div class="sub-title">Identidad Cunista</div>
+
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PERTENENCIA</td>
+                            <td>Orgullo y Recomendación</td>
+                            <td><span class="badge-pos">Positiva</span></td>
+                            <td>8.5 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Bajo. La CUN representa una oportunidad de estudio virtual con un plan curricular llamativo y precios accesibles, a pesar de las fallas de servicio.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. La CUN es una oportunidad de estudio virtual.</td>
+                            <td>2. Tiene un plan curricular llamativo.</td>
+                        </tr>
+                        <tr>
+                            <td>3. El perfil tecnológico es necesario para el cambio laboral.</td>
+                            <td>4. Los precios accesibles permiten crecer profesionalmente.</td>
+                        </tr>
+                        <tr>
+                            <td>5. A pesar de las fallas, la homologación la retuvo.</td>
+                            <td>6. Si hubiera sido por servicio, se habría ido.</td>
+                        </tr>
+                        <tr>
+                            <td>7. Las referencias de otros estudiantes son importantes.</td>
+                            <td>8. El costo-beneficio es el principal factor de permanencia.</td>
+                        </tr>
+                        <tr>
+                            <td>9. La CUN le ha permitido estudiar mientras trabaja.</td>
+                            <td>10. Recomendaría la CUN por los precios y la virtualidad.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"La CUN ha sido una oportunidad de estudio virtual con precios accesibles." – Mairen</div>
+                    <div class="verbatim">"Si hubiese sido por servicio, ya hubiese optado por otra opción." – Mairen</div>
+                    <div class="verbatim">"Me homologaron, fue un buen gancho." – Mairen</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_orgullo">Tickets</button>
+                <div class="collapse" id="tk_orgullo">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Orgullo y Recomendación</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Orgullo_Recomendacion"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================================== -->
+    <!-- ✅ DEFINIR LA CIUDAD ANTES DE CARGAR SCRIPTS -->
+    <!-- ========================================== -->
+    <script>
+        var ciudad = "Bucaramanga";
+    </script>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/funciones.js"></script>
+    <script src="scripts/Graficas.js"></script>
+</body>
+</html>

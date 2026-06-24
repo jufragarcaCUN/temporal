@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matriz de Auditoría - Bogotá Virtual</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/ciudades/css/estilos_ciudades.css">
+</head>
+<!-- ✅ VARIABLE GLOBAL: ciudad = "Bogotá Virtual" -->
+<body>
+    <aside class="sidebar">
+        <div class="brand">CUN ANALYTICS</div>
+        <nav class="nav-menu">
+            <button class="nav-btn active" onclick="openTab(event, 'academico')">ACADÉMICO</button>
+            <button class="nav-btn" onclick="openTab(event, 'tecnologico')">TECNOLÓGICO</button>
+            <button class="nav-btn" onclick="openTab(event, 'servicio')">SERVICIO AL CLIENTE</button>
+            <button class="nav-btn" onclick="openTab(event, 'bienestar')">BIENESTAR</button>
+            <button class="nav-btn" onclick="openTab(event, 'pertenencia')">SENTIDO DE PERTENENCIA</button>
+            <a href="../index.html">
+                <button class="nav-btn" id="back-btn">Regresar</button>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+
+        <!-- ================= SECCIÓN ACADÉMICO ================= -->
+        <section id="academico" class="tab-pane active">
+            <h1 class="main-title">ACADÉMICO</h1>
+            
+            <section>
+                <div class="item-container">
+                    <div class="container mt-4">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover align-middle text-center">
+                                <thead class="table-primary">
+                                    <tr>
+                                        <th>Población</th>
+                                        <th>Carrera</th>
+                                        <th>Semestres</th>
+                                        <th>Hombres</th>
+                                        <th>Mujeres</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-start">Estudiantes</td>
+                                        <td class="text-start">Administración de Empresas</td>
+                                        <td class="text-start">2do y 3er semestre</td>
+                                        <td>3</td>
+                                        <td>2</td>
+                                        <td><strong>5</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Calidad del Pensum -->
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ACADÉMICO</td>
+                            <td>Calidad del Pensum y Actualización</td>
+                            <td><span class="badge-pos">Positiva</span></td>
+                            <td>9.0 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Bajo. Los estudiantes valoran positivamente los contenidos y la estructura de la carrera. Destacan la utilidad práctica de los temas.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. Los contenidos son percibidos como útiles y prácticos.</td>
+                            <td>2. La virtualidad permite manejar el tiempo entre trabajo y estudio.</td>
+                        </tr>
+                        <tr>
+                            <td>3. El modelo autónomo exige mayor dedicación e investigación.</td>
+                            <td>4. Las grabaciones de clases son un apoyo invaluable.</td>
+                        </tr>
+                        <tr>
+                            <td>5. Los estudiantes valoran la flexibilidad de horarios.</td>
+                            <td>6. La estructura de la carrera es clara y motivante.</td>
+                        </tr>
+                        <tr>
+                            <td>7. Los contenidos se ajustan a las necesidades del mercado laboral.</td>
+                            <td>8. La progresión entre semestres es lógica y coherente.</td>
+                        </tr>
+                        <tr>
+                            <td>9. El precio accesible fue un factor determinante para elegir la CUN.</td>
+                            <td>10. La formación virtual les permite desarrollarse profesionalmente mientras trabajan.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"La verdad ha sido algo muy novedoso, son muchas formas de aprender diferentes de cada profesor." – Edison</div>
+                    <div class="verbatim">"Ha sido muy práctico porque uno puede hacer otras cosas aparte de los estudios." – Harik</div>
+                    <div class="verbatim">"El modelo nos exige a nosotros como estudiantes, hay que ser muy autónomo." – Diego</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_pensum">Tickets</button>
+                <div class="collapse" id="tk_pensum">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Calidad del Pensum</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Calidad_Pensum"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Docencia y Metodología -->
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ACADÉMICO</td>
+                            <td>Docencia y Metodología</td>
+                            <td><span class="badge-critico">Crítica (caso grave)</span></td>
+                            <td>7.0 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Alto. La mayoría de los docentes son buenos, pero se reportó un caso grave de maltrato pedagógico con el profesor Nicolás (estudiante Cindy, quien pertenece a Cartagena pero estudia virtual). El resto de docentes son flexibles y responden dudas.</td>
+                        </tr>
+                        <tr class="eval-docente">
+                            <td colspan="4" class="p-3">
+                                <strong class="me-2">Promedio Calificación evaluación docente</strong>
+                                <span class="badge border border-success-emphasis text-success-emphasis bg-success-subtle p-2 px-3">4.20</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. La mayoría de los docentes son respetuosos y responden dudas.</td>
+                            <td>2. Cada profesor tiene una metodología diferente, válida pero a veces confusa.</td>
+                        </tr>
+                        <tr>
+                            <td>3. Existe un caso grave de maltrato pedagógico (profesor Nicolás).</td>
+                            <td>4. Este profesor humilló a una estudiante por no poder conectarse dos clases.</td>
+                        </tr>
+                        <tr>
+                            <td>5. Sus retroalimentaciones no coincidían con la nota final.</td>
+                            <td>6. Varios estudiantes estuvieron a punto de perder la materia por su culpa.</td>
+                        </tr>
+                        <tr>
+                            <td>7. Otros docentes son flexibles y explican las veces que sea necesario.</td>
+                            <td>8. Las diferencias en la organización de contenidos generan confusiones.</td>
+                        </tr>
+                        <tr>
+                            <td>9. Se requiere un estándar mínimo de calidad pedagógica para todos los profesores.</td>
+                            <td>10. La falta de claridad en la evaluación afecta la confianza del estudiante.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"El profesor nunca se dedicó a que uno aprendiera, sino a que uno se tirara la materia." – Cindy (estudiante de Cartagena)</div>
+                    <div class="verbatim">"No he tenido ninguna novedad con ningún profesor, han sido muy acertados." – Diego</div>
+                    <div class="verbatim">"Los profesores son muy dedicados y siempre están pendientes." – Harik</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_docencia">Tickets</button>
+                <div class="collapse" id="tk_docencia">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Docencia y Metodología</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Docencia_Metodologia"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prácticas Profesionales -->
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ACADÉMICO</td>
+                            <td>Prácticas Profesionales</td>
+                            <td><span class="badge-neutral">Sin información disponible</span></td>
+                            <td><span class="text-muted">No reportado</span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> No se reportaron observaciones sobre prácticas profesionales en esta sesión (estudiantes de 2do y 3er semestre).</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <div class="alert alert-info">No hay información disponible sobre prácticas profesionales en esta sede.</div>
+                <div class="verbatim-container">
+                    <div class="verbatim">Sin testimonios disponibles para esta categoría.</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_practicas">Tickets</button>
+                <div class="collapse" id="tk_practicas">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Prácticas Profesionales</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Practicas_Profesionales"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECCIÓN TECNOLÓGICO ================= -->
+        <section id="tecnologico" class="tab-pane">
+            <h1 class="main-title">TECNOLÓGICO</h1>
+
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>TECNOLÓGICO</td>
+                            <td>Plataforma CDigital</td>
+                            <td><span class="badge-pos">Positiva</span></td>
+                            <td>9.0 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Bajo. La plataforma es estable, disponible 24/7 y fácil de usar. No se reportan caídas ni errores frecuentes.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. La plataforma nunca se ha caído ni ha presentado errores.</td>
+                            <td>2. Está disponible 24 horas al día, 7 días a la semana.</td>
+                        </tr>
+                        <tr>
+                            <td>3. Es fácil de usar y los pasos son claros.</td>
+                            <td>4. Permite cargar trabajos sin inconvenientes.</td>
+                        </tr>
+                        <tr>
+                            <td>5. Los horarios de las evaluaciones siempre se respetan.</td>
+                            <td>6. Se puede acceder desde cualquier dispositivo.</td>
+                        </tr>
+                        <tr>
+                            <td>7. La plataforma de inglés (Dexway) también es muy buena.</td>
+                            <td>8. Tiene mucho material extra que ayuda al aprendizaje.</td>
+                        </tr>
+                        <tr>
+                            <td>9. Es el principal soporte para la modalidad virtual.</td>
+                            <td>10. Su estabilidad genera confianza en los estudiantes.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"El Cedi Digital hasta el momento nunca me ha fallado, las evaluaciones siempre abren bien." – Diego</div>
+                    <div class="verbatim">"Siempre ha estado disponible las 24/7, he ingresado muy tarde de la noche y está disponible." – Harik</div>
+                    <div class="verbatim">"La plataforma de inglés también me parece muy buena, tiene mucho material extra." – Diego</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_cdigital">Tickets</button>
+                <div class="collapse" id="tk_cdigital">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Plataforma CDigital</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Tecnologico_Tickets"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SINU -->
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>TECNOLÓGICO</td>
+                            <td>Plataforma SINU</td>
+                            <td><span class="badge-neutral">Sin información disponible</span></td>
+                            <td><span class="text-muted">No reportado</span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> No se reportaron observaciones sobre la plataforma SINU en esta sesión.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <div class="alert alert-info">No hay información disponible sobre SINU en esta sede.</div>
+                <div class="verbatim-container">
+                    <div class="verbatim">Sin testimonios disponibles para esta categoría.</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_sinu">Tickets</button>
+                <div class="collapse" id="tk_sinu">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Plataforma SINU</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_SINU"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECCIÓN SERVICIO AL CLIENTE ================= -->
+        <section id="servicio" class="tab-pane">
+            <h1 class="main-title">SERVICIO AL CLIENTE</h1>
+
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>SERVICIO AL CLIENTE</td>
+                            <td>CamiTicket y Respuesta</td>
+                            <td><span class="badge-critico">Crítica (casos graves)</span></td>
+                            <td>3.0 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Alto. Existen casos graves de falta de respuesta que llevaron a pérdida de semestres enteros (Diego). Otros estudiantes reportan atención aceptable (Harik).</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. Un estudiante perdió un semestre completo porque su pago no se reflejó y nadie respondió.</td>
+                            <td>2. Cuando se necesita hacer el pago, llaman todos los días; cuando ya se pagó, no contestan.</td>
+                        </tr>
+                        <tr>
+                            <td>3. Los números de WhatsApp cambian o no responden, quedan en visto.</td>
+                            <td>4. Harik reporta que a él sí le han resuelto sus CamiTicket.</td>
+                        </tr>
+                        <tr>
+                            <td>5. No hay un canal de comunicación efectivo para estudiantes fuera de Bogotá.</td>
+                            <td>6. La falta de respuesta genera desesperanza y pensamientos de retiro.</td>
+                        </tr>
+                        <tr>
+                            <td>7. Diego tuvo que ir presencialmente a la sede de Bogotá para que le aplicaran el pago.</td>
+                            <td>8. Los estudiantes de otras ciudades se sienten abandonados.</td>
+                        </tr>
+                        <tr>
+                            <td>9. Se necesita urgente un canal de atención más ágil y humano.</td>
+                            <td>10. Los tickets son cerrados sin solución real.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"Yo hice el pago y nunca apareció. Cuando hacía falta pagar, me llamaban todos los días. Cuando ya se hizo el pago, ya no me llamaron y nunca más me contestaron." – Diego</div>
+                    <div class="verbatim">"Yo normalmente cuando tengo algún inconveniente pongo el CamiTicket y las veces que he tenido inconveniente me han resuelto." – Harik</div>
+                    <div class="verbatim">"Cierran los casos sin haber solucionado el problema." – Edison</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_camiticket">Tickets</button>
+                <div class="collapse" id="tk_camiticket">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - CamiTicket</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_CamiTicket"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECCIÓN BIENESTAR ================= -->
+        <section id="bienestar" class="tab-pane">
+            <h1 class="main-title">BIENESTAR</h1>
+            <div class="sub-title">Beneficios y Becas</div>
+
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>BIENESTAR</td>
+                            <td>Beneficios y Becas</td>
+                            <td><span class="badge-pos">Positiva</span></td>
+                            <td>8.5 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Bajo. Los estudiantes eligieron la CUN por precio, flexibilidad y recomendaciones. A pesar de las fallas, quieren terminar su carrera.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. El precio accesible fue el principal motivador para elegir la CUN.</td>
+                            <td>2. La virtualidad 100% les permite trabajar y estudiar.</td>
+                        </tr>
+                        <tr>
+                            <td>3. La flexibilidad de horarios es muy valorada.</td>
+                            <td>4. Las facilidades de pago (C Te Ayuda) son un diferenciador clave.</td>
+                        </tr>
+                        <tr>
+                            <td>5. A pesar de las fallas, ninguno quiere retirarse.</td>
+                            <td>6. La mayoría tiene el proyecto de terminar la carrera.</td>
+                        </tr>
+                        <tr>
+                            <td>7. Algunos llegaron por recomendación de amigos o familiares.</td>
+                            <td>8. La seriedad del asesor fue determinante para elegir la CUN.</td>
+                        </tr>
+                        <tr>
+                            <td>9. Comparada con la Poli y Uniminuto, la CUN es más económica.</td>
+                            <td>10. El boca a boca positivo sigue atrayendo nuevos estudiantes.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"El precio fue uno de los que me motivó y también la virtualidad, la flexibilidad de horario." – Harik</div>
+                    <div class="verbatim">"Facilidades de pago, facilidades de horarios, se me favoreció para el momento en que estoy." – Diego</div>
+                    <div class="verbatim">"Lo mío fue más que todo por el algoritmo, me salió la CUN y la seriedad del asesor me pareció mucho mejor." – Harik</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_becas">Tickets</button>
+                <div class="collapse" id="tk_becas">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Beneficios y Becas</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Beneficios_Becas"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECCIÓN SENTIDO DE PERTENENCIA ================= -->
+        <section id="pertenencia" class="tab-pane">
+            <h1 class="main-title">SENTIDO DE PERTENENCIA</h1>
+            <div class="sub-title">Identidad Cunista</div>
+
+            <div class="item-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Polaridad</th>
+                            <th>Score / Eficacia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PERTENENCIA</td>
+                            <td>Orgullo y Recomendación</td>
+                            <td><span class="badge-pos">Positiva</span></td>
+                            <td>8.5 / 10</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><strong>Análisis (CES):</strong> Bajo. Los estudiantes eligieron la CUN por precio, flexibilidad y recomendaciones. A pesar de las fallas, quieren terminar su carrera.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="item-header">Análisis Interpretativo (10 Puntos)</div>
+                <table class="tabla-insights">
+                    <tbody>
+                        <tr>
+                            <td>1. El precio accesible fue el principal motivador para elegir la CUN.</td>
+                            <td>2. La virtualidad 100% les permite trabajar y estudiar.</td>
+                        </tr>
+                        <tr>
+                            <td>3. La flexibilidad de horarios es muy valorada.</td>
+                            <td>4. Las facilidades de pago (C Te Ayuda) son un diferenciador clave.</td>
+                        </tr>
+                        <tr>
+                            <td>5. A pesar de las fallas, ninguno quiere retirarse.</td>
+                            <td>6. La mayoría tiene el proyecto de terminar la carrera.</td>
+                        </tr>
+                        <tr>
+                            <td>7. Algunos llegaron por recomendación de amigos o familiares.</td>
+                            <td>8. La seriedad del asesor fue determinante para elegir la CUN.</td>
+                        </tr>
+                        <tr>
+                            <td>9. Comparada con la Poli y Uniminuto, la CUN es más económica.</td>
+                            <td>10. El boca a boca positivo sigue atrayendo nuevos estudiantes.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="verbatim-container">
+                    <div class="verbatim">"El precio fue uno de los que me motivó y también la virtualidad, la flexibilidad de horario." – Harik</div>
+                    <div class="verbatim">"Facilidades de pago, facilidades de horarios, se me favoreció para el momento en que estoy." – Diego</div>
+                    <div class="verbatim">"Lo mío fue más que todo por el algoritmo, me salió la CUN y la seriedad del asesor me pareció mucho mejor." – Harik</div>
+                </div>
+                <button class="btn-ticket" type="button" data-bs-toggle="collapse" data-bs-target="#tk_orgullo">Tickets</button>
+                <div class="collapse" id="tk_orgullo">
+                    <div class="ticket-collapse">
+                        <h6>Métrica - Orgullo y Recomendación</h6>
+                        <div style="width: 100%; max-width: 600px; margin: auto;">
+                            <canvas id="Grafica_Orgullo_Recomendacion"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================================== -->
+    <!-- ✅ DEFINIR LA CIUDAD ANTES DE CARGAR SCRIPTS -->
+    <!-- ========================================== -->
+    <script>
+        var ciudad = "Bogotá Virtual";
+    </script>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/funciones.js"></script>
+    <script src="scripts/Graficas.js"></script>
+</body>
+</html>
