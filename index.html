@@ -6,228 +6,6 @@
     <title>Auditoría CUN - Administración de Empresas</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="estilos.css">
-    <style>
-        /* ===== ESTILOS PARA EL EMBUDO DE KUN ===== */
-        .funnel-container {
-            max-width: 700px;
-            margin: 30px auto;
-            padding: 20px;
-            background: #f8fafc;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-        }
-        .funnel-title {
-            text-align: center;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #1a2a4f;
-            margin-bottom: 25px;
-        }
-        .funnel-step {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 12px 20px;
-            margin-bottom: 8px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-            border-left: 5px solid #1a2a4f;
-            transition: all 0.2s;
-        }
-        .funnel-step:hover {
-            transform: translateX(5px);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .funnel-step .step-icon {
-            font-size: 1.8rem;
-            width: 45px;
-            text-align: center;
-            flex-shrink: 0;
-        }
-        .funnel-step .step-info {
-            flex: 1;
-        }
-        .funnel-step .step-info .step-label {
-            font-size: 0.85rem;
-            color: #4b5563;
-            font-weight: 600;
-        }
-        .funnel-step .step-info .step-detail {
-            font-size: 0.75rem;
-            color: #6b7280;
-        }
-        .funnel-step .step-number {
-            font-size: 1.6rem;
-            font-weight: 900;
-            color: #1a2a4f;
-            min-width: 50px;
-            text-align: right;
-        }
-        .funnel-step .step-percent {
-            font-size: 0.75rem;
-            color: #6b7280;
-            font-weight: 600;
-            min-width: 50px;
-            text-align: right;
-        }
-        .funnel-arrow {
-            text-align: center;
-            font-size: 1.5rem;
-            color: #94a3b8;
-            line-height: 1;
-            margin: -2px 0;
-        }
-        .funnel-step.level-1 { border-left-color: #1a2a4f; }
-        .funnel-step.level-2 { border-left-color: #ef4444; }
-        .funnel-step.level-3 { border-left-color: #10b981; }
-        .funnel-step.level-4 { border-left-color: #f59e0b; }
-        .funnel-step.level-5 { border-left-color: #8b5cf6; }
-        .funnel-note {
-            text-align: center;
-            font-size: 0.75rem;
-            color: #94a3b8;
-            margin-top: 15px;
-            font-style: italic;
-        }
-        .funnel-source {
-            text-align: center;
-            font-size: 0.7rem;
-            color: #94a3b8;
-            margin-top: 5px;
-            font-style: italic;
-        }
-
-        /* ===== ESTILOS PARA LA TABLA DE PREGUNTAS ===== */
-        .preguntas-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.85rem;
-            margin: 20px 0;
-        }
-        .preguntas-table thead th {
-            background: #1a2a4f;
-            color: white;
-            padding: 10px 12px;
-            text-align: left;
-            font-weight: 700;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .preguntas-table tbody td {
-            padding: 8px 12px;
-            border-bottom: 1px solid #e2e8f0;
-            vertical-align: top;
-        }
-        .preguntas-table tbody tr:hover {
-            background: #f1f5f9;
-        }
-        .preguntas-table .cat-cell {
-            font-weight: 700;
-            color: #1a2a4f;
-            background: #f8fafc;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
-        .preguntas-table .subcat-cell {
-            font-weight: 600;
-            color: #334155;
-            font-size: 0.8rem;
-        }
-        .preguntas-table .preg-cell {
-            color: #4b5563;
-            font-size: 0.8rem;
-        }
-        .preguntas-section-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #1a2a4f;
-            margin: 30px 0 15px 0;
-            padding-bottom: 8px;
-            border-bottom: 3px solid #1a2a4f;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .preguntas-section-title .badge-count {
-            background: #1a2a4f;
-            color: white;
-            font-size: 0.7rem;
-            padding: 2px 12px;
-            border-radius: 20px;
-            font-weight: 600;
-        }
-
-        /* ===== ESTILOS PARA LAS PREGUNTAS DE KUN EN SU SECCIÓN ===== */
-        .kun-preguntas-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.85rem;
-            margin: 20px 0;
-        }
-        .kun-preguntas-table thead th {
-            background: #1a2a4f;
-            color: white;
-            padding: 10px 12px;
-            text-align: left;
-            font-weight: 700;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .kun-preguntas-table tbody td {
-            padding: 8px 12px;
-            border-bottom: 1px solid #e2e8f0;
-            vertical-align: top;
-        }
-        .kun-preguntas-table tbody tr:hover {
-            background: #f1f5f9;
-        }
-        .kun-preguntas-table .cat-cell {
-            font-weight: 700;
-            color: #1a2a4f;
-            background: #f8fafc;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
-        .kun-preguntas-table .subcat-cell {
-            font-weight: 600;
-            color: #334155;
-            font-size: 0.8rem;
-        }
-        .kun-preguntas-table .preg-cell {
-            color: #4b5563;
-            font-size: 0.8rem;
-        }
-
-        @media (max-width: 768px) {
-            .funnel-step {
-                flex-wrap: wrap;
-                padding: 10px 15px;
-            }
-            .funnel-step .step-number {
-                font-size: 1.2rem;
-                min-width: 40px;
-            }
-            .preguntas-table {
-                font-size: 0.75rem;
-            }
-            .preguntas-table thead th,
-            .preguntas-table tbody td {
-                padding: 6px 8px;
-            }
-            .kun-preguntas-table {
-                font-size: 0.75rem;
-            }
-            .kun-preguntas-table thead th,
-            .kun-preguntas-table tbody td {
-                padding: 6px 8px;
-            }
-        }
-    </style>
 </head>
 <body>
 
@@ -277,6 +55,28 @@
             <button class="nav-btn" onclick="openTab(event, 'insights')">
                 <span class="icon">💡</span> Insights Estratégicos
             </button>
+
+            <!-- ============================================================ -->
+            <!-- ===== SUBMENÚ CIUDADES ===== -->
+            <!-- ============================================================ -->
+            <button class="nav-btn" onclick="toggleSubmenu('submenu-ciudades')">
+                <span class="icon">🏙️</span> CIUDADES <span class="arrow-submenu">▶</span>
+            </button>
+            <div id="submenu-ciudades" class="submenu">
+                <a href="ciudades/Barranquilla.html" class="submenu-item">Barranquilla</a>
+                <a href="ciudades/Bogota_Presencial.html" class="submenu-item">Bogotá Presencial</a>
+                <a href="ciudades/Bogota_Virtual.html" class="submenu-item">Bogotá Virtual</a>
+                <a href="ciudades/Bucaramanga.html" class="submenu-item">Bucaramanga</a>
+                <a href="ciudades/Cali_Admin.html" class="submenu-item">Cali</a>
+                <a href="ciudades/Cartagena.html" class="submenu-item">Cartagena</a>
+                <a href="ciudades/Ibagué_Admin.html" class="submenu-item">Ibagué</a>
+                <a href="ciudades/Medellin.html" class="submenu-item">Medellín</a>
+                <a href="ciudades/Monteria.html" class="submenu-item">Montería</a>
+                <a href="ciudades/Pereira.html" class="submenu-item">Pereira</a>
+                <a href="ciudades/Villavicencio.html" class="submenu-item">Villavicencio</a>
+                <a href="ciudades/Yopal.html" class="submenu-item">Yopal</a>
+            </div>
+            <!-- ===== FIN SUBMENÚ CIUDADES ===== -->
 
             <a href="../../index.html">
                 <button class="nav-btn" id="back-btn" style="margin-top: 20px; color: #f59e0b;">
@@ -353,18 +153,7 @@
                     </tbody>
                 </table>
             </div>
-            <!-- ============================================================ -->
-            <!-- nueva tabla -->
-            <!-- ============================================================ -->
-            
-            
-             <!-- ============================================================ -->
-            <!-- fin nueva tabla -->
-            <!-- ============================================================ -->
-            
-            <section>
-                h2 class="section-title">📋nueva seccion!</h2>
-            </section>   
+
             <!-- ============================================================ -->
             <!-- TABLA DE PREGUNTAS ORIENTADORAS (SIN KUN) -->
             <!-- ============================================================ -->
@@ -469,8 +258,6 @@
                                 <td class="preg-cell">¿Recomendarías la CUN a un amigo o familiar?</td>
                                 <td class="preg-cell">¿Qué es lo que más valoras de la CUN?</td>
                             </tr>
-
-                            <!-- NOTA: KUN NO ESTÁ EN ESTA TABLA -->
                         </tbody>
                     </table>
                 </div>
@@ -482,7 +269,7 @@
         </section>
 
         <!-- ============================================================ -->
-        <!-- SECCIÓN KUN-BOGOTÁ (pestaña EXCLUSIVA) -->
+        <!-- SECCIÓN KUN-BOGOTÁ -->
         <!-- ============================================================ -->
         <section id="kun" class="tab-pane">
             <h1 class="main-title">🏢 KUN-Bogotá</h1>
@@ -499,177 +286,45 @@
 
             <!-- ===== EMBUDO DE KUN CoWork ===== -->
             <section id="sofi">
-    <style>
-        .tabla-sofi {
-            width: 100%;
-            border-collapse: collapse;
-            font-family: Arial, sans-serif;
-            font-size: 13px;
-            margin-top: 10px;
-        }
-        .tabla-sofi thead th {
-            background: #1a2a4f;
-            color: white;
-            padding: 10px 12px;
-            text-align: left;
-            font-weight: 700;
-            font-size: 11px;
-            text-transform: uppercase;
-        }
-        .tabla-sofi td {
-            padding: 8px 12px;
-            border-bottom: 1px solid #e2e8f0;
-            vertical-align: top;
-        }
-        .tabla-sofi .fila-1 {
-            border-left: 4px solid #1a2a4f;
-            background: #e8edf5;
-        }
-        .tabla-sofi .fila-2 {
-            border-left: 4px solid #ef4444;
-            background: #fef2f2;
-        }
-        .tabla-sofi .fila-3 {
-            border-left: 4px solid #10b981;
-            background: #f0fdf4;
-        }
-        .tabla-sofi .fila-4 {
-            border-left: 4px solid #f59e0b;
-            background: #fffbeb;
-        }
-        .tabla-sofi .fila-5 {
-            border-left: 4px solid #8b5cf6;
-            background: #f5f3ff;
-        }
-        .tabla-sofi .num {
-            text-align: center;
-            font-weight: 700;
-            padding: 8px 6px;
-        }
-        .tabla-sofi .pct {
-            text-align: center;
-            font-weight: 700;
-            padding: 8px 6px;
-        }
-        .tabla-sofi .detalle {
-            font-size: 11px;
-            color: #6b7280;
-            display: block;
-            margin-top: 2px;
-            font-weight: 400;
-        }
-        .tabla-sofi .icono {
-            font-size: 1.1rem;
-            margin-right: 4px;
-        }
-        .titulo-sofi {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #1a2a4f;
-            margin-bottom: 5px;
-        }
-        .nota-sofi {
-            margin-top: 15px;
-            padding: 10px 16px;
-            background: #f0f4fa;
-            border-radius: 6px;
-            border-left: 3px solid #1a2a4f;
-            font-size: 13px;
-            color: #1e293b;
-        }
-        .fuente-sofi {
-            margin-top: 5px;
-            font-size: 11px;
-            color: #9ca3af;
-            text-align: right;
-            font-style: italic;
-        }
-    </style>
+                <h1 class="titulo-sofi">📊 Embudo de conocimiento de KUN CoWork</h1>
+                <table class="tabla-sofi">
+                    <thead>
+                        <tr>
+                            <th style="width: 40%;">EMBUDO</th>
+                            <th style="text-align: center; width: 15%;">TOTAL</th>
+                            <th style="text-align: center; width: 15%;">GRUPOS FOCALES</th>
+                            <th style="text-align: center; width: 15%;">POR LLAMADA</th>
+                            <th style="text-align: center; width: 15%;">%</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="fila-1">
+                            <td><span class="icono">👥</span> <strong>Total de estudiantes contactados</strong><span class="detalle">Estudiantes de Administración de Empresas en Bogotá</span></td>
+                            <td class="num">109</td><td class="num">11</td><td class="num">98</td><td class="pct">100%</td>
+                        </tr>
+                        <tr class="fila-2">
+                            <td><span class="icono">❌</span> <strong>No conocen KUN CoWork</strong><span class="detalle">Nunca han escuchado hablar del espacio</span></td>
+                            <td class="num">81</td><td class="num">8</td><td class="num">73</td><td class="pct">74.3%</td>
+                        </tr>
+                        <tr class="fila-3">
+                            <td><span class="icono">✅</span> <strong>Sí conocen KUN CoWork</strong><span class="detalle">Han escuchado o visto información del espacio</span></td>
+                            <td class="num">28</td><td class="num">3</td><td class="num">25</td><td class="pct">25.7%</td>
+                        </tr>
+                        <tr class="fila-4">
+                            <td><span class="icono">🏠</span> <strong>Han visitado KUN CoWork</strong><span class="detalle">Han ido al menos una vez al espacio (grupos focales)</span></td>
+                            <td class="num">2</td><td class="num">2</td><td class="num">0</td><td class="pct">7.1%</td>
+                        </tr>
+                        <tr class="fila-5">
+                            <td><span class="icono">⭐</span> <strong>Lo recomendarían</strong><span class="detalle">De los que lo visitaron, todos lo recomiendan</span></td>
+                            <td class="num">2</td><td class="num">2</td><td class="num">0</td><td class="pct">100%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="nota-sofi">📌 2 estudiantes de grupos focales de Ingeniería de Sistemas visitaron KUN CoWork (sede Bosa)</div>
+                <div class="fuente-sofi">Fuente: Grupos focales Bogotá - Ingeniería de Sistemas (Presencial)</div>
+            </section>
 
-    <h1 class="titulo-sofi">📊 Embudo de conocimiento de KUN CoWork</h1>
-
-    <table class="tabla-sofi">
-        <thead>
-            <tr>
-                <th style="width: 40%;">EMBUDO</th>
-                <th style="text-align: center; width: 15%;">TOTAL</th>
-                <th style="text-align: center; width: 15%;">GRUPOS FOCALES</th>
-                <th style="text-align: center; width: 15%;">POR LLAMADA</th>
-                <th style="text-align: center; width: 15%;">%</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- FILA 1: Total estudiantes -->
-            <tr class="fila-1">
-                <td>
-                    <span class="icono">👥</span> <strong>Total de estudiantes contactados</strong>
-                    <span class="detalle">Estudiantes de Administración de Empresas en Bogotá</span>
-                </td>
-                <td class="num">109</td>
-                <td class="num">11</td>
-                <td class="num">98</td>
-                <td class="pct">100%</td>
-            </tr>
-
-            <!-- FILA 2: No conocen -->
-            <tr class="fila-2">
-                <td>
-                    <span class="icono">❌</span> <strong>No conocen KUN CoWork</strong>
-                    <span class="detalle">Nunca han escuchado hablar del espacio</span>
-                </td>
-                <td class="num">81</td>
-                <td class="num">8</td>
-                <td class="num">73</td>
-                <td class="pct">74.3%</td>
-            </tr>
-
-            <!-- FILA 3: Sí conocen -->
-            <tr class="fila-3">
-                <td>
-                    <span class="icono">✅</span> <strong>Sí conocen KUN CoWork</strong>
-                    <span class="detalle">Han escuchado o visto información del espacio</span>
-                </td>
-                <td class="num">28</td>
-                <td class="num">3</td>
-                <td class="num">25</td>
-                <td class="pct">25.7%</td>
-            </tr>
-
-            <!-- FILA 4: Han visitado -->
-            <tr class="fila-4">
-                <td>
-                    <span class="icono">🏠</span> <strong>Han visitado KUN CoWork</strong>
-                    <span class="detalle">Han ido al menos una vez al espacio (grupos focales)</span>
-                </td>
-                <td class="num">2</td>
-                <td class="num">2</td>
-                <td class="num">0</td>
-                <td class="pct">7.1%</td>
-            </tr>
-
-            <!-- FILA 5: Lo recomendarían -->
-            <tr class="fila-5">
-                <td>
-                    <span class="icono">⭐</span> <strong>Lo recomendarían</strong>
-                    <span class="detalle">De los que lo visitaron, todos lo recomiendan</span>
-                </td>
-                <td class="num">2</td>
-                <td class="num">2</td>
-                <td class="num">0</td>
-                <td class="pct">100%</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <div class="nota-sofi">
-        📌 2 estudiantes de grupos focales de Ingeniería de Sistemas visitaron KUN CoWork (sede Bosa)
-    </div>
-    <div class="fuente-sofi">
-        Fuente: Grupos focales Bogotá - Ingeniería de Sistemas (Presencial)
-    </div>
-</section>
-              <!-- ===== tabla de Sofi fin  ===== -->
-            <!-- ===== PREGUNTAS DE KUN (SOLO AQUÍ) ===== -->
+            <!-- ===== PREGUNTAS DE KUN ===== -->
             <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #e2e8f0;">
                 <div class="preguntas-section-title" style="font-size: 1rem; border-bottom-color: #8b5cf6;">
                     📋 PREGUNTAS ORIENTADORAS - KUN CoWork
@@ -678,75 +333,62 @@
                 <p style="color: #6b7280; font-size: 0.85rem; margin-bottom: 15px;">
                     Preguntas específicas sobre KUN CoWork utilizadas en los grupos focales de Bogotá.
                 </p>
-
                 <div class="table-responsive">
                     <table class="kun-preguntas-table">
-    <thead>
-        <tr>
-            <th style="width: 18%;">Categoría</th>
-            <th style="width: 22%;">Subcategoría</th>
-            <th style="width: 30%;">Pregunta Orientadora 1</th>
-            <th style="width: 30%;">Pregunta Orientadora 2</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td class="cat-cell" rowspan="4">Grupos focales</td>
-            <td class="subcat-cell" rowspan="2">Conocimiento</td>
-            <td class="preg-cell">¿Conocen KUN?</td>
-            <td class="preg-cell">¿Qué saben de él?</td>
-        </tr>
-        <tr>
-            <td class="preg-cell">Si no lo conocen, ¿por qué creen que no han escuchado de él?</td>
-            <td class="preg-cell">—</td>
-        </tr>
-        <tr>
-            <td class="subcat-cell">Uso y Visita</td>
-            <td class="preg-cell">¿Han ido o lo han visitado?</td>
-            <td class="preg-cell">¿Qué les pareció?</td>
-        </tr>
-        <tr>
-            <td class="subcat-cell">Percepción</td>
-            <td class="preg-cell">¿Iría a KUN?</td>
-            <td class="preg-cell">¿Les parece interesante la idea de un espacio de coworking?</td>
-        </tr>
-    </tbody>
-</table>
+                        <thead>
+                            <tr><th style="width:18%;">Categoría</th><th style="width:22%;">Subcategoría</th><th style="width:30%;">Pregunta Orientadora 1</th><th style="width:30%;">Pregunta Orientadora 2</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="cat-cell" rowspan="4">Grupos focales</td>
+                                <td class="subcat-cell" rowspan="2">Conocimiento</td>
+                                <td class="preg-cell">¿Conocen KUN?</td>
+                                <td class="preg-cell">¿Qué saben de él?</td>
+                            </tr>
+                            <tr>
+                                <td class="preg-cell">Si no lo conocen, ¿por qué creen que no han escuchado de él?</td>
+                                <td class="preg-cell">—</td>
+                            </tr>
+                            <tr>
+                                <td class="subcat-cell">Uso y Visita</td>
+                                <td class="preg-cell">¿Han ido o lo han visitado?</td>
+                                <td class="preg-cell">¿Qué les pareció?</td>
+                            </tr>
+                            <tr>
+                                <td class="subcat-cell">Percepción</td>
+                                <td class="preg-cell">¿Iría a KUN?</td>
+                                <td class="preg-cell">¿Les parece interesante la idea de un espacio de coworking?</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-<!-- ===== PREGUNTAS DE KUN (SOLO AQUÍ) ===== -->
-<div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #e2e8f0;">
-    <div class="preguntas-section-title" style="font-size: 1rem; border-bottom-color: #8b5cf6;">
-        📋 PREGUNTAS ORIENTADORAS - KUN CoWork
-        <span class="badge-count" style="background: #8b5cf6;">2 preguntas</span>
-    </div>
-    <p style="color: #6b7280; font-size: 0.85rem; margin-bottom: 15px;">
-        Preguntas específicas sobre KUN CoWork utilizadas en las llamadas de Bogotá.
-    </p>
-
-    <div class="table-responsive">
-        <table class="kun-preguntas-table">
-            <thead>
-                <tr>
-                    <th style="width: 18%;">Categoría</th>
-                    <th style="width: 22%;">Subcategoría</th>
-                    <th style="width: 30%;">Pregunta Orientadora 1</th>
-                    <th style="width: 30%;">Pregunta Orientadora 2</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="cat-cell" rowspan="1" style="font-weight: 700; color: #1a2a4f; background: #f8fafc; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.3px; vertical-align: middle;">Llamadas</td>
-                    <td class="subcat-cell" style="font-weight: 600; color: #334155; font-size: 0.8rem;">KUN CoWork</td>
-                    <td class="preg-cell" style="font-weight: 600; color: #1a2a4f;">¿Conocen KUN?</td>
-                    <td class="preg-cell" style="font-weight: 600; color: #1a2a4f;">¿Iría a KUN?</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <p style="color: #94a3b8; font-size: 0.7rem; margin-top: 8px; font-style: italic;">
-        * Preguntas extraídas de las transcripciones de las llamadas de Bogotá.
-    </p>
-</div>
+                <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #e2e8f0;">
+                    <div class="preguntas-section-title" style="font-size: 1rem; border-bottom-color: #8b5cf6;">
+                        📋 PREGUNTAS ORIENTADORAS - KUN CoWork
+                        <span class="badge-count" style="background: #8b5cf6;">2 preguntas</span>
+                    </div>
+                    <p style="color: #6b7280; font-size: 0.85rem; margin-bottom: 15px;">
+                        Preguntas específicas sobre KUN CoWork utilizadas en las llamadas de Bogotá.
+                    </p>
+                    <div class="table-responsive">
+                        <table class="kun-preguntas-table">
+                            <thead>
+                                <tr><th style="width:18%;">Categoría</th><th style="width:22%;">Subcategoría</th><th style="width:30%;">Pregunta Orientadora 1</th><th style="width:30%;">Pregunta Orientadora 2</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="cat-cell" rowspan="1">Llamadas</td>
+                                    <td class="subcat-cell">KUN CoWork</td>
+                                    <td class="preg-cell">¿Conocen KUN?</td>
+                                    <td class="preg-cell">¿Iría a KUN?</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="color: #94a3b8; font-size: 0.7rem; margin-top: 8px; font-style: italic;">
+                        * Preguntas extraídas de las transcripciones de las llamadas de Bogotá.
+                    </p>
                 </div>
                 <p style="color: #94a3b8; font-size: 0.7rem; margin-top: 8px; font-style: italic;">
                     * Preguntas extraídas de las transcripciones de los grupos focales de Bogotá.
@@ -895,6 +537,7 @@
             <h1 class="main-title">🎓 Académico</h1>
             <p style="color: #6b7280; margin-bottom: 20px;">Análisis de la calidad del pensum, docencia y prácticas profesionales por ciudad.</p>
 
+            <!-- Acordeón Barranquilla -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('acad_barranquilla')">
                     <span>Barranquilla</span>
@@ -908,6 +551,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Ibagué -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('acad_ibague')">
                     <span>Ibagué</span>
@@ -921,6 +565,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Bogotá Presencial -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('acad_bogotap')">
                     <span>Bogotá Presencial</span>
@@ -934,6 +579,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Bogotá Virtual -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('acad_bogotav')">
                     <span>Bogotá Virtual</span>
@@ -947,6 +593,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Bucaramanga -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('acad_bucaramanga')">
                     <span>Bucaramanga</span>
@@ -960,6 +607,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Cali -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('acad_cali')">
                     <span>Cali</span>
@@ -973,6 +621,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Cartagena -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('acad_cartagena')">
                     <span>Cartagena</span>
@@ -986,6 +635,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Medellín -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('acad_medellin')">
                     <span>Medellín</span>
@@ -999,6 +649,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Montería -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('acad_monteria')">
                     <span>Montería</span>
@@ -1012,6 +663,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Pereira -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('acad_pereira')">
                     <span>Pereira</span>
@@ -1025,6 +677,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Villavicencio -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('acad_villavicencio')">
                     <span>Villavicencio</span>
@@ -1038,6 +691,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Yopal -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('acad_yopal')">
                     <span>Yopal</span>
@@ -1059,6 +713,7 @@
             <h1 class="main-title">💻 Tecnológico</h1>
             <p style="color: #6b7280; margin-bottom: 20px;">Análisis de plataformas CDigital, SINU y herramientas tecnológicas.</p>
 
+            <!-- Acordeón Barranquilla -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('tec_barranquilla')">
                     <span>Barranquilla</span>
@@ -1069,6 +724,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Ibagué -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('tec_ibague')">
                     <span>Ibagué</span>
@@ -1079,6 +735,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Bogotá Presencial -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('tec_bogotap')">
                     <span>Bogotá Presencial</span>
@@ -1089,6 +746,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Bogotá Virtual -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('tec_bogotav')">
                     <span>Bogotá Virtual</span>
@@ -1099,6 +757,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Bucaramanga -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('tec_bucaramanga')">
                     <span>Bucaramanga</span>
@@ -1112,6 +771,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Cali -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('tec_cali')">
                     <span>Cali</span>
@@ -1122,6 +782,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Cartagena -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('tec_cartagena')">
                     <span>Cartagena</span>
@@ -1132,6 +793,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Medellín -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('tec_medellin')">
                     <span>Medellín</span>
@@ -1142,6 +804,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Montería -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('tec_monteria')">
                     <span>Montería</span>
@@ -1152,6 +815,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Pereira -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('tec_pereira')">
                     <span>Pereira</span>
@@ -1165,6 +829,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Villavicencio -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('tec_villavicencio')">
                     <span>Villavicencio</span>
@@ -1178,6 +843,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Yopal -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('tec_yopal')">
                     <span>Yopal</span>
@@ -1199,6 +865,7 @@
             <h1 class="main-title">📞 Servicio al Cliente</h1>
             <p style="color: #6b7280; margin-bottom: 20px;">Análisis de CamiTicket, tiempos de respuesta y atención al estudiante.</p>
 
+            <!-- Acordeón Barranquilla -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('serv_barranquilla')">
                     <span>Barranquilla</span>
@@ -1212,6 +879,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Ibagué -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('serv_ibague')">
                     <span>Ibagué</span>
@@ -1225,6 +893,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Bogotá Presencial -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('serv_bogotap')">
                     <span>Bogotá Presencial</span>
@@ -1235,6 +904,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Bogotá Virtual -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('serv_bogotav')">
                     <span>Bogotá Virtual</span>
@@ -1248,6 +918,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Bucaramanga -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('serv_bucaramanga')">
                     <span>Bucaramanga</span>
@@ -1261,6 +932,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Cali -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('serv_cali')">
                     <span>Cali</span>
@@ -1271,6 +943,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Cartagena -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('serv_cartagena')">
                     <span>Cartagena</span>
@@ -1284,6 +957,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Medellín -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('serv_medellin')">
                     <span>Medellín</span>
@@ -1297,6 +971,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Montería -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('serv_monteria')">
                     <span>Montería</span>
@@ -1307,6 +982,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Pereira -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('serv_pereira')">
                     <span>Pereira</span>
@@ -1317,6 +993,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Villavicencio -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('serv_villavicencio')">
                     <span>Villavicencio</span>
@@ -1330,6 +1007,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Yopal -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('serv_yopal')">
                     <span>Yopal</span>
@@ -1351,6 +1029,7 @@
             <h1 class="main-title">❤️ Bienestar</h1>
             <p style="color: #6b7280; margin-bottom: 20px;">Beneficios, becas y actividades de bienestar por ciudad.</p>
 
+            <!-- Acordeón Barranquilla -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('bien_barranquilla')">
                     <span>Barranquilla</span>
@@ -1364,6 +1043,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Ibagué -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('bien_ibague')">
                     <span>Ibagué</span>
@@ -1377,6 +1057,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Bogotá Presencial -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('bien_bogotap')">
                     <span>Bogotá Presencial</span>
@@ -1387,6 +1068,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Bogotá Virtual -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('bien_bogotav')">
                     <span>Bogotá Virtual</span>
@@ -1400,6 +1082,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Medellín -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('bien_medellin')">
                     <span>Medellín</span>
@@ -1410,6 +1093,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Montería -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('bien_monteria')">
                     <span>Montería</span>
@@ -1420,6 +1104,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Villavicencio -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('bien_villavicencio')">
                     <span>Villavicencio</span>
@@ -1438,6 +1123,7 @@
             <h1 class="main-title">🏆 Pertenencia</h1>
             <p style="color: #6b7280; margin-bottom: 20px;">Sentido de orgullo, identidad y recomendación de la CUN.</p>
 
+            <!-- Acordeón Barranquilla -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('pert_barranquilla')">
                     <span>Barranquilla</span>
@@ -1451,6 +1137,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Ibagué -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('pert_ibague')">
                     <span>Ibagué</span>
@@ -1464,6 +1151,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Bogotá Presencial -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('pert_bogotap')">
                     <span>Bogotá Presencial</span>
@@ -1477,6 +1165,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Bogotá Virtual -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('pert_bogotav')">
                     <span>Bogotá Virtual</span>
@@ -1487,6 +1176,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Medellín -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('pert_medellin')">
                     <span>Medellín</span>
@@ -1500,6 +1190,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Montería -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('pert_monteria')">
                     <span>Montería</span>
@@ -1513,6 +1204,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Villavicencio -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('pert_villavicencio')">
                     <span>Villavicencio</span>
@@ -1526,6 +1218,7 @@
                 </div>
             </div>
 
+            <!-- Acordeón Yopal -->
             <div class="accordion-container">
                 <button class="accordion-header" onclick="toggleAccordion('pert_yopal')">
                     <span>Yopal</span>
@@ -1556,6 +1249,7 @@
                 <span class="semaphore-legend-item"><span class="dot" style="background: #9ca3af;"></span> Sin datos</span>
             </div>
 
+            <!-- ZONA NORTE / CARIBE -->
             <div class="accordion-container" style="margin-top: 20px;">
                 <button class="accordion-header" onclick="toggleAccordion('zona_norte')">
                     <span>🌊 ZONA NORTE / CARIBE</span>
@@ -1605,6 +1299,7 @@
                 </div>
             </div>
 
+            <!-- ZONA CENTRO -->
             <div class="accordion-container" style="margin-top: 20px;">
                 <button class="accordion-header" onclick="toggleAccordion('zona_centro')">
                     <span>⛰️ ZONA CENTRO</span>
@@ -1686,6 +1381,7 @@
                 </div>
             </div>
 
+            <!-- ZONA SUR -->
             <div class="accordion-container" style="margin-top: 20px;">
                 <button class="accordion-header" onclick="toggleAccordion('zona_sur')">
                     <span>🏔️ ZONA SUR</span>
@@ -2019,6 +1715,16 @@
         }
     }
 
+    // ===== SUBMENÚ CIUDADES =====
+    function toggleSubmenu(id) {
+        var submenu = document.getElementById(id);
+        var arrow = submenu.parentElement.querySelector('.arrow-submenu');
+        submenu.classList.toggle('open');
+        if (arrow) {
+            arrow.classList.toggle('rotated');
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
         var firstTab = document.querySelector('.tab-pane');
         if (firstTab) {
@@ -2029,3 +1735,4 @@
 </script>
 
 </body>
+</html>
