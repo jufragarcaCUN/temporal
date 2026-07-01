@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auditoría CUN - Ingeniería de Sistemas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilos.css">
+    <link rel="stylesheet" href=".././ciudades/css/estilos_ciudades.css">
+</head>
+<body>
+
+<div class="app-container">
+
+    <aside class="sidebar">
+        <div class="brand">CUN ANALYTICS</div>
+        <nav class="nav-menu">
+
+            <div class="nav-label">SECCIONES</div>
+
+            <button class="nav-btn active" onclick="openTab(event, 'resumen')">
+                <span class="icon">📊</span> Resumen General
+            </button>
+
+            <button class="nav-btn" onclick="openTab(event, 'kun')">
+                <span class="icon">🏢</span> KUN-Bogotá
+            </button>
+
+            <button class="nav-btn" onclick="openTab(event, 'academico')">
+                <span class="icon">🎓</span> Académico
+            </button>
+
+            <button class="nav-btn" onclick="openTab(event, 'tecnologico')">
+                <span class="icon">💻</span> Tecnológico
+            </button>
+
+            <button class="nav-btn" onclick="openTab(event, 'servicio')">
+                <span class="icon">📞</span> Servicio al Cliente
+            </button>
+
+            <button class="nav-btn" onclick="openTab(event, 'bienestar')">
+                <span class="icon">❤️</span> Bienestar
+            </button>
+
+            <button class="nav-btn" onclick="openTab(event, 'pertenencia')">
+                <span class="icon">🏆</span> Pertenencia
+            </button>
+
+            <button class="nav-btn" onclick="openTab(event, 'matriz')">
+                <span class="icon">📋</span> Matriz de Semáforo
+            </button>
+
+            <button class="nav-btn" onclick="openTab(event, 'insights')">
+                <span class="icon">💡</span> Insights Estratégicos
+            </button>
+
+            <button class="nav-btn" onclick="toggleSubmenu('submenu-ciudades')">
+                <span class="icon">🏙️</span> CIUDADES <span class="arrow-submenu">▶</span>
+            </button>
+            <div id="submenu-ciudades" class="submenu">
+                <a href="ciudades/Ibagué_Sistemas.html" class="submenu-item">Ibagué</a>
+                <a href="ciudades/Medellin_Sistemas.html" class="submenu-item">Medellín</a>
+                <a href="ciudades/Sincelejo_Sistemas.html" class="submenu-item">Sincelejo</a>
+                <a href="ciudades/Bogota_Sistemas.html" class="submenu-item">Bogotá Presencial</a>
+            </div>
+            <a href="../../index.html">
+                <button class="nav-btn" id="back-btn" style="margin-top: 20px; color: #f59e0b;">
+                    <span class="icon">🔙</span> Volver al Inicio
+                </button>
+            </a>
+
+        </nav>
+    </aside>
+
+    <main class="main-content">
+
+        <section id="resumen" class="tab-pane active">
+            <h1 class="main-title">📊 Resumen General</h1>
+            <h1 class="main-title">Estudiantes de Ingeniería de Sistemas</h1>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="number">22</div>
+                    <div class="label">Total estudiantes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">16</div>
+                    <div class="label">Hombres</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">6</div>
+                    <div class="label">Mujeres</div>
+                </div>
+                <div class="stat-card" style="border-top-color: #3b82f6;">
+                    <div class="number">5</div>
+                    <div class="label">Virtuales</div>
+                </div>
+                <div class="stat-card" style="border-top-color: #f59e0b;">
+                    <div class="number">17</div>
+                    <div class="label">Presenciales</div>
+                </div>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="table-custom">
+                    <thead>
+                        <tr>
+                            <th>Ciudad</th>
+                            <th>Carrera</th>
+                            <th>Semestres</th>
+                            <th>Hombres</th>
+                            <th>Mujeres</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Ibagué</td><td>Ingeniería de Sistemas</td><td>3°, 4° y 5°</td><td>3</td><td>1</td><td><strong>4</strong></td></tr>
+                        <tr><td>Medellín</td><td>Ingeniería de Sistemas</td><td>2°</td><td>1</td><td>0</td><td><strong>1</strong></td></tr>
+                        <tr><td>Sincelejo</td><td>Ingeniería de Sistemas</td><td>4°</td><td>2</td><td>0</td><td><strong>2</strong></td></tr>
+                        <tr><td>Bogotá Presencial</td><td>Ingeniería de Sistemas</td><td>2° a 5°</td><td>10</td><td>5</td><td><strong>15</strong></td></tr>
+                        <tr class="total-row"><td colspan="3"><strong>TOTAL</strong></td><td><strong>16</strong></td><td><strong>6</strong></td><td><strong>22</strong></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #e2e8f0;">
+                <div class="preguntas-section-title">
+                    📋 TABLA DE PREGUNTAS ORIENTADORAS - GRUPOS FOCALES INGENIERÍA DE SISTEMAS
+                    <span class="badge-count">18 subcategorías</span>
+                </div>
+                <p style="color: #6b7280; font-size: 0.85rem; margin-bottom: 15px;">
+                    Preguntas reales utilizadas en los grupos focales con estudiantes de Ingeniería de Sistemas.
+                </p>
+
+                <div class="table-responsive">
+                    <table class="preguntas-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 18%;">Categoría</th>
+                                <th style="width: 22%;">Subcategoría</th>
+                                <th style="width: 30%;">Pregunta Orientadora 1</th>
+                                <th style="width: 30%;">Pregunta Orientadora 2</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="cat-cell" rowspan="5">ACADÉMICO</td>
+                                <td class="subcat-cell" rowspan="3">Calidad del Pensum y Contenidos</td>
+                                <td class="preg-cell">¿Los contenidos son útiles y aplicables al mercado laboral de tu ciudad?</td>
+                                <td class="preg-cell">¿La formación en redes y programación es suficiente?</td>
+                            </tr>
+                            <tr>
+                                <td class="preg-cell">¿La universidad está haciendo un buen trabajo en la parte técnica?</td>
+                                <td class="preg-cell">¿Qué materias consideras que sobran o faltan?</td>
+                            </tr>
+                            <tr>
+                                <td class="preg-cell">¿Los contenidos en C Digital son profundos o solo básicos?</td>
+                                <td class="preg-cell">¿Se ven temas actualizados (cloud, fibra óptica, etc.)?</td>
+                            </tr>
+                            <tr>
+                                <td class="subcat-cell">Docencia y Metodología</td>
+                                <td class="preg-cell">¿Cómo calificarías la calidad de los docentes?</td>
+                                <td class="preg-cell">¿Los docentes usan herramientas interactivas (Kahoot, etc.)?</td>
+                            </tr>
+                            <tr>
+                                <td class="subcat-cell">Prácticas Profesionales</td>
+                                <td class="preg-cell">¿Cómo ha sido tu experiencia buscando prácticas?</td>
+                                <td class="preg-cell">¿La universidad te ha apoyado para conseguir prácticas?</td>
+                            </tr>
+
+                            <tr>
+                                <td class="cat-cell" rowspan="4">TECNOLÓGICO</td>
+                                <td class="subcat-cell" rowspan="2">Plataforma CDigital</td>
+                                <td class="preg-cell">¿Qué opinas de CDigital? ¿Es estable y fácil de usar?</td>
+                                <td class="preg-cell">¿Se cae en momentos de alta demanda (parciales)?</td>
+                            </tr>
+                            <tr>
+                                <td class="preg-cell">¿La plataforma es intuitiva para estudiantes de sistemas?</td>
+                                <td class="preg-cell">¿Qué mejorarías de CDigital?</td>
+                            </tr>
+                            <tr>
+                                <td class="subcat-cell">Plataforma SINU</td>
+                                <td class="preg-cell">¿Qué opinas de SINU? ¿La usas para trámites?</td>
+                                <td class="preg-cell">¿Es confiable para consultar horarios y notas?</td>
+                            </tr>
+                            <tr>
+                                <td class="subcat-cell">CUN Experience / CUN 360</td>
+                                <td class="preg-cell">¿Conoces CUN 360? ¿La usas?</td>
+                                <td class="preg-cell">¿Qué funcionalidad le ves?</td>
+                            </tr>
+
+                            <tr>
+                                <td class="cat-cell" rowspan="1">SERVICIO AL CLIENTE</td>
+                                <td class="subcat-cell">CamiTicket</td>
+                                <td class="preg-cell">¿Has usado CamiTicket? ¿Cómo fue tu experiencia?</td>
+                                <td class="preg-cell">¿Responden a tiempo y con calidad?</td>
+                            </tr>
+
+                            <tr>
+                                <td class="cat-cell" rowspan="2">BIENESTAR</td>
+                                <td class="subcat-cell">Beneficios y Becas</td>
+                                <td class="preg-cell">¿Conoces los beneficios de Bienestar Universitario?</td>
+                                <td class="preg-cell">¿Has usado C Te Ayuda u otros beneficios?</td>
+                            </tr>
+                            <tr>
+                                <td class="subcat-cell">Actividades de Bienestar</td>
+                                <td class="preg-cell">¿Has participado en actividades deportivas o culturales?</td>
+                                <td class="preg-cell">¿Te enteras de estas actividades?</td>
+                            </tr>
+
+                            <tr>
+                                <td class="cat-cell" rowspan="2">PERTENENCIA</td>
+                                <td class="subcat-cell">Orgullo y Significado</td>
+                                <td class="preg-cell">¿Qué significa la CUN para ti?</td>
+                                <td class="preg-cell">¿Qué palabra usarías para describir la CUN?</td>
+                            </tr>
+                            <tr>
+                                <td class="subcat-cell">Recomendación</td>
+                                <td class="preg-cell">¿Recomendarías la CUN a un amigo?</td>
+                                <td class="preg-cell">¿Qué es lo que más valoras de la CUN?</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="color: #94a3b8; font-size: 0.7rem; margin-top: 8px; font-style: italic;">
+                    * Preguntas extraídas de las transcripciones de los grupos focales de Ingeniería de Sistemas.
+                </p>
+            </div>
+
+        </section>
+
+        <section id="kun" class="tab-pane">
+            <h1 class="main-title">🏢 KUN-Bogotá</h1>
+            <p style="color: #6b7280; margin-bottom: 20px;">
+                Análisis del conocimiento y percepción de KUN CoWork en Bogotá (estudiantes de Sistemas) – basado únicamente en los <strong>grupos focales</strong> realizados con estudiantes de Ingeniería de Sistemas en la sede presencial.
+            </p>
+
+            <div style="margin-bottom: 25px; padding: 15px 20px; background: #f0f4fa; border-radius: 8px; border-left: 5px solid #1a2a4f;">
+                <p style="margin: 0; color: #1a2a4f; font-size: 0.95rem;">
+                    <strong>Resumen de la perspectiva</strong> sobre el espacio de co-working <strong>KUN CoWork</strong> en los grupos focales de Bogotá (Ingeniería de Sistemas Presencial).
+                </p>
+            </div>
+
+            <section id="sofi">
+                <h1 class="titulo-sofi">📊 Embudo de conocimiento de KUN CoWork</h1>
+                <table class="tabla-sofi">
+                    <thead>
+                        <tr>
+                            <th style="width: 40%;">EMBUDO</th>
+                            <th style="text-align: center; width: 15%;">TOTAL (GF)</th>
+                            <th style="text-align: center; width: 15%;">%</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="fila-1">
+                            <td><span class="icono">👥</span> <strong>Total de estudiantes en grupos focales</strong><span class="detalle">Estudiantes de Ingeniería de Sistemas en Bogotá (Presencial)</span></td>
+                            <td class="num">12</td>
+                            <td class="pct">100%</td>
+                        </tr>
+                        <tr class="fila-2">
+                            <td><span class="icono">❌</span> <strong>No conocen KUN CoWork</strong><span class="detalle">Nunca han escuchado hablar del espacio</span></td>
+                            <td class="num">8</td>
+                            <td class="pct">66.7%</td>
+                        </tr>
+                        <tr class="fila-3">
+                            <td><span class="icono">✅</span> <strong>Sí conocen KUN CoWork</strong><span class="detalle">Han escuchado o visto información del espacio</span></td>
+                            <td class="num">4</td>
+                            <td class="pct">33.3%</td>
+                        </tr>
+                        <tr class="fila-4">
+                            <td><span class="icono">🏠</span> <strong>Han visitado KUN CoWork</strong><span class="detalle">Han ido al menos una vez al espacio</span></td>
+                            <td class="num">2</td>
+                            <td class="pct">16.7%<br><span style="font-size:0.7rem;">(50% de los que conocen)</span></td>
+                        </tr>
+                        <tr class="fila-5">
+                            <td><span class="icono">⭐</span> <strong>Lo recomendarían</strong><span class="detalle">De los que lo visitaron, todos lo recomiendan</span></td>
+                            <td class="num">2</td>
+                            <td class="pct">100%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="nota-sofi">📌 2 estudiantes de los grupos focales visitaron KUN CoWork (sede Bosa) y lo recomiendan.</div>
+                <div class="fuente-sofi">Fuente: Grupos focales Bogotá - Ingeniería de Sistemas (Presencial) – 4 sesiones grupales (12 estudiantes).</div>
+            </section>
+
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #e2e8f0;">
+                <div class="preguntas-section-title" style="font-size: 1rem; border-bottom-color: #8b5cf6;">
+                    📋 PREGUNTAS ORIENTADORAS - KUN CoWork
+                    <span class="badge-count" style="background: #8b5cf6;">4 subcategorías</span>
+                </div>
+                <p style="color: #6b7280; font-size: 0.85rem; margin-bottom: 15px;">
+                    Preguntas específicas sobre KUN CoWork utilizadas en los grupos focales de Bogotá.
+                </p>
+                <div class="table-responsive">
+                    <table class="kun-preguntas-table">
+                        <thead>
+                            <tr><th style="width:18%;">Categoría</th><th style="width:22%;">Subcategoría</th><th style="width:30%;">Pregunta Orientadora 1</th><th style="width:30%;">Pregunta Orientadora 2</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="cat-cell" rowspan="4">Grupos focales</td>
+                                <td class="subcat-cell" rowspan="2">Conocimiento</td>
+                                <td class="preg-cell">¿Conocen KUN?</td>
+                                <td class="preg-cell">¿Qué saben de él?</td>
+                            </tr>
+                            <tr>
+                                <td class="preg-cell">Si no lo conocen, ¿por qué creen que no han escuchado de él?</td>
+                                <td class="preg-cell">—</td>
+                            </tr>
+                            <tr>
+                                <td class="subcat-cell">Uso y Visita</td>
+                                <td class="preg-cell">¿Han ido o lo han visitado?</td>
+                                <td class="preg-cell">¿Qué les pareció?</td>
+                            </tr>
+                            <tr>
+                                <td class="subcat-cell">Percepción</td>
+                                <td class="preg-cell">¿Iría a KUN?</td>
+                                <td class="preg-cell">¿Les parece interesante la idea de un espacio de coworking?</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="color: #94a3b8; font-size: 0.7rem; margin-top: 8px; font-style: italic;">
+                    * Preguntas extraídas de las transcripciones de los grupos focales de Bogotá.
+                </p>
+            </div>
+
+            <h4 style="color: #1a2a4f; margin: 30px 0 15px 0; font-size: 1.1rem;">🔍 Análisis de la situación actual</h4>
+
+            <div style="background: #fef2f2; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #ef4444;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                    <span style="font-size: 1.8rem;">🔴</span>
+                    <h5 style="margin: 0; color: #1a2a4f; font-size: 1rem;">1. El problema central: desconocimiento masivo</h5>
+                </div>
+                <p style="margin: 0 0 10px 0; color: #4b5563; font-size: 0.9rem; line-height: 1.6;">
+                    El <strong>66.7%</strong> de los estudiantes en los grupos focales <strong>nunca ha escuchado hablar de KUN CoWork</strong>.
+                    No es un problema de rechazo al espacio, sino de <strong>falta total de exposición</strong>.
+                </p>
+                <p style="margin: 0; color: #991b1b; font-size: 0.85rem; font-weight: 600;">
+                    ⚠️ Impacto: Un espacio diseñado para mejorar la experiencia universitaria está siendo desaprovechado.
+                </p>
+            </div>
+
+            <div style="background: #f0fdf4; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #10b981;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                    <span style="font-size: 1.8rem;">🟢</span>
+                    <h5 style="margin: 0; color: #1a2a4f; font-size: 1rem;">2. La oportunidad: percepción positiva al conocerlo</h5>
+                </div>
+                <p style="margin: 0 0 10px 0; color: #4b5563; font-size: 0.9rem; line-height: 1.6;">
+                    Cuando se les explica el conceptó, <strong>no hay rechazo</strong>. Los estudiantes identifican valor en KUN CoWork.
+                </p>
+                <p style="margin: 10px 0 0 0; color: #065f46; font-size: 0.85rem; font-weight: 600;">
+                    ✅ Conclusión: El producto no es el problema. <strong>La adopción es el problema.</strong>
+                </p>
+            </div>
+
+            <div style="background: #fffbeb; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #f59e0b;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                    <span style="font-size: 1.8rem;">🟡</span>
+                    <h5 style="margin: 0; color: #1a2a4f; font-size: 1rem;">3. KUN CoWork responde a necesidades reales</h5>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.85rem;">
+                    <div style="background: white; padding: 8px 12px; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.04);">
+                        <strong style="color: #1a2a4f;">Tiempos muertos</strong>
+                        <span style="color: #6b7280; display: block; font-size: 0.75rem;">Espacios disponibles todo el día</span>
+                    </div>
+                    <div style="background: white; padding: 8px 12px; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.04);">
+                        <strong style="color: #1a2a4f;">Zonas de descanso</strong>
+                        <span style="color: #6b7280; display: block; font-size: 0.75rem;">Áreas para relajarse entre clases</span>
+                    </div>
+                    <div style="background: white; padding: 8px 12px; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.04);">
+                        <strong style="color: #1a2a4f;">Actividades recreativas</strong>
+                        <span style="color: #6b7280; display: block; font-size: 0.75rem;">Juegos de mesa, videojuegos, bolos</span>
+                    </div>
+                    <div style="background: white; padding: 8px 12px; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.04);">
+                        <strong style="color: #1a2a4f;">Trabajo colaborativo</strong>
+                        <span style="color: #6b7280; display: block; font-size: 0.75rem;">Espacios grupales para proyectos</span>
+                    </div>
+                </div>
+                <p style="margin: 10px 0 0 0; color: #92400e; font-size: 0.85rem; font-weight: 600;">
+                    💡 Insight: No están diciendo "no quiero". Están diciendo <strong>"no sabía que existía"</strong>.
+                </p>
+            </div>
+
+            <div style="background: #f5f3ff; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #8b5cf6;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                    <span style="font-size: 1.8rem;">🟣</span>
+                    <h5 style="margin: 0; color: #1a2a4f; font-size: 1rem;">4. Desconexión con los cambios institucionales</h5>
+                </div>
+                <p style="margin: 0; color: #4b5563; font-size: 0.9rem; line-height: 1.6;">
+                    Los estudiantes ven con preocupación el cierre de sedes (Restrepo, Suba, Fontibón), pero no tienen claro que así mismo se están incluyendo otros espacios como KUN CoWork.
+                </p>
+            </div>
+
+            <div style="margin-top: 25px; padding: 18px 22px; background: #fef3c7; border-radius: 10px; border: 2px solid #f59e0b;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                    <span style="font-size: 1.5rem;">🔍</span>
+                    <h5 style="margin: 0; color: #92400e; font-size: 1rem;">Insight estratégico</h5>
+                </div>
+                <p style="margin: 0; color: #78350f; font-size: 0.9rem; line-height: 1.6;">
+                    El reto principal de KUN CoWork <strong>no es el producto, sino su adopción</strong>.
+                    Los estudiantes valoran espacios para estudiar, descansar y socializar, pero <strong>no saben que la institución ya está desarrollando una solución</strong>.
+                </p>
+            </div>
+
+            <div style="margin-top: 15px; padding: 18px 22px; background: #ede9fe; border-radius: 10px; border: 2px solid #8b5cf6;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                    <span style="font-size: 1.5rem;">🎯</span>
+                    <h5 style="margin: 0; color: #5b21b6; font-size: 1rem;">Hallazgo para directivos</h5>
+                </div>
+                <p style="margin: 0; color: #1e1b4b; font-size: 0.9rem; line-height: 1.6;">
+                    KUN CoWork tiene un <strong>bajo nivel de reconocimiento</strong> (solo el 33.3% lo conoce), a pesar de responder a necesidades reales.
+                    El desafío principal <strong>no es la aceptación del concepto, sino su comunicación y posicionamiento</strong>.
+                </p>
+            </div>
+
+            <div style="margin-top: 15px; padding: 18px 22px; background: #f0fdf4; border-radius: 10px; border: 2px solid #10b981;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                    <span style="font-size: 1.5rem;">📋</span>
+                    <h5 style="margin: 0; color: #065f46; font-size: 1rem;">Plan de acción sugerido</h5>
+                </div>
+                <div class="table-wrapper">
+                    <table class="table-custom" style="font-size: 0.85rem;">
+                        <thead>
+                            <tr>
+                                <th style="width: 40%;">Acción</th>
+                                <th style="width: 30%;">Plazo</th>
+                                <th style="width: 30%;">Responsable</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Campaña de lanzamiento "Descubre KUN CoWork"</td>
+                                <td><span style="color: #ef4444; font-weight: 700;">Inmediato</span></td>
+                                <td>Comunicaciones</td>
+                            </tr>
+                            <tr>
+                                <td>Tours guiados para estudiantes nuevos y antiguos</td>
+                                <td><span style="color: #f59e0b; font-weight: 700;">1 mes</span></td>
+                                <td>Bienestar</td>
+                            </tr>
+                            <tr>
+                                <td>Integración de KUN CoWork en inducción de nuevos estudiantes</td>
+                                <td><span style="color: #3b82f6; font-weight: 700;">Próximo semestre</span></td>
+                                <td>Dirección de Programa</td>
+                            </tr>
+                            <tr>
+                                <td>Difusión mensual en correos y CUN 360</td>
+                                <td><span style="color: #10b981; font-weight: 700;">Continuo</span></td>
+                                <td>Comunicaciones</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="academico" class="tab-pane">
+            <h1 class="main-title">🎓 Académico</h1>
+            <p style="color: #6b7280; margin-bottom: 20px;">Análisis de la calidad del pensum, docencia y prácticas profesionales por ciudad.</p>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('acad_ibague_sis')">
+                    <span>Ibagué</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="acad_ibague_sis" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> Docentes divertidos y dinámicos, aunque no usan muchas herramientas tecnológicas. El contenido es aplicable al día a día (mantenimiento, formateo).</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"Los profesores son bacanos, enseñan lo que es, son muy activos."</div>
+                        <div class="verbatim">"Priorizan cosas como formatear o hacer mantenimiento."</div>
+                    </div>
+                    <p style="margin-top: 10px;"><span class="badge-warn">Mixta</span> Un estudiante de 5° semestre señala que en redes se ven cosas muy básicas y falta profundizar en switches, fibra óptica y radioenlaces.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"No veo que esté muy fuerte en redes, ven cosas básicas. No recuerdo que me hayan mostrado una imagen de un switch de fibra."</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('acad_medellin_sis')">
+                    <span>Medellín</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="acad_medellin_sis" class="accordion-content">
+                    <p>Contenido en desarrollo...</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="tecnologico" class="tab-pane"><h2>💻 Sección Tecnológica</h2><p>Contenido en desarrollo...</p></section>
+        <section id="servicio" class="tab-pane"><h2>📞 Servicio al Cliente</h2><p>Contenido en desarrollo...</p></section>
+        <section id="bienestar" class="tab-pane"><h2>❤️ Bienestar</h2><p>Contenido en desarrollo...</p></section>
+        <section id="pertenencia" class="tab-pane"><h2>🏆 Pertenencia</h2><p>Contenido en desarrollo...</p></section>
+        <section id="matriz" class="tab-pane"><h2>📋 Matriz de Semáforo</h2><p>Contenido en desarrollo...</p></section>
+        <section id="insights" class="tab-pane"><h2>💡 Insights Estratégicos</h2><p>Contenido en desarrollo...</p></section>
+
+    </main>
+</div>
+
+<script>
+function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    
+    // Ocultar todas las secciones con la clase tab-pane
+    tabcontent = document.getElementsByClassName("tab-pane");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].classList.remove("active");
+    }
+
+    // Quitar la clase active de todos los botones del menú
+    tablinks = document.getElementsByClassName("nav-btn");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+    }
+
+    // Mostrar la sección actual asignándole la clase active
+    var currentTab = document.getElementById(tabName);
+    if (currentTab) {
+        currentTab.classList.add("active");
+    }
+    
+    // Activar visualmente el botón presionado
+    evt.currentTarget.classList.add("active");
+}
+
+function toggleSubmenu(id) {
+    var submenu = document.getElementById(id);
+    if (submenu.style.display === "block" || submenu.style.display === "flex") {
+        submenu.style.display = "none";
+    } else {
+        submenu.style.display = "block";
+    }
+}
+
+// Función auxiliar para los acordeones internos si los usas
+function toggleAccordion(id) {
+    var content = document.getElementById(id);
+    if (content.style.display === "block") {
+        content.style.display = "none";
+    } else {
+        content.style.display = "block";
+    }
+}
+</script>
+
+</body>
+</html>

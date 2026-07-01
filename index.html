@@ -3,65 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auditoría CUN - Ingeniería de Sistemas</title>
+    <title>Auditoría CUN - Administración de Empresas</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="estilos.css">
     <style>
-        /* Estilos adicionales para tablas de subcategorías */
-        .subcat-table td {
-            vertical-align: top;
-            padding: 12px 10px;
+        /* ===== ESTILOS PARA EL EMBUDO DE KUN ===== */
+        .funnel-container {
+            max-width: 700px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
         }
-        .subcat-table .cat-label {
+        .funnel-title {
+            text-align: center;
+            font-size: 1.2rem;
             font-weight: 700;
             color: #1a2a4f;
-            background: #f0f4fa;
+            margin-bottom: 25px;
         }
-        .subcat-table .subcat-label {
-            font-weight: 600;
-            color: #2d3748;
+        .funnel-step {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 20px;
+            margin-bottom: 8px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+            border-left: 5px solid #1a2a4f;
+            transition: all 0.2s;
         }
-        .explanation-long {
+        .funnel-step:hover {
+            transform: translateX(5px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .funnel-step .step-icon {
+            font-size: 1.8rem;
+            width: 45px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .funnel-step .step-info {
+            flex: 1;
+        }
+        .funnel-step .step-info .step-label {
             font-size: 0.85rem;
             color: #4b5563;
-            line-height: 1.5;
-            display: block;
-            margin-top: 2px;
+            font-weight: 600;
         }
-        .polarity-badge {
-            display: inline-block;
-            padding: 2px 10px;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 0.8rem;
+        .funnel-step .step-info .step-detail {
+            font-size: 0.75rem;
+            color: #6b7280;
         }
-        .polarity-badge.pos { background: #dcfce7; color: #166534; }
-        .polarity-badge.neg { background: #fee2e2; color: #991b1b; }
-        .polarity-badge.mix { background: #fef3c7; color: #92400e; }
-        .subj-badge {
-            display: inline-block;
-            padding: 2px 10px;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 0.8rem;
-            background: #e0e7ff;
-            color: #3730a3;
+        .funnel-step .step-number {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: #1a2a4f;
+            min-width: 50px;
+            text-align: right;
         }
-        .semaforo-detalle {
+        .funnel-step .step-percent {
+            font-size: 0.75rem;
+            color: #6b7280;
+            font-weight: 600;
+            min-width: 50px;
+            text-align: right;
+        }
+        .funnel-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #94a3b8;
+            line-height: 1;
+            margin: -2px 0;
+        }
+        .funnel-step.level-1 { border-left-color: #1a2a4f; }
+        .funnel-step.level-2 { border-left-color: #ef4444; }
+        .funnel-step.level-3 { border-left-color: #10b981; }
+        .funnel-step.level-4 { border-left-color: #f59e0b; }
+        .funnel-step.level-5 { border-left-color: #8b5cf6; }
+        .funnel-note {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #94a3b8;
+            margin-top: 15px;
+            font-style: italic;
+        }
+        .funnel-source {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #94a3b8;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        /* ===== ESTILOS PARA LA TABLA DE PREGUNTAS ===== */
+        .preguntas-table {
+            width: 100%;
+            border-collapse: collapse;
             font-size: 0.85rem;
-            color: #1e293b;
-            line-height: 1.6;
-            display: block;
-            margin-top: 4px;
-            background: #f8fafc;
-            padding: 6px 10px;
-            border-radius: 6px;
-            border-left: 3px solid #94a3b8;
+            margin: 20px 0;
         }
-        .semaforo-detalle.verde { border-left-color: #10b981; }
-        .semaforo-detalle.amarillo { border-left-color: #f59e0b; }
-        .semaforo-detalle.rojo { border-left-color: #ef4444; }
-        .semaforo-detalle.gris { border-left-color: #9ca3af; }
+        .preguntas-table thead th {
+            background: #1a2a4f;
+            color: white;
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .preguntas-table tbody td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+        .preguntas-table tbody tr:hover {
+            background: #f1f5f9;
+        }
+        .preguntas-table .cat-cell {
+            font-weight: 700;
+            color: #1a2a4f;
+            background: #f8fafc;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .preguntas-table .subcat-cell {
+            font-weight: 600;
+            color: #334155;
+            font-size: 0.8rem;
+        }
+        .preguntas-table .preg-cell {
+            color: #4b5563;
+            font-size: 0.8rem;
+        }
+        .preguntas-section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a2a4f;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #1a2a4f;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .preguntas-section-title .badge-count {
+            background: #1a2a4f;
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .funnel-step {
+                flex-wrap: wrap;
+                padding: 10px 15px;
+            }
+            .funnel-step .step-number {
+                font-size: 1.2rem;
+                min-width: 40px;
+            }
+            .preguntas-table {
+                font-size: 0.75rem;
+            }
+            .preguntas-table thead th,
+            .preguntas-table tbody td {
+                padding: 6px 8px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -69,45 +184,61 @@
 <div class="app-container">
 
     <!-- ============================== -->
-    <!-- SIDEBAR -->
+    <!-- SIDEBAR POR SECCIONES -->
     <!-- ============================== -->
     <aside class="sidebar">
         <div class="brand">CUN ANALYTICS</div>
         <nav class="nav-menu">
+
             <div class="nav-label">SECCIONES</div>
-            <button class="nav-btn" onclick="openTab(event, 'resumen')"><span class="icon">📊</span> Resumen General</button>
-            <button class="nav-btn" onclick="openTab(event, 'kun')"><span class="icon">🏢</span> KUN-Bogotá</button>
-            <!-- ÍTEM SISTEMAS -->
-            <button class="nav-btn active" onclick="openTab(event, 'sistemas')"><span class="icon">⚙️</span> SISTEMAS</button>
-            <button class="nav-btn" onclick="openTab(event, 'academico')"><span class="icon">🎓</span> Académico</button>
-            <button class="nav-btn" onclick="openTab(event, 'tecnologico')"><span class="icon">💻</span> Tecnológico</button>
-            <button class="nav-btn" onclick="openTab(event, 'servicio')"><span class="icon">📞</span> Servicio al Cliente</button>
-            <button class="nav-btn" onclick="openTab(event, 'bienestar')"><span class="icon">❤️</span> Bienestar</button>
-            <button class="nav-btn" onclick="openTab(event, 'pertenencia')"><span class="icon">🏆</span> Pertenencia</button>
-            <button class="nav-btn" onclick="openTab(event, 'matriz')"><span class="icon">📋</span> Matriz de Semáforo</button>
-            <button class="nav-btn" onclick="openTab(event, 'insights')"><span class="icon">💡</span> Insights</button>
-            <button class="nav-btn" onclick="toggleSubmenu('submenu-ciudades')">
-                <span class="icon">🏙️</span> CIUDADES <span class="arrow-submenu">▶</span>
+
+            <button class="nav-btn active" onclick="openTab(event, 'resumen')">
+                <span class="icon">📊</span> Resumen General admin empresas
             </button>
-            <div id="submenu-ciudades" class="submenu">
-                <a href="ciudades/Barranquilla.html" class="submenu-item">Barranquilla</a>
-                <a href="ciudades/Bogota_Presencial.html" class="submenu-item">Bogotá Presencial</a>
-                <a href="ciudades/Bogota_Virtual.html" class="submenu-item">Bogotá Virtual</a>
-                <a href="ciudades/Bucaramanga.html" class="submenu-item">Bucaramanga</a>
-                <a href="ciudades/Cali_Admin.html" class="submenu-item">Cali</a>
-                <a href="ciudades/Cartagena.html" class="submenu-item">Cartagena</a>
-                <a href="ciudades/Ibagué_Admin.html" class="submenu-item">Ibagué</a>
-                <a href="ciudades/Medellin.html" class="submenu-item">Medellín</a>
-                <a href="ciudades/Monteria.html" class="submenu-item">Montería</a>
-                <a href="ciudades/Pereira.html" class="submenu-item">Pereira</a>
-                <a href="ciudades/Villavicencio.html" class="submenu-item">Villavicencio</a>
-                <a href="ciudades/Yopal.html" class="submenu-item">Yopal</a>
-            </div>
+
+            <button class="nav-btn" onclick="openTab(event, 'kun')">
+                <span class="icon">🏢</span> KUN-Bogotá
+            </button>
+
+            <button class="nav-btn" onclick="openTab(event, 'academico')">
+                <span class="icon">🎓</span> Académico
+            </button>
+
+            <button class="nav-btn" onclick="openTab(event, 'tecnologico')">
+                <span class="icon">💻</span> Tecnológico
+            </button>
+
+            <button class="nav-btn" onclick="openTab(event, 'servicio')">
+                <span class="icon">📞</span> Servicio al Cliente
+            </button>
+
+            <button class="nav-btn" onclick="openTab(event, 'bienestar')">
+                <span class="icon">❤️</span> Bienestar
+            </button>
+
+            <button class="nav-btn" onclick="openTab(event, 'pertenencia')">
+                <span class="icon">🏆</span> Pertenencia
+            </button>
+
+            <button class="nav-btn" onclick="openTab(event, 'matriz')">
+                <span class="icon">📋</span> Matriz de Semáforo
+            </button>
+
+            <button class="nav-btn" onclick="openTab(event, 'insights')">
+                <span class="icon">💡</span> Insights Estratégicos
+            </button>
+
             <a href="../../index.html">
-                <button class="nav-btn" id="back-btn" style="margin-top:20px; color:#f59e0b;">
+                <button class="nav-btn" id="back-btn" style="margin-top: 20px; color: #f59e0b;">
                     <span class="icon">🔙</span> Volver al Inicio
                 </button>
             </a>
+            <a href="./ingenieria de sistemas/index.html">
+                <button class="nav-btn" id="back-btn" style="margin-top: 20px; color: #f59e0b;">
+                    <span class="icon">🔙</span> Ingenieria de sistemas 
+                </button>
+            </a>
+
         </nav>
     </aside>
 
@@ -117,366 +248,1529 @@
     <main class="main-content">
 
         <!-- ============================================================ -->
-        <!-- SECCIÓN 1: RESUMEN (sin cambios, solo placeholder) -->
+        <!-- SECCIÓN 1: RESUMEN GENERAL -->
         <!-- ============================================================ -->
-        <section id="resumen" class="tab-pane">
+        <section id="resumen" class="tab-pane active">
             <h1 class="main-title">📊 Resumen General</h1>
-            <p style="color:#6b7280;">Contenido de Resumen General (sin cambios).</p>
+            
+            <h1 class="main-title">Estudiantes administración de empresas</h1>
+
+            <!-- ESTADÍSTICAS GENERALES -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="number">24</div>
+                    <div class="label">Total estudiantes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">13</div>
+                    <div class="label">Hombres</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">11</div>
+                    <div class="label">Mujeres</div>
+                </div>
+                <div class="stat-card" style="border-top-color: #3b82f6;">
+                    <div class="number">17</div>
+                    <div class="label">Virtuales</div>
+                </div>
+                <div class="stat-card" style="border-top-color: #f59e0b;">
+                    <div class="number">7</div>
+                    <div class="label">Presenciales</div>
+                </div>
+            </div>
+
+            <!-- TABLA DE ESTUDIANTES POR CIUDAD -->
+            <div class="table-wrapper">
+                <table class="table-custom">
+                    <thead>
+                        <tr>
+                            <th>Ciudad</th>
+                            <th>Carrera</th>
+                            <th>Semestres</th>
+                            <th>Hombres</th>
+                            <th>Mujeres</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Barranquilla</td><td>Administración de Empresas</td><td>2do</td><td>2</td><td>0</td><td><strong>2</strong></td></tr>
+                        <tr><td>Ibagué</td><td>Administración de Empresas</td><td>2do</td><td>1</td><td>1</td><td><strong>2</strong></td></tr>
+                        <tr><td>Bogotá Presencial</td><td>Administración de Empresas</td><td>4to</td><td>3</td><td>2</td><td><strong>5</strong></td></tr>
+                        <tr><td>Bogotá Virtual</td><td>Administración de Empresas</td><td>2do y 3er</td><td>3</td><td>2</td><td><strong>5</strong></td></tr>
+                        <tr><td>Bucaramanga</td><td>Administración de Empresas</td><td>2do (335)</td><td>0</td><td>1</td><td><strong>1</strong></td></tr>
+                        <tr><td>Cali</td><td>Administración de Empresas</td><td>5to (intermitente)</td><td>1</td><td>0</td><td><strong>1</strong></td></tr>
+                        <tr><td>Cartagena</td><td>Administración de Empresas</td><td>2do</td><td>0</td><td>1</td><td><strong>1</strong></td></tr>
+                        <tr><td>Medellín</td><td>Administración de Empresas</td><td>2do, 3er y 4to</td><td>1</td><td>2</td><td><strong>3</strong></td></tr>
+                        <tr><td>Montería</td><td>Administración de Empresas</td><td>3er</td><td>0</td><td>1</td><td><strong>1</strong></td></tr>
+                        <tr><td>Pereira</td><td>Administración de Empresas</td><td>2do</td><td>1</td><td>0</td><td><strong>1</strong></td></tr>
+                        <tr><td>Villavicencio</td><td>Administración de Empresas</td><td>2do</td><td>1</td><td>1</td><td><strong>2</strong></td></tr>
+                        <tr><td>Yopal</td><td>Administración de Empresas</td><td>2do</td><td>0</td><td>1</td><td><strong>1</strong></td></tr>
+                        <tr class="total-row"><td colspan="3"><strong>TOTAL</strong></td><td><strong>13</strong></td><td><strong>11</strong></td><td><strong>24</strong></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- ============================================================ -->
+<!-- TABLA DE PREGUNTAS ORIENTADORAS -->
+<!-- ============================================================ -->
+<div style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #e2e8f0;">
+    <div class="preguntas-section-title">
+        📋 TABLA DE PREGUNTAS ORIENTADORAS - GRUPOS FOCALES ADMINISTRACIÓN DE EMPRESAS
+        <span class="badge-count">22 subcategorías</span>
+    </div>
+    <p style="color: #6b7280; font-size: 0.85rem; margin-bottom: 15px;">
+        Preguntas reales utilizadas en los grupos focales con estudiantes de Administración de Empresas.
+    </p>
+
+    <div class="table-responsive">
+        <table class="preguntas-table">
+            <thead>
+                <tr>
+                    <th style="width: 18%;">Categoría</th>
+                    <th style="width: 22%;">Subcategoría</th>
+                    <th style="width: 30%;">Pregunta Orientadora 1</th>
+                    <th style="width: 30%;">Pregunta Orientadora 2</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- ACADÉMICO -->
+                <tr>
+                    <td class="cat-cell" rowspan="5">ACADÉMICO</td>
+                    <td class="subcat-cell" rowspan="3">Calidad del Pensum y Contenidos</td>
+                    <td class="preg-cell">¿Qué opinas de la metodología que se usa?</td>
+                    <td class="preg-cell">¿Los contenidos son útiles y aplicables al medio laboral?</td>
+                </tr>
+                <tr>
+                    <td class="preg-cell">¿La organización por semanas en la plataforma es clara?</td>
+                    <td class="preg-cell">¿El material en plataforma es suficiente para aprender?</td>
+                </tr>
+                <tr>
+                    <td class="preg-cell">¿Los contenidos son interactivos?</td>
+                    <td class="preg-cell">¿Los contenidos están actualizados?</td>
+                </tr>
+                <tr>
+                    <td class="subcat-cell">Docencia y Metodología</td>
+                    <td class="preg-cell">¿Cómo calificarías la calidad de los docentes?</td>
+                    <td class="preg-cell">¿Los docentes explican bien y son accesibles?</td>
+                </tr>
+                <tr>
+                    <td class="subcat-cell">Prácticas Profesionales</td>
+                    <td class="preg-cell">¿Cómo están las prácticas profesionales?</td>
+                    <td class="preg-cell">¿La universidad te ha apoyado para conseguir prácticas?</td>
+                </tr>
+
+                <!-- TECNOLÓGICO -->
+                <tr>
+                    <td class="cat-cell" rowspan="4">TECNOLÓGICO</td>
+                    <td class="subcat-cell" rowspan="2">Plataforma CDigital</td>
+                    <td class="preg-cell">¿Qué opinas de la plataforma CDigital?</td>
+                    <td class="preg-cell">¿Es estable y fácil de usar?</td>
+                </tr>
+                <tr>
+                    <td class="preg-cell">¿La plataforma avisa cuando se va a cerrar un trabajo?</td>
+                    <td class="preg-cell">¿Los mantenimientos se anuncian con anticipación?</td>
+                </tr>
+                <tr>
+                    <td class="subcat-cell">Plataforma SINU</td>
+                    <td class="preg-cell">¿Qué opinas de la plataforma SINU?</td>
+                    <td class="preg-cell">¿La has utilizado para trámites?</td>
+                </tr>
+                <tr>
+                    <td class="subcat-cell">CUN Experience / CUN 360</td>
+                    <td class="preg-cell">¿Conoces CUN Experience o CUN 360?</td>
+                    <td class="preg-cell">¿Qué funcionalidad le ves?</td>
+                </tr>
+
+                <!-- SERVICIO AL CLIENTE -->
+                <tr>
+                    <td class="cat-cell" rowspan="1">SERVICIO AL CLIENTE</td>
+                    <td class="subcat-cell">CamiTicket</td>
+                    <td class="preg-cell">¿Has utilizado CamiTicket para resolver algún problema?</td>
+                    <td class="preg-cell">¿Cómo fue tu experiencia con CamiTicket?</td>
+                </tr>
+
+                <!-- BIENESTAR -->
+                <tr>
+                    <td class="cat-cell" rowspan="2">BIENESTAR</td>
+                    <td class="subcat-cell">Beneficios y Becas</td>
+                    <td class="preg-cell">¿Conoces los beneficios que ofrece Bienestar Universitario?</td>
+                    <td class="preg-cell">¿Has utilizado algún servicio de bienestar?</td>
+                </tr>
+                <tr>
+                    <td class="subcat-cell">Actividades de Bienestar</td>
+                    <td class="preg-cell">¿Has participado en actividades de bienestar?</td>
+                    <td class="preg-cell">¿Qué actividades conoces?</td>
+                </tr>
+
+                <!-- PERTENENCIA -->
+                <tr>
+                    <td class="cat-cell" rowspan="2">PERTENENCIA</td>
+                    <td class="subcat-cell">Orgullo y Significado</td>
+                    <td class="preg-cell">¿Qué significa la CUN en tu vida?</td>
+                    <td class="preg-cell">¿Qué palabra usarías para describir la CUN?</td>
+                </tr>
+                <tr>
+                    <td class="subcat-cell">Recomendación</td>
+                    <td class="preg-cell">¿Recomendarías la CUN a un amigo o familiar?</td>
+                    <td class="preg-cell">¿Qué es lo que más valoras de la CUN?</td>
+                </tr>
+
+                <!-- KUN CoWork -->
+                <tr>
+                    <td class="cat-cell" rowspan="4">KUN CoWork</td>
+                    <td class="subcat-cell" rowspan="2">Conocimiento</td>
+                    <td class="preg-cell">¿Conoces o has escuchado de KUN CoWork?</td>
+                    <td class="preg-cell">¿Qué sabes de él?</td>
+                </tr>
+                <tr>
+                    <td class="preg-cell">Si no lo conoces, ¿por qué crees que no has escuchado de él?</td>
+                    <td class="preg-cell">—</td>
+                </tr>
+                <tr>
+                    <td class="subcat-cell">Uso y Visita</td>
+                    <td class="preg-cell">¿Has ido o lo has visitado?</td>
+                    <td class="preg-cell">¿Qué te pareció?</td>
+                </tr>
+                <tr>
+                    <td class="subcat-cell">Percepción</td>
+                    <td class="preg-cell">¿Te parece interesante la idea de un espacio de coworking?</td>
+                    <td class="preg-cell">¿Te gustaría ir o participar?</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <p style="color: #94a3b8; font-size: 0.7rem; margin-top: 8px; font-style: italic;">
+        * Preguntas extraídas de las transcripciones de los grupos focales de Administración de Empresas.
+    </p>
+</div>
+
         </section>
 
         <!-- ============================================================ -->
-        <!-- SECCIÓN KUN (sin cambios, solo placeholder) -->
+        <!-- SECCIÓN KUN-BOGOTÁ (pestaña EXCLUSIVA) -->
         <!-- ============================================================ -->
         <section id="kun" class="tab-pane">
             <h1 class="main-title">🏢 KUN-Bogotá</h1>
-            <p style="color:#6b7280;">Contenido de KUN (sin cambios).</p>
-        </section>
-
-        <!-- ============================================================ -->
-        <!-- SECCIÓN SISTEMAS (ANÁLISIS CON SUBCATEGORÍAS Y EXPLICACIONES LARGAS) -->
-        <!-- ============================================================ -->
-        <section id="sistemas" class="tab-pane active">
-            <h1 class="main-title">⚙️ Análisis por Ciudad – Ingeniería de Sistemas</h1>
             <p style="color: #6b7280; margin-bottom: 20px;">
-                8 grupos focales · Bogotá, Medellín, Sincelejo · Mayo–Junio 2026
+                Análisis del conocimiento y percepción de KUN CoWork en Bogotá.
             </p>
 
-            <!-- Resumen ejecutivo -->
-            <div style="display:grid; grid-template-columns: repeat(4,1fr); gap:15px; margin-bottom:25px;">
-                <div class="stat-card" style="border-top-color:#1a2a4f;"><div class="number">36</div><div class="label">Estudiantes</div></div>
-                <div class="stat-card" style="border-top-color:#3b82f6;"><div class="number">5</div><div class="label">Semestres (1° a 5°)</div></div>
-                <div class="stat-card" style="border-top-color:#f59e0b;"><div class="number">3</div><div class="label">Ciudades</div></div>
-                <div class="stat-card" style="border-top-color:#ef4444;"><div class="number">75%</div><div class="label">Insatisfacción con tickets</div></div>
+            <!-- ===== DESCRIPCIÓN ===== -->
+            <div style="margin-bottom: 25px; padding: 15px 20px; background: #f0f4fa; border-radius: 8px; border-left: 5px solid #1a2a4f;">
+                <p style="margin: 0; color: #1a2a4f; font-size: 0.95rem;">
+                    <strong>Resumen de la perspectiva</strong> sobre el espacio de co-working <strong>KUN CoWork</strong> en los grupos focales de Bogotá.
+                </p>
             </div>
 
-            <!-- ============================== -->
-            <!-- 1. BOGOTÁ (con subcategorías) -->
-            <!-- ============================== -->
+<div class="funnel-container">
+    <div class="funnel-title">📊 Embudo de conocimiento de KUN CoWork</div>
+
+    <table class="table-custom" style="width: 100%; border-collapse: collapse; text-align: center;">
+        <thead>
+            <tr style="background-color: #f8fafc; color: #1a2a4f; font-size: 0.8rem; font-weight: 700;">
+                <th style="padding: 12px; text-align: left;">EMBUDO</th>
+                <th style="padding: 12px;">TOTAL</th>
+                <th style="padding: 12px;">GRUPOS FOCALES</th>
+                <th style="padding: 12px;">POR LLAMADA</th>
+                <th style="padding: 12px;">%</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="border-bottom: 1px solid #e2e8f0;">
+                <td style="padding: 15px; text-align: left; font-weight: 600;">👥 Total estudiantes contactados</td>
+                <td style="font-weight: 700;">109</td>
+                <td>11</td>
+                <td>98</td>
+                <td style="font-weight: 700;">100%</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #e2e8f0;">
+                <td style="padding: 15px; text-align: left; font-weight: 600;">❌ No conocen KUN CoWork</td>
+                <td style="font-weight: 700;">81</td>
+                <td>8</td>
+                <td>73</td>
+                <td style="font-weight: 700; color: #ef4444;">74.3%</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #e2e8f0;">
+                <td style="padding: 15px; text-align: left; font-weight: 600;">✅ Sí conocen KUN CoWork</td>
+                <td style="font-weight: 700;">28</td>
+                <td>3</td>
+                <td>25</td>
+                <td style="font-weight: 700; color: #10b981;">25.7%</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #e2e8f0;">
+                <td style="padding: 15px; text-align: left; font-weight: 600;">🏠 Han visitado KUN CoWork</td>
+                <td style="font-weight: 700;">2</td>
+                <td>2</td>
+                <td>0</td>
+                <td style="font-weight: 700;">7.1%</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #e2e8f0;">
+                <td style="padding: 15px; text-align: left; font-weight: 600;">⭐ Lo recomendarían</td>
+                <td style="font-weight: 700;">2</td>
+                <td>2</td>
+                <td>0</td>
+                <td style="font-weight: 700;">100%</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+  
+
+
+            <!-- ===== TARJETA DE DATOS ===== -->
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; text-align: center; margin: 20px 0;">
+                <div style="background: white; padding: 18px 10px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-top: 4px solid #1a2a4f;">
+                    <div style="font-size: 2.2rem; font-weight: 900; color: #1a2a4f;">109</div>
+                    <div style="font-size: 0.8rem; color: #6b7280; font-weight: 600;">Total contactados</div>
+                </div>
+                <div style="background: white; padding: 18px 10px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-top: 4px solid #10b981;">
+                    <div style="font-size: 2.2rem; font-weight: 900; color: #10b981;">28</div>
+                    <div style="font-size: 0.8rem; color: #6b7280; font-weight: 600;">✅ Conocen KUN CoWork</div>
+                    <div style="font-size: 0.7rem; color: #10b981;">25.7%</div>
+                </div>
+                <div style="background: white; padding: 18px 10px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-top: 4px solid #ef4444;">
+                    <div style="font-size: 2.2rem; font-weight: 900; color: #ef4444;">81</div>
+                    <div style="font-size: 0.8rem; color: #6b7280; font-weight: 600;">❌ No conocen KUN CoWork</div>
+                    <div style="font-size: 0.7rem; color: #ef4444;">74.3%</div>
+                </div>
+            </div>
+
+            <!-- ===== ANÁLISIS ESTRATÉGICO ===== -->
+            <h4 style="color: #1a2a4f; margin: 30px 0 15px 0; font-size: 1.1rem;">🔍 Análisis de la situación actual</h4>
+
+            <div style="background: #fef2f2; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #ef4444;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                    <span style="font-size: 1.8rem;">🔴</span>
+                    <h5 style="margin: 0; color: #1a2a4f; font-size: 1rem;">1. El problema central: desconocimiento masivo</h5>
+                </div>
+                <p style="margin: 0 0 10px 0; color: #4b5563; font-size: 0.9rem; line-height: 1.6;">
+                    El <strong>74.3%</strong> de los estudiantes contactados <strong>nunca ha escuchado hablar de KUN CoWork</strong>.
+                    No es un problema de rechazo al espacio, sino de <strong>falta total de exposición</strong>.
+                </p>
+                <p style="margin: 0; color: #991b1b; font-size: 0.85rem; font-weight: 600;">
+                    ⚠️ Impacto: Un espacio diseñado para mejorar la experiencia universitaria está siendo desaprovechado.
+                </p>
+            </div>
+
+            <div style="background: #f0fdf4; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #10b981;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                    <span style="font-size: 1.8rem;">🟢</span>
+                    <h5 style="margin: 0; color: #1a2a4f; font-size: 1rem;">2. La oportunidad: percepción positiva al conocerlo</h5>
+                </div>
+                <p style="margin: 0 0 10px 0; color: #4b5563; font-size: 0.9rem; line-height: 1.6;">
+                    Cuando se les explica el concepto, <strong>no hay rechazo</strong>. Los estudiantes identifican valor en KUN CoWork.
+                </p>
+                <p style="margin: 10px 0 0 0; color: #065f46; font-size: 0.85rem; font-weight: 600;">
+                    ✅ Conclusión: El producto no es el problema. <strong>La adopción es el problema.</strong>
+                </p>
+            </div>
+
+            <div style="background: #fffbeb; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #f59e0b;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                    <span style="font-size: 1.8rem;">🟡</span>
+                    <h5 style="margin: 0; color: #1a2a4f; font-size: 1rem;">3. KUN CoWork responde a necesidades reales</h5>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.85rem;">
+                    <div style="background: white; padding: 8px 12px; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.04);">
+                        <strong style="color: #1a2a4f;">Tiempos muertos</strong>
+                        <span style="color: #6b7280; display: block; font-size: 0.75rem;">Espacios disponibles todo el día</span>
+                    </div>
+                    <div style="background: white; padding: 8px 12px; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.04);">
+                        <strong style="color: #1a2a4f;">Zonas de descanso</strong>
+                        <span style="color: #6b7280; display: block; font-size: 0.75rem;">Áreas para relajarse entre clases</span>
+                    </div>
+                    <div style="background: white; padding: 8px 12px; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.04);">
+                        <strong style="color: #1a2a4f;">Actividades recreativas</strong>
+                        <span style="color: #6b7280; display: block; font-size: 0.75rem;">Juegos de mesa, videojuegos, bolos</span>
+                    </div>
+                    <div style="background: white; padding: 8px 12px; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.04);">
+                        <strong style="color: #1a2a4f;">Trabajo colaborativo</strong>
+                        <span style="color: #6b7280; display: block; font-size: 0.75rem;">Espacios grupales para proyectos</span>
+                    </div>
+                </div>
+                <p style="margin: 10px 0 0 0; color: #92400e; font-size: 0.85rem; font-weight: 600;">
+                    💡 Insight: No están diciendo "no quiero". Están diciendo <strong>"no sabía que existía"</strong>.
+                </p>
+            </div>
+
+            <div style="background: #f5f3ff; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #8b5cf6;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                    <span style="font-size: 1.8rem;">🟣</span>
+                    <h5 style="margin: 0; color: #1a2a4f; font-size: 1rem;">4. Desconexión con los cambios institucionales</h5>
+                </div>
+                <p style="margin: 0; color: #4b5563; font-size: 0.9rem; line-height: 1.6;">
+                    Los estudiantes ven con preocupación el cierre de sedes, pero no tienen claro que así mismo se estan incluyendo otros espacios.
+                </p>
+            </div>
+
+            <!-- ===== INSIGHT ESTRATÉGICO ===== -->
+            <div style="margin-top: 25px; padding: 18px 22px; background: #fef3c7; border-radius: 10px; border: 2px solid #f59e0b;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                    <span style="font-size: 1.5rem;">🔍</span>
+                    <h5 style="margin: 0; color: #92400e; font-size: 1rem;">Insight estratégico</h5>
+                </div>
+                <p style="margin: 0; color: #78350f; font-size: 0.9rem; line-height: 1.6;">
+                    El reto principal de KUN CoWork <strong>no es el producto, sino su adopción</strong>.
+                    Los estudiantes valoran espacios para estudiar, descansar y socializar, pero <strong>no saben que la institución ya está desarrollando una solución</strong>.
+                </p>
+            </div>
+
+
+            <!-- ===== HALLAZGO PARA DIRECTIVOS ===== -->
+            <div style="margin-top: 15px; padding: 18px 22px; background: #ede9fe; border-radius: 10px; border: 2px solid #8b5cf6;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                    <span style="font-size: 1.5rem;">🎯</span>
+                    <h5 style="margin: 0; color: #5b21b6; font-size: 1rem;">Hallazgo para directivos</h5>
+                </div>
+                <p style="margin: 0; color: #1e1b4b; font-size: 0.9rem; line-height: 1.6;">
+                    KUN CoWork tiene un <strong>bajo nivel de reconocimiento</strong> (solo el 25.7% lo conoce), a pesar de responder a necesidades reales.
+                    El desafío principal <strong>no es la aceptación del concepto, sino su comunicación y posicionamiento</strong>.
+                </p>
+            </div>
+
+            <!-- ===== PLAN DE ACCIÓN ===== -->
+            <div style="margin-top: 15px; padding: 18px 22px; background: #f0fdf4; border-radius: 10px; border: 2px solid #10b981;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                    <span style="font-size: 1.5rem;">📋</span>
+                    <h5 style="margin: 0; color: #065f46; font-size: 1rem;">Plan de acción sugerido</h5>
+                </div>
+                <div class="table-wrapper">
+                    <table class="table-custom" style="font-size: 0.85rem;">
+                        <thead>
+                            <tr>
+                                <th style="width: 40%;">Acción</th>
+                                <th style="width: 30%;">Plazo</th>
+                                <th style="width: 30%;">Responsable</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Campaña de lanzamiento "Descubre KUN CoWork"</td>
+                                <td><span style="color: #ef4444; font-weight: 700;">Inmediato</span></td>
+                                <td>Comunicaciones</td>
+                            </tr>
+                            <tr>
+                                <td>Tours guiados para estudiantes nuevos y antiguos</td>
+                                <td><span style="color: #f59e0b; font-weight: 700;">1 mes</span></td>
+                                <td>Bienestar</td>
+                            </tr>
+                            <tr>
+                                <td>Integración de KUN CoWork en inducción de nuevos estudiantes</td>
+                                <td><span style="color: #3b82f6; font-weight: 700;">Próximo semestre</span></td>
+                                <td>Dirección de Programa</td>
+                            </tr>
+                            <tr>
+                                <td>Difusión mensual en correos y CUN 360</td>
+                                <td><span style="color: #10b981; font-weight: 700;">Continuo</span></td>
+                                <td>Comunicaciones</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECCIÓN 3: ACADÉMICO -->
+        <!-- ============================================================ -->
+        <section id="academico" class="tab-pane">
+            <h1 class="main-title">🎓 Académico</h1>
+            <p style="color: #6b7280; margin-bottom: 20px;">Análisis de la calidad del pensum, docencia y prácticas profesionales por ciudad.</p>
+
             <div class="accordion-container">
-                <button class="accordion-header" onclick="toggleAccordion('sis_bogota_sub')">
-                    <span>📍 Bogotá – 6 grupos focales (18 estudiantes)</span>
+                <button class="accordion-header" onclick="toggleAccordion('acad_barranquilla')">
+                    <span>Barranquilla</span>
                     <span class="arrow">+</span>
                 </button>
-                <div id="sis_bogota_sub" class="accordion-content">
-                    <div class="table-wrapper">
-                        <table class="subcat-table table-custom">
+                <div id="acad_barranquilla" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> Contenidos útiles y prácticos. Docentes explican bien.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"La metodología que se usa está bien, el aprendizaje como tal ha sido excelente." – Participante</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('acad_ibague')">
+                    <span>Ibagué</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="acad_ibague" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> Docentes pacientes y claros. Sistema 335 valorado.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"Los profesores son muy buenos, explican de la mejor manera." – Participante</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('acad_bogotap')">
+                    <span>Bogotá Presencial</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="acad_bogotap" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> Grupos pequeños, contenidos prácticos y con ejemplos reales.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"El pensum es muy completo y actualizado." – Participante</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('acad_bogotav')">
+                    <span>Bogotá Virtual</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="acad_bogotav" class="accordion-content">
+                    <p><span class="badge-critico">Crítica</span> Caso grave de maltrato pedagógico (profesor denunciado).</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"El profesor nunca se dedicó a que uno aprendiera, sino a que uno se tirara la materia." – Participante</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('acad_bucaramanga')">
+                    <span>Bucaramanga</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="acad_bucaramanga" class="accordion-content">
+                    <p><span class="badge-warn">Mixta</span> Material bueno, pero algunos docentes débiles en Excel e IA.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"Encuentro debilidades en Excel e IA, sacan soluciones poco prácticas." – Participante</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('acad_cali')">
+                    <span>Cali</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="acad_cali" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> Contenidos actualizados. Docentes amigables.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"La universidad me ha aportado herramientas útiles para mi trabajo." – Participante</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('acad_cartagena')">
+                    <span>Cartagena</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="acad_cartagena" class="accordion-content">
+                    <p><span class="badge-critico">Crítica</span> Caso grave de maltrato pedagógico (profesor denunciado).</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"Siento que no se dedicó a que uno aprendiera, sino a que uno se cayera en la clase." – Participante</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('acad_medellin')">
+                    <span>Medellín</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="acad_medellin" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> Docentes flexibles, contenidos aplicables. Un estudiante fue ascendido.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"Me ascendieron a auxiliar administrativo aplicando lo estudiado." – Participante</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('acad_monteria')">
+                    <span>Montería</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="acad_monteria" class="accordion-content">
+                    <p><span class="badge-warn">Mixta</span> Algunos docentes dinámicos, otros muy metódicos.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"Hay profesores muy metódicos, cerrados, esto es lo que toca y ya." – Participante</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('acad_pereira')">
+                    <span>Pereira</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="acad_pereira" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> Ajustado a la realidad laboral. Muchos profesores buenos.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"Hay muchos profes muy tesos, cosas que se ajustan a mi trabajo." – Participante</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('acad_villavicencio')">
+                    <span>Villavicencio</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="acad_villavicencio" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> Excelente enseñanza de IA. Docentes responden correos.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"La universidad me ha enseñado a utilizar la IA para bien." – Participante</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('acad_yopal')">
+                    <span>Yopal</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="acad_yopal" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> Contenidos completos, clases participativas.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"Me gusta más las clases donde uno puede participar." – Participante</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECCIÓN 4: TECNOLÓGICO -->
+        <!-- ============================================================ -->
+        <section id="tecnologico" class="tab-pane">
+            <h1 class="main-title">💻 Tecnológico</h1>
+            <p style="color: #6b7280; margin-bottom: 20px;">Análisis de plataformas CDigital, SINU y herramientas tecnológicas.</p>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('tec_barranquilla')">
+                    <span>Barranquilla</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="tec_barranquilla" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> CDigital estable y fácil de usar. Nunca se cae.</p>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('tec_ibague')">
+                    <span>Ibagué</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="tec_ibague" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> CDigital intuitiva y completa. Dexway excelente.</p>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('tec_bogotap')">
+                    <span>Bogotá Presencial</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="tec_bogotap" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> Infraestructura tecnológica buena. Laboratorios bien equipados.</p>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('tec_bogotav')">
+                    <span>Bogotá Virtual</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="tec_bogotav" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> CDigital 24/7 disponible, nunca falla.</p>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('tec_bucaramanga')">
+                    <span>Bucaramanga</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="tec_bucaramanga" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> CDigital excelente. SINU tiene inconsistencias graves.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"SINU me ha sacado canas, me han puesto cobros que no me corresponden." – Participante</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('tec_cali')">
+                    <span>Cali</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="tec_cali" class="accordion-content">
+                    <p><span class="badge-warn">Mixta</span> CDigital funcional pero curva de aprendizaje. SINU poco amigable.</p>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('tec_cartagena')">
+                    <span>Cartagena</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="tec_cartagena" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> CDigital 24/7 disponible, fácil de usar.</p>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('tec_medellin')">
+                    <span>Medellín</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="tec_medellin" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> CDigital fluida, rara vez se cae. CUN 360 funcional.</p>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('tec_monteria')">
+                    <span>Montería</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="tec_monteria" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> CDigital funcional con observaciones. Dexway excelente.</p>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('tec_pereira')">
+                    <span>Pereira</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="tec_pereira" class="accordion-content">
+                    <p><span class="badge-warn">Mixta</span> CDigital se cae en horas de la noche. SINU no la usa.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"Yo sí no ni lo toco." – Participante (sobre SINU)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('tec_villavicencio')">
+                    <span>Villavicencio</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="tec_villavicencio" class="accordion-content">
+                    <p><span class="badge-warn">Mixta</span> CDigital funcional con fallas puntuales. SINU es un problema.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"Para descargar el recibo de matrícula nunca pude." – Participante</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('tec_yopal')">
+                    <span>Yopal</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="tec_yopal" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> CDigital completa y práctica. Plataforma de inglés excelente.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"La plataforma de inglés es súper." – Participante</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECCIÓN 5: SERVICIO AL CLIENTE -->
+        <!-- ============================================================ -->
+        <section id="servicio" class="tab-pane">
+            <h1 class="main-title">📞 Servicio al Cliente</h1>
+            <p style="color: #6b7280; margin-bottom: 20px;">Análisis de CamiTicket, tiempos de respuesta y atención al estudiante.</p>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('serv_barranquilla')">
+                    <span>Barranquilla</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="serv_barranquilla" class="accordion-content">
+                    <p><span class="badge-critico">Crítica</span> Promoción "pague uno, lleve dos" no respetada. 2 meses sin respuesta.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"Llevo dos meses sin respuesta." – Participante</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('serv_ibague')">
+                    <span>Ibagué</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="serv_ibague" class="accordion-content">
+                    <p><span class="badge-warn">Mixta</span> Experiencias variadas: algunos rápidos, otros con demoras.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"Envié un CamiTicket y me respondieron el mismo día." – Participante</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('serv_bogotap')">
+                    <span>Bogotá Presencial</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="serv_bogotap" class="accordion-content">
+                    <p><span class="badge-neutral">Neutral</span> Servicio regular. Algunas respuestas rápidas, otras con demora.</p>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('serv_bogotav')">
+                    <span>Bogotá Virtual</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="serv_bogotav" class="accordion-content">
+                    <p><span class="badge-critico">Crítica</span> Un estudiante perdió un semestre por falta de respuesta.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"Cuando hacía falta pagar, me llamaban. Cuando pagué, ya no contestaron." – Participante</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('serv_bucaramanga')">
+                    <span>Bucaramanga</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="serv_bucaramanga" class="accordion-content">
+                    <p><span class="badge-warn">Mixta</span> A veces solucionan, otras veces se demoran. No leen bien los tickets.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"No leen, responden como lo que primero les sale." – Participante</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('serv_cali')">
+                    <span>Cali</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="serv_cali" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> Cuando ha utilizado tickets, le han respondido y solucionado.</p>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('serv_cartagena')">
+                    <span>Cartagena</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="serv_cartagena" class="accordion-content">
+                    <p><span class="badge-critico">Crítica</span> No sabe dónde queda una sede. WhatsApp no responde.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"Los números de WhatsApp cambian, uno escribe y nadie responde." – Participante</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('serv_medellin')">
+                    <span>Medellín</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="serv_medellin" class="accordion-content">
+                    <p><span class="badge-critico">Crítica</span> 1.5 meses esperando certificado de estudio sin respuesta.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"Hace un mes y medio que necesito el certificado y sigo sin respuesta." – Participante</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('serv_monteria')">
+                    <span>Montería</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="serv_monteria" class="accordion-content">
+                    <p><span class="badge-warn">Problema pendiente</span> Promoción no cumplida. Aún no ha puesto el CamiTicket.</p>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('serv_pereira')">
+                    <span>Pereira</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="serv_pereira" class="accordion-content">
+                    <p><span class="badge-neutral">Sin datos</span> No reportó experiencias específicas con CamiTicket.</p>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('serv_villavicencio')">
+                    <span>Villavicencio</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="serv_villavicencio" class="accordion-content">
+                    <p><span class="badge-critico">Crítica</span> Casi deserta por problemas con recibo de matrícula.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"Si no fuera por el asesor, ya me había ido de la CUN." – Participante</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('serv_yopal')">
+                    <span>Yopal</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="serv_yopal" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> Ha puesto CamiTicket y ha tenido respuesta y solución.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"Cami tickets he puesto y he tenido respuesta, me han dado solución." – Participante</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECCIÓN 6: BIENESTAR -->
+        <!-- ============================================================ -->
+        <section id="bienestar" class="tab-pane">
+            <h1 class="main-title">❤️ Bienestar</h1>
+            <p style="color: #6b7280; margin-bottom: 20px;">Beneficios, becas y actividades de bienestar por ciudad.</p>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('bien_barranquilla')">
+                    <span>Barranquilla</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="bien_barranquilla" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> Asistencia veterinaria eficaz. Responden en menos de 3 minutos.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"La asistencia veterinaria fue excelente, menos de 3 minutos ya tenía un asesor." – Participante</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('bien_ibague')">
+                    <span>Ibagué</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="bien_ibague" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> C Te Ayuda es muy valorado por su flexibilidad y ausencia de intereses.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"C Te Ayuda, no genera intereses ni nada." – Participante</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('bien_bogotap')">
+                    <span>Bogotá Presencial</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="bien_bogotap" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> Beneficios y becas valorados. C Te Ayuda es conocido y utilizado.</p>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('bien_bogotav')">
+                    <span>Bogotá Virtual</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="bien_bogotav" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> Precio accesible, flexibilidad y facilidades de pago son clave.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"El precio fue uno de los que me motivó." – Participante</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('bien_medellin')">
+                    <span>Medellín</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="bien_medellin" class="accordion-content">
+                    <p><span class="badge-neutral">Sin datos</span> No se reportaron observaciones específicas sobre bienestar.</p>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('bien_monteria')">
+                    <span>Montería</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="bien_monteria" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> Promoción "pague uno, lleve dos" fue determinante para elegir la CUN.</p>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('bien_villavicencio')">
+                    <span>Villavicencio</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="bien_villavicencio" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> Precios accesibles y homologación fueron clave.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECCIÓN 7: PERTENENCIA -->
+        <!-- ============================================================ -->
+        <section id="pertenencia" class="tab-pane">
+            <h1 class="main-title">🏆 Pertenencia</h1>
+            <p style="color: #6b7280; margin-bottom: 20px;">Sentido de orgullo, identidad y recomendación de la CUN.</p>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('pert_barranquilla')">
+                    <span>Barranquilla</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="pert_barranquilla" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> Contentos a pesar del problema con la promoción. No han pensado en retirarse.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"No he pensado en retirarme, me siento contento." – Participante</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('pert_ibague')">
+                    <span>Ibagué</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="pert_ibague" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> Orgullosos de la oportunidad de estudiar virtualmente. Quieren terminar.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"No he pensado en retirarme, yo termino si Dios permite." – Participante</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('pert_bogotap')">
+                    <span>Bogotá Presencial</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="pert_bogotap" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> Orgullosa de estudiar en la CUN. Nunca ha pensado en retirarse.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"Me siento orgulloso de ser de la CUN." – Participante</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('pert_bogotav')">
+                    <span>Bogotá Virtual</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="pert_bogotav" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> Precio y flexibilidad son los principales factores de permanencia.</p>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('pert_medellin')">
+                    <span>Medellín</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="pert_medellin" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> Oportunidad para crecer profesionalmente. Un estudiante fue ascendido.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"Me ascendieron a auxiliar administrativo." – Participante</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('pert_monteria')">
+                    <span>Montería</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="pert_monteria" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> Oportunidad grande para estudiantes mayores que retoman sus estudios.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"Con 40 años ponerme a estudiar, es una oportunidad grande." – Participante</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('pert_villavicencio')">
+                    <span>Villavicencio</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="pert_villavicencio" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> Oportunidad de reinventarse y cambiar de área laboral.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"Es una herramienta para reinventarme y volver a iniciar." – Participante</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-container">
+                <button class="accordion-header" onclick="toggleAccordion('pert_yopal')">
+                    <span>Yopal</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="pert_yopal" class="accordion-content">
+                    <p><span class="badge-pos">Positiva</span> Progreso y aprendizaje, parte fundamental para el desarrollo.</p>
+                    <div class="verbatim-container">
+                        <div class="verbatim">"Oportunidad, progreso, aprendizaje, adaptación a nuevas cosas." – Participante</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECCIÓN 8: MATRIZ DE SEMÁFORO -->
+        <!-- ============================================================ -->
+        <section id="matriz" class="tab-pane">
+            <h1 class="main-title">📋 Matriz de Semáforo</h1>
+            <p style="color: #4b5563; margin-bottom: 10px; font-size: 0.95rem;">
+                Matriz de semáforo que resume el estado de cada categoría por ciudad para <strong>Administración de Empresas</strong>.
+            </p>
+
+            <div class="semaphore-legend">
+                <span class="semaphore-legend-item"><span class="dot" style="background: #10b981;"></span> Bueno</span>
+                <span class="semaphore-legend-item"><span class="dot" style="background: #f59e0b;"></span> Regular</span>
+                <span class="semaphore-legend-item"><span class="dot" style="background: #ef4444;"></span> Crítico</span>
+                <span class="semaphore-legend-item"><span class="dot" style="background: #9ca3af;"></span> Sin datos</span>
+            </div>
+
+            <div class="accordion-container" style="margin-top: 20px;">
+                <button class="accordion-header" onclick="toggleAccordion('zona_norte')">
+                    <span>🌊 ZONA NORTE / CARIBE</span>
+                    <span class="arrow">+</span>
+                </button>
+                <div id="zona_norte" class="accordion-content">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped semaphore-table">
                             <thead>
                                 <tr>
-                                    <th style="width:18%;">Categoría</th>
-                                    <th style="width:22%;">Subcategoría</th>
-                                    <th style="width:20%;">Polaridad (+ / -)</th>
-                                    <th style="width:15%;">Subjetividad</th>
-                                    <th style="width:25%;">Análisis detallado</th>
+                                    <th style="width: 12%;">Ciudad</th>
+                                    <th style="width: 17%;">Académico</th>
+                                    <th style="width: 17%;">Tecnológico</th>
+                                    <th style="width: 17%;">Servicio</th>
+                                    <th style="width: 17%;">Bienestar</th>
+                                    <th style="width: 17%;">Pertenencia</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- ACADÉMICO -->
                                 <tr>
-                                    <td class="cat-label" rowspan="2">Académico</td>
-                                    <td class="subcat-label">Docentes y metodología</td>
-                                    <td><span class="polarity-badge neg">38%+ / 62%-</span></td>
-                                    <td><span class="subj-badge">0.82</span></td>
-                                    <td>La mayoría de los docentes carecen de vocación pedagógica; se limitan a leer diapositivas sin profundizar. Hay una rotación constante de profesores sin previo aviso, lo que genera desorden en el aprendizaje. Sin embargo, existen excepciones como el profesor Ángel Villamil, que es muy valorado.</td>
+                                    <td class="city-cell">Barranquilla</td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">Contenidos útiles, prácticos y aplicables al trabajo</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">CDigital estable, fácil y nunca se cae</span></td>
+                                    <td><span class="semaphore-dot dot-red"></span> Crítico<span class="explanation">Promoción 2x1 no respetada, dos meses sin respuesta</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">Asistencia veterinaria eficaz, responden en 3 minutos</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">Contentos a pesar del problema con la promoción</span></td>
                                 </tr>
                                 <tr>
-                                    <td class="subcat-label">Contenidos y pensum</td>
-                                    <td><span class="polarity-badge mix">55%+ / 45%-</span></td>
-                                    <td><span class="subj-badge">0.60</span></td>
-                                    <td>El pensum está actualizado y es relevante, pero la profundidad de los contenidos en la plataforma es superficial. Hay un grave problema de empalme entre semestres: los estudiantes pasan de lógica (PCIN) a programación avanzada sin conocer los fundamentos básicos del nuevo lenguaje.</td>
-                                </tr>
-                                <!-- TECNOLÓGICO -->
-                                <tr>
-                                    <td class="cat-label" rowspan="2">Tecnológico</td>
-                                    <td class="subcat-label">CDigital</td>
-                                    <td><span class="polarity-badge pos">85%+ / 15%-</span></td>
-                                    <td><span class="subj-badge">0.30</span></td>
-                                    <td>Plataforma estable, intuitiva y disponible 24/7. Los estudiantes la usan sin problema para cargar trabajos y ver calificaciones. El único pero es que los contenidos subidos por los docentes suelen ser básicos y no profundizan, y en épocas de parciales se presentan colapsos puntuales.</td>
+                                    <td class="city-cell">Cartagena</td>
+                                    <td><span class="semaphore-dot dot-yellow"></span> Regular<span class="explanation">Profesor humilló a estudiante, caso aislado</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">CDigital 24/7 disponible y fácil de usar</span></td>
+                                    <td><span class="semaphore-dot dot-red"></span> Crítico<span class="explanation">No sabe dónde queda una sede, WhatsApp no responde</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">Precio accesible y flexibilidad de pagos</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">Contentos a pesar de las fallas de servicio</span></td>
                                 </tr>
                                 <tr>
-                                    <td class="subcat-label">SINU</td>
-                                    <td><span class="polarity-badge neg">20%+ / 80%-</span></td>
-                                    <td><span class="subj-badge">0.45</span></td>
-                                    <td>Plataforma obsoleta, poco amigable y con errores recurrentes. Los estudiantes reportan que los pagos aparecen como "rechazados" a pesar de estar confirmados, lo que genera desconfianza. Muchos prefieren no usarla y recurrir a asesores directamente.</td>
-                                </tr>
-                                <!-- SERVICIO -->
-                                <tr>
-                                    <td class="cat-label" rowspan="2">Servicio al Cliente</td>
-                                    <td class="subcat-label">Tiempos de respuesta (CamiTicket)</td>
-                                    <td><span class="polarity-badge neg">10%+ / 90%-</span></td>
-                                    <td><span class="subj-badge">0.92</span></td>
-                                    <td>El tiempo promedio de respuesta es de 15 días, lo cual es inaceptable para trámites urgentes como pagos o certificados. Casos documentados de estudiantes que perdieron semestres enteros por falta de respuesta en temas financieros. La duplicidad de tickets (envías dos y te anulan el segundo) empeora la situación.</td>
-                                </tr>
-                                <tr>
-                                    <td class="subcat-label">Calidad de respuesta</td>
-                                    <td><span class="polarity-badge neg">15%+ / 85%-</span></td>
-                                    <td><span class="subj-badge">0.88</span></td>
-                                    <td>Las respuestas son genéricas, automatizadas y no solucionan el problema de fondo. Un estudiante pagó tres certificados diferentes y envió 10 tickets sin recibir nunca una solución, perdiendo una beca laboral por este motivo. La sensación es que no leen los tickets con atención.</td>
-                                </tr>
-                                <!-- INFRAESTRUCTURA -->
-                                <tr>
-                                    <td class="cat-label" rowspan="2">Infraestructura</td>
-                                    <td class="subcat-label">Sedes y espacios</td>
-                                    <td><span class="polarity-badge pos">70%+ / 30%-</span></td>
-                                    <td><span class="subj-badge">0.35</span></td>
-                                    <td>Las sedes del centro (G, J, D, A) son modernas, con terrazas, áreas de descanso y buenos computadores. Los estudiantes valoran los espacios de esparcimiento como mesas de ping pong y zonas verdes. El problema es el cierre de sedes periféricas (Suba, Restrepo, Fontibón) que se manejó con pésima comunicación, generando incertidumbre.</td>
-                                </tr>
-                                <tr>
-                                    <td class="subcat-label">Laboratorios especializados</td>
-                                    <td><span class="polarity-badge neg">30%+ / 70%-</span></td>
-                                    <td><span class="subj-badge">0.40</span></td>
-                                    <td>No existen laboratorios de redes, cableado estructurado o electrónica. Los estudiantes de ingeniería de sistemas no pueden hacer prácticas reales con switches, routers o cableado, lo que los deja en desventaja frente a egresados de otras universidades que sí cuentan con estos espacios. Los profesores tienen que improvisar con equipos viejos traídos de sus casas.</td>
-                                </tr>
-                                <!-- BIENESTAR -->
-                                <tr>
-                                    <td class="cat-label" rowspan="1">Bienestar</td>
-                                    <td class="subcat-label">Conocimiento y uso de beneficios</td>
-                                    <td><span class="polarity-badge mix">45%+ / 55%-</span></td>
-                                    <td><span class="subj-badge">0.72</span></td>
-                                    <td>El único beneficio conocido y utilizado es "Se te Ayuda" (crédito sin intereses). Los demás beneficios (óptica, veterinaria, grupos deportivos, salud mental) son prácticamente desconocidos. Kun con K tiene solo un 25.7% de reconocimiento, y de ese porcentaje, menos del 10% lo ha visitado. No hay una difusión activa de estos servicios.</td>
+                                    <td class="city-cell">Montería</td>
+                                    <td><span class="semaphore-dot dot-yellow"></span> Regular<span class="explanation">Docentes dinámicos vs metódicos y cerrados</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">CDigital funcional con observaciones</span></td>
+                                    <td><span class="semaphore-dot dot-yellow"></span> Regular<span class="explanation">Promoción no cumplida, aún no ha puesto ticket</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">Promoción 2x1 fue determinante para elegir</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">Oportunidad para estudiantes mayores que retoman estudios</span></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <!-- Verbatines -->
-                    <div class="verbatim-container" style="margin-top:15px;">
-                        <div class="verbatim">"Muchos docentes son ingenieros con conocimiento, pero no tienen vocación de enseñar" – Andrés Muñoz</div>
-                        <div class="verbatim">"Pagué tres certificados diferentes, mandé 10 tickets, nunca me dieron solución" – César Casas</div>
-                        <div class="verbatim">"No hay laboratorios de redes, solo computadores. Como ingenieros necesitamos infraestructura real" – Daniel Cañón</div>
-                    </div>
                 </div>
             </div>
 
-            <!-- ============================== -->
-            <!-- 2. MEDELLÍN (con subcategorías) -->
-            <!-- ============================== -->
-            <div class="accordion-container">
-                <button class="accordion-header" onclick="toggleAccordion('sis_medellin_sub')">
-                    <span>📍 Medellín – 1 grupo focal (2 estudiantes)</span>
+            <div class="accordion-container" style="margin-top: 20px;">
+                <button class="accordion-header" onclick="toggleAccordion('zona_centro')">
+                    <span>⛰️ ZONA CENTRO</span>
                     <span class="arrow">+</span>
                 </button>
-                <div id="sis_medellin_sub" class="accordion-content">
-                    <div class="table-wrapper">
-                        <table class="subcat-table table-custom">
+                <div id="zona_centro" class="accordion-content">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped semaphore-table">
                             <thead>
                                 <tr>
-                                    <th style="width:18%;">Categoría</th>
-                                    <th style="width:22%;">Subcategoría</th>
-                                    <th style="width:20%;">Polaridad (+ / -)</th>
-                                    <th style="width:15%;">Subjetividad</th>
-                                    <th style="width:25%;">Análisis detallado</th>
+                                    <th style="width: 12%;">Ciudad</th>
+                                    <th style="width: 17%;">Académico</th>
+                                    <th style="width: 17%;">Tecnológico</th>
+                                    <th style="width: 17%;">Servicio</th>
+                                    <th style="width: 17%;">Bienestar</th>
+                                    <th style="width: 17%;">Pertenencia</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="cat-label" rowspan="1">Académico</td>
-                                    <td class="subcat-label">Docentes y metodología</td>
-                                    <td><span class="polarity-badge pos">90%+ / 10%-</span></td>
-                                    <td><span class="subj-badge">0.35</span></td>
-                                    <td>Los docentes son flexibles y tienen en cuenta que la mayoría de los estudiantes trabajan. Explican con claridad y los contenidos son aplicables al mundo laboral. Un estudiante reportó que fue ascendido en su trabajo gracias a lo aprendido. La experiencia académica en Medellín es excelente.</td>
+                                    <td class="city-cell">Bogotá Presencial</td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">Grupos pequeños, contenidos prácticos y con ejemplos</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">CDigital sin problemas y buena infraestructura</span></td>
+                                    <td><span class="semaphore-dot dot-red"></span> Crítico<span class="explanation">Coordinadora poco empática, no ayuda y deriva a tickets</span></td>
+                                    <td><span class="semaphore-dot" style="background: #9ca3af; display: inline-block; width: 14px; height: 14px; border-radius: 50%; margin-right: 6px;"></span> Sin datos<span class="explanation">No se reportó información en esta sesión</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">Orgullosa de estudiar y nunca ha pensado en retirarse</span></td>
                                 </tr>
                                 <tr>
-                                    <td class="cat-label" rowspan="1">Servicio al Cliente</td>
-                                    <td class="subcat-label">Tiempos de respuesta (CamiTicket)</td>
-                                    <td><span class="polarity-badge neg">15%+ / 85%-</span></td>
-                                    <td><span class="subj-badge">0.88</span></td>
-                                    <td>El caso más crítico: un estudiante lleva 1.5 meses esperando un certificado de estudio sin recibir respuesta. Esto es inaceptable y refleja que el sistema de tickets no está funcionando en la región. La falta de un agente local agrava el problema.</td>
+                                    <td class="city-cell">Bogotá Virtual</td>
+                                    <td><span class="semaphore-dot dot-yellow"></span> Regular<span class="explanation">Profesor humilló a estudiante, caso grave de maltrato</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">CDigital 24/7 disponible, nunca falla</span></td>
+                                    <td><span class="semaphore-dot dot-red"></span> Crítico<span class="explanation">Perdió semestre por falta de respuesta en pagos</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">Precio y flexibilidad son los principales factores</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">Precio y flexibilidad mantienen a los estudiantes</span></td>
                                 </tr>
                                 <tr>
-                                    <td class="cat-label" rowspan="1">Bienestar</td>
-                                    <td class="subcat-label">Difusión de beneficios</td>
-                                    <td><span class="polarity-badge mix">30%+ / 70%-</span></td>
-                                    <td><span class="subj-badge">0.75</span></td>
-                                    <td>Los estudiantes saben que existen beneficios médicos y de óptica, pero no tienen información clara de cómo acceder a ellos. La universidad no hace una difusión activa en Medellín, y los estudiantes dependen de lo que ven en redes o les cuentan otros compañeros.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="verbatim-container" style="margin-top:15px;">
-                        <div class="verbatim">"Hace un mes y medio que necesito el certificado y sigo sin respuesta" – Rafael Cuesta</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ============================== -->
-            <!-- 3. SINCELEJO (con subcategorías) -->
-            <!-- ============================== -->
-            <div class="accordion-container">
-                <button class="accordion-header" onclick="toggleAccordion('sis_sincelejo_sub')">
-                    <span>📍 Sincelejo – 1 grupo focal (2 estudiantes)</span>
-                    <span class="arrow">+</span>
-                </button>
-                <div id="sis_sincelejo_sub" class="accordion-content">
-                    <div class="table-wrapper">
-                        <table class="subcat-table table-custom">
-                            <thead>
-                                <tr>
-                                    <th style="width:18%;">Categoría</th>
-                                    <th style="width:22%;">Subcategoría</th>
-                                    <th style="width:20%;">Polaridad (+ / -)</th>
-                                    <th style="width:15%;">Subjetividad</th>
-                                    <th style="width:25%;">Análisis detallado</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="cat-label" rowspan="1">Académico</td>
-                                    <td class="subcat-label">Prácticas y laboratorios</td>
-                                    <td><span class="polarity-badge neg">40%+ / 60%-</span></td>
-                                    <td><span class="subj-badge">0.68</span></td>
-                                    <td>La materia de mantenimiento de dispositivos móviles fue 100% teórica; nunca desarmaron un teléfono. Para las prácticas de redes, los estudiantes tienen que comprar sus propios cables UTP y conectores RJ45 porque la universidad no los provee. No hay laboratorios de ningún tipo en la sede.</td>
+                                    <td class="city-cell">Bucaramanga</td>
+                                    <td><span class="semaphore-dot dot-yellow"></span> Regular<span class="explanation">Material bueno pero docentes débiles en Excel e IA</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">CDigital excelente y sin problemas</span></td>
+                                    <td><span class="semaphore-dot dot-yellow"></span> Regular<span class="explanation">Inconsistencias en pagos y tickets lentos</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">Homologación fue un buen gancho para quedarse</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">Oportunidad virtual con precios accesibles</span></td>
                                 </tr>
                                 <tr>
-                                    <td class="cat-label" rowspan="1">Servicio al Cliente</td>
-                                    <td class="subcat-label">Atención regional</td>
-                                    <td><span class="polarity-badge neg">10%+ / 90%-</span></td>
-                                    <td><span class="subj-badge">0.92</span></td>
-                                    <td>No hay personal de apoyo en Sincelejo. Todos los trámites deben hacerse por CamiTicket, y los tiempos de respuesta superan los 20 días (en un caso, 1 mes). Los estudiantes se sienten abandonados y propusieron que debería haber un agente regional que conozca los programas y pueda resolver problemas de forma presencial.</td>
+                                    <td class="city-cell">Ibagué</td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">Docentes pacientes, claros y explican hasta entender</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">CDigital intuitiva, completa y con Dexway excelente</span></td>
+                                    <td><span class="semaphore-dot dot-yellow"></span> Regular<span class="explanation">CamiTicket respuestas mixtas, algunos rápidos otros no</span></td>
+                                    <td><span class="semaphore-dot dot-yellow"></span> Regular<span class="explanation">Baja participación en actividades por ubicación y horarios</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">Orgullosos de la oportunidad de estudiar virtualmente</span></td>
                                 </tr>
                                 <tr>
-                                    <td class="cat-label" rowspan="2">Infraestructura</td>
-                                    <td class="subcat-label">Espacios y cafetería</td>
-                                    <td><span class="polarity-badge neg">30%+ / 70%-</span></td>
-                                    <td><span class="subj-badge">0.55</span></td>
-                                    <td>La sede no tiene cafetería ni cooperativa. Los estudiantes deben salir a almorzar o merendar a lugares lejanos, lo que implica gastos de transporte y tiempo. En jornadas de 4 horas de clase continua, no tienen dónde comer ni descansar adecuadamente.</td>
+                                    <td class="city-cell">Pereira</td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">Ajustado a la realidad laboral, muchos profesores buenos</span></td>
+                                    <td><span class="semaphore-dot dot-yellow"></span> Regular<span class="explanation">CDigital se cae en horas de la noche</span></td>
+                                    <td><span class="semaphore-dot" style="background: #9ca3af; display: inline-block; width: 14px; height: 14px; border-radius: 50%; margin-right: 6px;"></span> Sin datos<span class="explanation">No se reportó información en esta sesión</span></td>
+                                    <td><span class="semaphore-dot" style="background: #9ca3af; display: inline-block; width: 14px; height: 14px; border-radius: 50%; margin-right: 6px;"></span> Sin datos<span class="explanation">No se reportó información en esta sesión</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">Satisfechos con la formación recibida</span></td>
                                 </tr>
                                 <tr>
-                                    <td class="subcat-label">Dotación de materiales</td>
-                                    <td><span class="polarity-badge neg">35%+ / 65%-</span></td>
-                                    <td><span class="subj-badge">0.50</span></td>
-                                    <td>La universidad no provee insumos básicos para las prácticas. Los estudiantes tienen que comprar cables, conectores, y en algunos casos, hasta herramientas. Esto genera un gasto adicional no presupuestado y desmotiva a los que tienen menos recursos.</td>
+                                    <td class="city-cell">Villavicencio</td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">Excelente enseñanza de IA, docentes responden correos</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">CDigital funcional con fallas puntuales</span></td>
+                                    <td><span class="semaphore-dot dot-red"></span> Crítico<span class="explanation">Casi deserta por problemas con recibo de matrícula</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">Precios accesibles y homologación clave</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">Oportunidad de reinventarse y cambiar de área</span></td>
                                 </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="verbatim-container" style="margin-top:15px;">
-                        <div class="verbatim">"Nos toca comprar cables UTP, RJ45, porque la universidad no los provee" – Sebastián Carcamo</div>
-                        <div class="verbatim">"Debería haber una persona encargada en cada regional para responder tickets" – Cristian Escobar</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ============================== -->
-            <!-- 4. SEMÁFORO CON EXPLICACIONES LARGAS -->
-            <!-- ============================== -->
-            <div class="accordion-container">
-                <button class="accordion-header" onclick="toggleAccordion('sis_semaforo_largo')">
-                    <span>📊 Matriz de Semáforo con explicaciones detalladas</span>
-                    <span class="arrow">+</span>
-                </button>
-                <div id="sis_semaforo_largo" class="accordion-content">
-                    <div class="table-wrapper">
-                        <table class="table-custom">
-                            <thead>
                                 <tr>
-                                    <th style="width:15%;">Ciudad</th>
-                                    <th style="width:17%;">Categoría</th>
-                                    <th style="width:12%;">Estado</th>
-                                    <th style="width:56%;">Explicación detallada</th>
+                                    <td class="city-cell">Yopal</td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">Contenidos completos, clases participativas</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">CDigital completa y práctica</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">Respuesta positiva en tickets y soluciones</span></td>
+                                    <td><span class="semaphore-dot" style="background: #9ca3af; display: inline-block; width: 14px; height: 14px; border-radius: 50%; margin-right: 6px;"></span> Sin datos<span class="explanation">No se reportó información en esta sesión</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">Progreso y aprendizaje, parte fundamental</span></td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                <!-- BOGOTÁ -->
-                                <tr><td rowspan="5"><strong>Bogotá</strong></td><td>Académico (Docentes)</td><td><span style="color:#ef4444;">🔴 Crítico</span></td><td><span class="semaforo-detalle rojo">Falta de vocación docente y rotación constante. Los profesores no tienen pedagogía, solo leen diapositivas. Hay casos de profesores que no se presentaban a clase y nunca hubo reemplazo efectivo. La excepción son algunos docentes como Ángel Villamil, pero son minoría.</span></td></tr>
-                                <tr><td>Académico (Contenidos)</td><td><span style="color:#f59e0b;">🟡 Regular</span></td><td><span class="semaforo-detalle amarillo">El pensum es bueno pero la ejecución falla. No hay empalme entre materias correlativas (ej. PCIN → programación avanzada sin bases). Los contenidos en CDigital son muy superficiales y los estudiantes deben complementar por su cuenta.</span></td></tr>
-                                <tr><td>Tecnológico (CDigital)</td><td><span style="color:#10b981;">🟢 Bueno</span></td><td><span class="semaforo-detalle verde">Plataforma estable, intuitiva y con alta disponibilidad. Los estudiantes la usan sin problemas para entregas y calificaciones. Las únicas quejas son colapsos puntuales en épocas de parciales y falta de profundidad en los contenidos cargados.</span></td></tr>
-                                <tr><td>Tecnológico (SINU)</td><td><span style="color:#ef4444;">🔴 Crítico</span></td><td><span class="semaforo-detalle rojo">Plataforma obsoleta, con errores de pago recurrentes. Los estudiantes no confían en ella y prefieren evitarla. Los pagos aparecen como "rechazados" aunque estén confirmados, lo que genera incertidumbre y estrés financiero.</span></td></tr>
-                                <tr><td>Servicio al Cliente</td><td><span style="color:#ef4444;">🔴 Crítico</span></td><td><span class="semaforo-detalle rojo">Tiempos de respuesta de 15 días o más. Respuestas genéricas que no solucionan los problemas. Casos documentados de pérdida de semestres y becas por falta de respuesta oportuna. La duplicidad de tickets empeora la situación.</span></td></tr>
-                                <tr><td rowspan="2"><strong>Medellín</strong></td><td>Académico</td><td><span style="color:#10b981;">🟢 Bueno</span></td><td><span class="semaforo-detalle verde">Docentes flexibles y con vocación. Contenidos aplicables al trabajo. Un estudiante fue ascendido gracias a lo aprendido. La experiencia académica es excelente y no hay quejas relevantes.</span></td></tr>
-                                <tr><td>Servicio al Cliente</td><td><span style="color:#ef4444;">🔴 Crítico</span></td><td><span class="semaforo-detalle rojo">1.5 meses esperando un certificado sin respuesta. Falta de un agente local que pueda resolver trámites presenciales. El sistema de tickets no está funcionando en la región.</span></td></tr>
-                                <tr><td rowspan="3"><strong>Sincelejo</strong></td><td>Académico (Prácticas)</td><td><span style="color:#f59e0b;">🟡 Regular</span></td><td><span class="semaforo-detalle amarillo">Las clases prácticas son inexistentes. No hay laboratorios, insumos ni equipos. Los estudiantes deben comprar sus propios materiales (cables, conectores) para prácticas básicas de redes.</span></td></tr>
-                                <tr><td>Servicio al Cliente</td><td><span style="color:#ef4444;">🔴 Crítico</span></td><td><span class="semaforo-detalle rojo">No hay personal de apoyo en la región. Todos los trámites son por tickets que tardan entre 20 días y 1 mes. Los estudiantes se sienten abandonados y propusieron agentes regionales.</span></td></tr>
-                                <tr><td>Infraestructura</td><td><span style="color:#f59e0b;">🟡 Regular</span></td><td><span class="semaforo-detalle amarillo">No hay cafetería ni cooperativa dentro de la sede. Los estudiantes deben salir a comer lejos, lo que implica gastos adicionales de tiempo y dinero. La sede es pequeña y no tiene espacios de esparcimiento.</span></td></tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
 
-            <!-- ============================== -->
-            <!-- 5. ANÁLISIS DE SUBJETIVIDAD POR SUBCATEGORÍA -->
-            <!-- ============================== -->
-            <div class="accordion-container">
-                <button class="accordion-header" onclick="toggleAccordion('sis_subj_sub')">
-                    <span>🧠 Subjetividad por subcategoría (0 = objetivo, 1 = muy subjetivo)</span>
+            <div class="accordion-container" style="margin-top: 20px;">
+                <button class="accordion-header" onclick="toggleAccordion('zona_sur')">
+                    <span>🏔️ ZONA SUR</span>
                     <span class="arrow">+</span>
                 </button>
-                <div id="sis_subj_sub" class="accordion-content">
-                    <div class="table-wrapper">
-                        <table class="table-custom">
+                <div id="zona_sur" class="accordion-content">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped semaphore-table">
                             <thead>
-                                <tr><th style="width:30%;">Subcategoría</th><th style="width:15%;">Subjetividad</th><th style="width:55%;">Interpretación</th></tr>
+                                <tr>
+                                    <th style="width: 12%;">Ciudad</th>
+                                    <th style="width: 17%;">Académico</th>
+                                    <th style="width: 17%;">Tecnológico</th>
+                                    <th style="width: 17%;">Servicio</th>
+                                    <th style="width: 17%;">Bienestar</th>
+                                    <th style="width: 17%;">Pertenencia</th>
+                                </tr>
                             </thead>
                             <tbody>
-                                <tr><td>Docentes y metodología</td><td><strong>0.82</strong></td><td>Muy opinático. La percepción depende completamente de la experiencia con cada profesor en particular.</td></tr>
-                                <tr><td>Contenidos y pensum</td><td><strong>0.60</strong></td><td>Moderadamente subjetivo. Depende de qué tan bien se ejecute el pensum en cada sede y con cada docente.</td></tr>
-                                <tr><td>CDigital</td><td><strong>0.30</strong></td><td>Bastante objetivo. La plataforma funciona o no funciona, y los estudiantes coinciden en que es estable.</td></tr>
-                                <tr><td>SINU</td><td><strong>0.45</strong></td><td>Objetivo con matices. Los errores de pago son hechos comprobables, pero la percepción de "obsoleta" es algo subjetiva.</td></tr>
-                                <tr><td>Tiempos de respuesta (CamiTicket)</td><td><strong>0.92</strong></td><td>Extremadamente subjetivo. La frustración y el estrés generados por la demora amplifican la percepción negativa.</td></tr>
-                                <tr><td>Calidad de respuesta</td><td><strong>0.88</strong></td><td>Muy subjetivo. Depende de la experiencia individual con cada ticket y cada asesor.</td></tr>
-                                <tr><td>Laboratorios especializados</td><td><strong>0.40</strong></td><td>Objetivo. Es un hecho verificable que no existen laboratorios de redes en las sedes.</td></tr>
-                                <tr><td>Beneficios (difusión)</td><td><strong>0.72</strong></td><td>Subjetivo. Depende de si al estudiante le llegó o no la información; hay una brecha de comunicación clara.</td></tr>
+                                <tr>
+                                    <td class="city-cell">Cali</td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">Contenidos actualizados y docentes amigables</span></td>
+                                    <td><span class="semaphore-dot dot-yellow"></span> Regular<span class="explanation">CDigital funcional pero curva de aprendizaje</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">Cuando ha usado tickets, le han respondido bien</span></td>
+                                    <td><span class="semaphore-dot" style="background: #9ca3af; display: inline-block; width: 14px; height: 14px; border-radius: 50%; margin-right: 6px;"></span> Sin datos<span class="explanation">No se reportó información en esta sesión</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">Quiere terminar aunque sea en 10 años</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="city-cell">Medellín</td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">Docentes flexibles, contenidos aplicables y ascendieron a un estudiante</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">CDigital fluida, rara vez se cae</span></td>
+                                    <td><span class="semaphore-dot dot-red"></span> Crítico<span class="explanation">1.5 meses esperando certificado sin respuesta</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">Beneficios médicos poco difundidos pero existen</span></td>
+                                    <td><span class="semaphore-dot dot-green"></span> Bueno<span class="explanation">Oportunidad para crecer profesionalmente</span></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
 
-            <!-- ============================== -->
-            <!-- 6. RECOMENDACIONES POR CIUDAD (con acciones concretas) -->
-            <!-- ============================== -->
-            <div class="accordion-container">
-                <button class="accordion-header" onclick="toggleAccordion('sis_recom_largo')">
-                    <span>📌 Recomendaciones estratégicas por ciudad</span>
-                    <span class="arrow">+</span>
-                </button>
-                <div id="sis_recom_largo" class="accordion-content">
-                    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:15px;">
-                        <div style="background:#f0f4fa; padding:15px; border-radius:8px; border-left:4px solid #1a2a4f;">
-                            <h5 style="margin:0 0 8px 0; color:#1a2a4f;">Bogotá</h5>
-                            <ul style="margin:0; padding-left:18px; font-size:0.85rem; color:#4b5563; list-style-type:disc;">
-                                <li><strong>Capacitación pedagógica obligatoria</strong> para todos los docentes (urgencia: <span style="color:#ef4444;font-weight:700;">alta</span>) – No basta con ser ingeniero, deben saber enseñar.</li>
-                                <li><strong>Auditoría de tickets y SLA de 48h</strong> (urgencia: <span style="color:#ef4444;font-weight:700;">crítica</span>) – Crear un área especializada en respuesta rápida.</li>
-                                <li><strong>Laboratorio de redes y cableado</strong> en sede centro (urgencia: <span style="color:#f59e0b;font-weight:700;">media</span>) – Inversión mínima con alto impacto académico.</li>
-                                <li><strong>Campaña de Kun con K</strong> con tours guiados (urgencia: <span style="color:#f59e0b;font-weight:700;">media</span>) – Aprovechar el espacio que ya existe.</li>
-                            </ul>
-                        </div>
-                        <div style="background:#fef2f2; padding:15px; border-radius:8px; border-left:4px solid #ef4444;">
-                            <h5 style="margin:0 0 8px 0; color:#991b1b;">Medellín</h5>
-                            <ul style="margin:0; padding-left:18px; font-size:0.85rem; color:#4b5563; list-style-type:disc;">
-                                <li><strong>Agente de atención regional</strong> en la sede (urgencia: <span style="color:#ef4444;font-weight:700;">crítica</span>) – Alguien que resuelva tickets de forma presencial.</li>
-                                <li><strong>Automatización de certificados básicos</strong> (urgencia: <span style="color:#f59e0b;font-weight:700;">alta</span>) – Que se descarguen directamente desde la plataforma.</li>
-                                <li><strong>Difusión de beneficios médicos y óptica</strong> por correo y WhatsApp (urgencia: <span style="color:#f59e0b;font-weight:700;">media</span>) – Los estudiantes no saben que existen.</li>
-                            </ul>
-                        </div>
-                        <div style="background:#fef2f2; padding:15px; border-radius:8px; border-left:4px solid #ef4444;">
-                            <h5 style="margin:0 0 8px 0; color:#991b1b;">Sincelejo</h5>
-                            <ul style="margin:0; padding-left:18px; font-size:0.85rem; color:#4b5563; list-style-type:disc;">
-                                <li><strong>Agente de atención regional</strong> (urgencia: <span style="color:#ef4444;font-weight:700;">crítica</span>) – Es la ciudad con mayor sensación de abandono.</li>
-                                <li><strong>Cafetería/cooperativa</strong> dentro de la sede (urgencia: <span style="color:#f59e0b;font-weight:700;">alta</span>) – Los estudiantes no tienen dónde comer durante la jornada.</li>
-                                <li><strong>Dotación de insumos para prácticas</strong> (cables, conectores) (urgencia: <span style="color:#f59e0b;font-weight:700;">alta</span>) – No pueden aprender si no tienen materiales.</li>
-                                <li><strong>Laboratorio de redes básico</strong> con switches y routers (urgencia: <span style="color:#f59e0b;font-weight:700;">media-alta</span>) – Inversión mínima para mejorar la calidad práctica.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <p style="color: #94a3b8; font-size: 0.7rem; margin-top: 20px; font-style: italic;">
-                * Análisis basado en transcripciones de grupos focales de Ingeniería de Sistemas (Bogotá, Medellín, Sincelejo).
+            <p style="color: #6b7280; font-size: 0.8rem; margin-top: 10px; font-style: italic;">
+                * Basado en los grupos focales realizados con estudiantes de Administración de Empresas.
             </p>
         </section>
 
         <!-- ============================================================ -->
-        <!-- SECCIONES ACADÉMICO, TECNOLÓGICO, SERVICIO, BIENESTAR, PERTENENCIA, MATRIZ, INSIGHTS -->
-        <!-- (se mantienen intactas con tu contenido original, solo pongo placeholders para que no se rompa) -->
+        <!-- SECCIÓN 9: INSIGHTS ESTRATÉGICOS -->
         <!-- ============================================================ -->
-        <section id="academico" class="tab-pane"><h1 class="main-title">🎓 Académico</h1><p style="color:#6b7280;">Contenido original (sin cambios).</p></section>
-        <section id="tecnologico" class="tab-pane"><h1 class="main-title">💻 Tecnológico</h1><p style="color:#6b7280;">Contenido original (sin cambios).</p></section>
-        <section id="servicio" class="tab-pane"><h1 class="main-title">📞 Servicio al Cliente</h1><p style="color:#6b7280;">Contenido original (sin cambios).</p></section>
-        <section id="bienestar" class="tab-pane"><h1 class="main-title">❤️ Bienestar</h1><p style="color:#6b7280;">Contenido original (sin cambios).</p></section>
-        <section id="pertenencia" class="tab-pane"><h1 class="main-title">🏆 Pertenencia</h1><p style="color:#6b7280;">Contenido original (sin cambios).</p></section>
-        <section id="matriz" class="tab-pane"><h1 class="main-title">📋 Matriz de Semáforo</h1><p style="color:#6b7280;">Contenido original (sin cambios).</p></section>
-        <section id="insights" class="tab-pane"><h1 class="main-title">💡 Insights</h1><p style="color:#6b7280;">Contenido original (sin cambios).</p></section>
+        <section id="insights" class="tab-pane">
+            <h1 class="main-title">💡 Insights Estratégicos</h1>
+            <p style="color: #4b5563; margin-bottom: 20px; font-size: 0.95rem;">
+                Análisis de los hallazgos más relevantes, con sugerencias de intervención y su justificación.
+            </p>
+
+            <div style="background: #f0f4fa; padding: 20px; border-radius: 10px; margin-bottom: 25px; border-left: 5px solid #1a2a4f;">
+                <h4 style="color: #1a2a4f; margin: 0 0 8px 0;">🔍 Insight General</h4>
+                <p style="margin: 0; color: #1e293b; font-size: 0.95rem; line-height: 1.6;">
+                    La percepción de los estudiantes de Administración de Empresas sobre la CUN es <strong>altamente positiva en lo académico y tecnológico</strong>, pero <strong>críticamente negativa en el servicio al cliente</strong>.
+                    La flexibilidad de la virtualidad y los precios accesibles son los principales motores de permanencia, mientras que la falta de respuesta en CamiTicket y los problemas administrativos son la principal causa de frustración y riesgo de deserción.
+                </p>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="table-custom">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">💡 Insight</th>
+                            <th style="width: 25%;">🎯 Sugerencia</th>
+                            <th style="width: 50%;">❓ ¿Por qué?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Bajo reconocimiento de KUN CoWork</strong><br><span style="font-size:0.8rem; color:#6b7280;">Solo el 25.7% lo conoce</span></td>
+                            <td>Campana de comunicación masiva con tours guiados</td>
+                            <td>El 74.3% no ha escuchado del espacio. Tiene alto potencial si se comunica bien.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>El servicio al cliente es el punto más crítico</strong><br><span style="font-size:0.8rem; color:#6b7280;">Promociones no respetadas, tickets sin respuesta</span></td>
+                            <td>Auditoría inmediata de tickets y creación de SLA</td>
+                            <td>La falta de respuesta genera desconfianza y ha causado pérdida de semestres.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Los estudiantes no conocen los beneficios de bienestar</strong><br><span style="font-size:0.8rem; color:#6b7280;">Baja participación en actividades</span></td>
+                            <td>Difusión activa por correo, WhatsApp y CUN 360</td>
+                            <td>Los estudiantes valoran los beneficios pero no los conocen. Mejora la experiencia y el sentido de pertenencia.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CDigital es una fortaleza consolidada</strong><br><span style="font-size:0.8rem; color:#6b7280;">Evaluación positiva en todas las ciudades</span></td>
+                            <td>Mantener inversión y estabilidad de la plataforma</td>
+                            <td>Es el soporte principal de la modalidad virtual. Su estabilidad genera confianza y satisfacción.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SINU es percibido como obsoleto</strong><br><span style="font-size:0.8rem; color:#6b7280;">"Feíta", "no confío", "no la uso"</span></td>
+                            <td>Rediseño de interfaz y mejora de usabilidad</td>
+                            <td>Los estudiantes prefieren no usarla. Afecta la percepción de modernidad de la institución.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>La calidad del pensum es un diferenciador clave</strong><br><span style="font-size:0.8rem; color:#6b7280;">Contenidos actualizados y aplicables</span></td>
+                            <td>Mantener actualización constante del pensum</td>
+                            <td>Es el principal motivo de satisfacción y orgullo de los estudiantes.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 style="color: #1a2a4f; margin: 30px 0 15px 0;">📍 Insights por Ciudad</h4>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+
+                <div style="background: #fef2f2; padding: 15px; border-radius: 8px; border-left: 4px solid #ef4444;">
+                    <h5 style="margin: 0 0 5px 0; color: #991b1b;">Barranquilla</h5>
+                    <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
+                        <li>Promociones mal aplicadas generan desconfianza</li>
+                        <li>2 meses sin respuesta es inaceptable</li>
+                        <li>Riesgo de cobro injusto afecta la permanencia</li>
+                    </ul>
+                    <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
+                        💡 Auditar promociones y crear canal financiero prioritario
+                    </p>
+                </div>
+
+                <div style="background: #fffbeb; padding: 15px; border-radius: 8px; border-left: 4px solid #f59e0b;">
+                    <h5 style="margin: 0 0 5px 0; color: #92400e;">Ibagué</h5>
+                    <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
+                        <li>Docentes destacados por su paciencia</li>
+                        <li>C Te Ayuda es un diferenciador clave</li>
+                        <li>Baja participación en bienestar por ubicación</li>
+                    </ul>
+                    <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
+                        💡 Activar bienestar virtual y mantener flexibilidad de pagos
+                    </p>
+                </div>
+
+                <div style="background: #f0fdf4; padding: 15px; border-radius: 8px; border-left: 4px solid #10b981;">
+                    <h5 style="margin: 0 0 5px 0; color: #065f46;">Bogotá Presencial</h5>
+                    <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
+                        <li>Grupos reducidos facilitan el aprendizaje</li>
+                        <li>Infraestructura tecnológica bien equipada</li>
+                        <li>Coordinación debe mejorar su atención</li>
+                    </ul>
+                    <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
+                        💡 Capacitar al personal de coordinación en atención al estudiante
+                    </p>
+                </div>
+
+                <div style="background: #fef2f2; padding: 15px; border-radius: 8px; border-left: 4px solid #ef4444;">
+                    <h5 style="margin: 0 0 5px 0; color: #991b1b;">Bogotá Virtual</h5>
+                    <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
+                        <li>CDigital 24/7 es su principal fortaleza</li>
+                        <li>Comunicación financiera debe ser más clara</li>
+                        <li>Pérdida de semestre por falta de respuesta</li>
+                    </ul>
+                    <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
+                        💡 Establecer SLA de respuesta para tickets financieros
+                    </p>
+                </div>
+
+                <div style="background: #fffbeb; padding: 15px; border-radius: 8px; border-left: 4px solid #f59e0b;">
+                    <h5 style="margin: 0 0 5px 0; color: #92400e;">Bucaramanga</h5>
+                    <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
+                        <li>CDigital excelente, SINU es el problema</li>
+                        <li>Homologación fue un buen gancho para quedarse</li>
+                        <li>Tickets que no leen bien las preguntas</li>
+                    </ul>
+                    <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
+                        💡 Rediseñar SINU y capacitar en lectura de tickets
+                    </p>
+                </div>
+
+                <div style="background: #f0fdf4; padding: 15px; border-radius: 8px; border-left: 4px solid #10b981;">
+                    <h5 style="margin: 0 0 5px 0; color: #065f46;">Cali</h5>
+                    <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
+                        <li>Contenidos actualizados y docentes amigables</li>
+                        <li>CDigital funcional pero requiere adaptación</li>
+                        <li>Los tickets han respondido bien cuando se usan</li>
+                    </ul>
+                    <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
+                        💡 Crear tutoriales para nueva plataforma y mantener buen servicio
+                    </p>
+                </div>
+
+                <div style="background: #fef2f2; padding: 15px; border-radius: 8px; border-left: 4px solid #ef4444;">
+                    <h5 style="margin: 0 0 5px 0; color: #991b1b;">Cartagena</h5>
+                    <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
+                        <li>No hay presencia física clara en la ciudad</li>
+                        <li>WhatsApp como chatbot no es suficiente</li>
+                        <li>Los estudiantes se sienten abandonados</li>
+                    </ul>
+                    <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
+                        💡 Habilitar asesor real por WhatsApp y sede móvil
+                    </p>
+                </div>
+
+                <div style="background: #fef2f2; padding: 15px; border-radius: 8px; border-left: 4px solid #ef4444;">
+                    <h5 style="margin: 0 0 5px 0; color: #991b1b;">Medellín</h5>
+                    <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
+                        <li>Docentes flexibles y contenidos aplicables</li>
+                        <li>1.5 meses esperando certificado es inaceptable</li>
+                        <li>Beneficios médicos existen pero no se difunden</li>
+                    </ul>
+                    <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
+                        💡 Establecer tiempos máximos de respuesta para certificados
+                    </p>
+                </div>
+
+                <div style="background: #fffbeb; padding: 15px; border-radius: 8px; border-left: 4px solid #f59e0b;">
+                    <h5 style="margin: 0 0 5px 0; color: #92400e;">Montería</h5>
+                    <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
+                        <li>Docentes jóvenes son más dinámicos</li>
+                        <li>Promoción 2x1 fue clave para elegir</li>
+                        <li>Inconsistencia entre clase y plataforma</li>
+                    </ul>
+                    <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
+                        💡 Estandarizar contenidos entre clase y plataforma
+                    </p>
+                </div>
+
+                <div style="background: #f0fdf4; padding: 15px; border-radius: 8px; border-left: 4px solid #10b981;">
+                    <h5 style="margin: 0 0 5px 0; color: #065f46;">Pereira</h5>
+                    <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
+                        <li>Contenidos ajustados a la realidad laboral</li>
+                        <li>CDigital se cae en horas nocturnas</li>
+                        <li>SINU genera desconfianza total</li>
+                    </ul>
+                    <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
+                        💡 Optimizar servidores de CDigital en horas pico
+                    </p>
+                </div>
+
+                <div style="background: #fef2f2; padding: 15px; border-radius: 8px; border-left: 4px solid #ef4444;">
+                    <h5 style="margin: 0 0 5px 0; color: #991b1b;">Villavicencio</h5>
+                    <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
+                        <li>Excelente enseñanza de IA como valor agregado</li>
+                        <li>Problemas con recibo de matrícula casi causan deserción</li>
+                        <li>Los tickets no responden lo que se pregunta</li>
+                    </ul>
+                    <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
+                        💡 Mesa de ayuda para trámites de matrícula
+                    </p>
+                </div>
+
+                <div style="background: #f0fdf4; padding: 15px; border-radius: 8px; border-left: 4px solid #10b981;">
+                    <h5 style="margin: 0 0 5px 0; color: #065f46;">Yopal</h5>
+                    <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
+                        <li>Contenidos completos y clases participativas</li>
+                        <li>CDigital práctica y fácil de usar</li>
+                        <li>Experiencia positiva con CamiTicket</li>
+                    </ul>
+                    <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
+                        💡 Mantener y replicar buenas prácticas en otras sedes
+                    </p>
+                </div>
+
+            </div>
+
+            <h4 style="color: #1a2a4f; margin: 30px 0 15px 0;">🌍 Insights por Región</h4>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+
+                <div style="background: #dbeafe; padding: 15px; border-radius: 8px; border-left: 4px solid #2563eb;">
+                    <h5 style="margin: 0 0 5px 0; color: #1e40af;">🌊 Norte / Caribe</h5>
+                    <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
+                        <li>Problemas de servicio al cliente son recurrentes</li>
+                        <li>Promociones no cumplidas generan desconfianza</li>
+                        <li>Falta de canales de comunicación efectivos</li>
+                    </ul>
+                    <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
+                        💡 Implementar oficina de atención regional
+                    </p>
+                </div>
+
+                <div style="background: #dbeafe; padding: 15px; border-radius: 8px; border-left: 4px solid #2563eb;">
+                    <h5 style="margin: 0 0 5px 0; color: #1e40af;">⛰️ Centro</h5>
+                    <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
+                        <li>Inconsistencia en la calidad docente</li>
+                        <li>Comunicación financiera debe ser más clara</li>
+                        <li>La virtualidad funciona pero requiere mejor soporte</li>
+                    </ul>
+                    <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
+                        💡 Estandarizar metodologías y canales de comunicación
+                    </p>
+                </div>
+
+                <div style="background: #dbeafe; padding: 15px; border-radius: 8px; border-left: 4px solid #2563eb;">
+                    <h5 style="margin: 0 0 5px 0; color: #1e40af;">🏔️ Sur</h5>
+                    <ul style="margin: 5px 0 0 15px; font-size: 0.8rem; color: #4b5563; padding-left: 10px;">
+                        <li>Demoras administrativas desgastan a los estudiantes</li>
+                        <li>Certificados y trámites toman demasiado tiempo</li>
+                        <li>Los estudiantes son persistentes pero la burocracia los agota</li>
+                    </ul>
+                    <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #1a2a4f; font-weight: 700; background: #e8edf5; padding: 4px 10px; border-radius: 4px;">
+                        💡 Digitalizar y agilizar procesos administrativos
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
 
     </main>
 </div>
@@ -495,7 +1789,7 @@
         }
         document.getElementById(tabName).style.display = "block";
         document.getElementById(tabName).classList.add("active");
-        if (evt) evt.currentTarget.classList.add("active");
+        evt.currentTarget.classList.add("active");
     }
 
     function toggleAccordion(id) {
@@ -508,13 +1802,6 @@
             content.classList.add("open");
             icon.textContent = "−";
         }
-    }
-
-    function toggleSubmenu(id) {
-        var submenu = document.getElementById(id);
-        var arrow = submenu.parentElement.querySelector('.arrow-submenu');
-        submenu.classList.toggle('open');
-        if (arrow) arrow.classList.toggle('rotated');
     }
 
     document.addEventListener('DOMContentLoaded', function() {
